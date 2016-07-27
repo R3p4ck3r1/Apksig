@@ -22,6 +22,30 @@
       "revId": "74d21bb004098fc84853f90e27f02c67453a1b7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f601d1d_6884876c",
+        "filename": "src/apksigner/java/com/android/apksigner/help_verify.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2016-07-27T19:52:40Z",
+      "side": 1,
+      "message": "You may want to use a higher value than minSdkVersion if you somehow know/eusre this APK isn\u0027t going to be installed on some platforms which are higher than minSdkVersion.\n\nAlso, I\u0027m looking into making this tool extract minSdkVersion and minSdkVersion and maxSdkVersion to reduce this annoyance.",
+      "parentUuid": "8f601d1d_088233a5",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "74d21bb004098fc84853f90e27f02c67453a1b7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
