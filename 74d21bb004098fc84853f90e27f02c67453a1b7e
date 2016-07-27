@@ -46,6 +46,30 @@
       "revId": "74d21bb004098fc84853f90e27f02c67453a1b7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f601d1d_2898cfc1",
+        "filename": "src/apksigner/java/com/android/apksigner/help_verify.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2016-07-27T19:55:35Z",
+      "side": 1,
+      "message": "Yeah I can see a --min-sdk-version \u003e minSdkVersion, but --min-sdk-version \u003c minSdkVersion seems kind of pointless. Maybe it should default to minSdkVersion unless specified?",
+      "parentUuid": "8f601d1d_6884876c",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "74d21bb004098fc84853f90e27f02c67453a1b7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
