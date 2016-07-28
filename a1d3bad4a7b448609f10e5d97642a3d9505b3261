@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "af7c012e_af01955d",
+        "filename": "src/apksigner/java/com/android/apksigner/PasswordRetriver.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2016-07-28T20:15:01Z",
+      "side": 1,
+      "message": "Fail in which way? It\u0027s supposed to read passwords line by line. Perhaps I should clarify in the help page that the password as one line, and if another password is read from the file, that one is read from the next line and so on?",
+      "parentUuid": "af7c012e_8fa0598e",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 24
+      },
+      "revId": "a1d3bad4a7b448609f10e5d97642a3d9505b3261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af7c012e_2c84d306",
         "filename": "src/apksigner/java/com/android/apksigner/help_sign.txt",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-28T20:03:33Z",
       "side": 1,
       "message": "drop",
+      "range": {
+        "startLine": 5,
+        "startChar": 63,
+        "endLine": 5,
+        "endChar": 64
+      },
+      "revId": "a1d3bad4a7b448609f10e5d97642a3d9505b3261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af7c012e_6f140d9c",
+        "filename": "src/apksigner/java/com/android/apksigner/help_sign.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2016-07-28T20:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af7c012e_2c84d306",
       "range": {
         "startLine": 5,
         "startChar": 63,
