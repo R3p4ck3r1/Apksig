@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f6689d2_baae91e7",
+        "filename": "src/apksigner/java/com/android/apksigner/ApkSignerTool.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2016-07-28T23:30:06Z",
+      "side": 1,
+      "message": "What about --cert and --ks",
+      "range": {
+        "startLine": 509,
+        "startChar": 0,
+        "endLine": 509,
+        "endChar": 84
+      },
+      "revId": "42c6d6c414fba1f620c28d5f129dc873d07258d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
