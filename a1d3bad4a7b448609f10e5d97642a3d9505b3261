@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af7c012e_8fa0598e",
+        "filename": "src/apksigner/java/com/android/apksigner/PasswordRetriver.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2016-07-28T20:03:33Z",
+      "side": 1,
+      "message": "Wont this fail I say have ks1 and ks2 both with the same password stored in pw and I invoke with\napksigner sign --ks ks1 --ks-pass file:pw --next-signer --ks ks2 --ks-pass file:pw apk",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 24
+      },
+      "revId": "a1d3bad4a7b448609f10e5d97642a3d9505b3261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af7c012e_2c84d306",
+        "filename": "src/apksigner/java/com/android/apksigner/help_sign.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2016-07-28T20:03:33Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 5,
+        "startChar": 63,
+        "endLine": 5,
+        "endChar": 64
+      },
+      "revId": "a1d3bad4a7b448609f10e5d97642a3d9505b3261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
