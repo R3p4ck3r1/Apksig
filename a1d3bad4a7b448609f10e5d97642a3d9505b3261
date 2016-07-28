@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "af7c012e_6f596d92",
+        "filename": "src/apksigner/java/com/android/apksigner/PasswordRetriver.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2016-07-28T20:17:39Z",
+      "side": 1,
+      "message": "Clarification would work.",
+      "parentUuid": "af7c012e_af01955d",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 24
+      },
+      "revId": "a1d3bad4a7b448609f10e5d97642a3d9505b3261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af7c012e_2c84d306",
         "filename": "src/apksigner/java/com/android/apksigner/help_sign.txt",
         "patchSetId": 3
