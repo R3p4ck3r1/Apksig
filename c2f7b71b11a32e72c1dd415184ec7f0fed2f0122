@@ -1,0 +1,8 @@
+Code-Review+2: Chad Brubaker <cbrubaker@google.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Alex Klyubin <klyubin@google.com>
+Submitted-by: Alex Klyubin <klyubin@google.com>
+Submitted-at: Tue, 30 Aug 2016 04:42:46 +0000
+Reviewed-on: https://android-review.googlesource.com/265838
+Project: platform/tools/apksig
+Branch: refs/heads/master
