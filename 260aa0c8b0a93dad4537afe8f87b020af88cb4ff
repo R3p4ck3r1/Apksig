@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "31d32198_5b18032e",
+        "filename": "studio.gradle",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2016-09-02T15:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51833587_40b66ed8",
+      "revId": "260aa0c8b0a93dad4537afe8f87b020af88cb4ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51833587_20b96ac9",
         "filename": "studio.gradle",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2016-09-02T09:49:23Z",
       "side": 1,
       "message": "I don\u0027t think you need this. This is for things that are published as a jar in the SDK.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 28
+      },
+      "revId": "260aa0c8b0a93dad4537afe8f87b020af88cb4ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31d32198_9b21db63",
+        "filename": "studio.gradle",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2016-09-02T15:58:26Z",
+      "side": 1,
+      "message": "Done. You\u0027re right.",
+      "parentUuid": "51833587_20b96ac9",
       "range": {
         "startLine": 6,
         "startChar": 0,
