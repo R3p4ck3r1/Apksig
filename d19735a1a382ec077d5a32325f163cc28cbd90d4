@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b23aeed_6757b2c9",
+        "filename": "src/apksigner/java/com/android/apksigner/help.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2016-09-09T17:34:14Z",
+      "side": 0,
+      "message": "existing is important ;)",
+      "range": {
+        "startLine": 22,
+        "startChar": 47,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "d19735a1a382ec077d5a32325f163cc28cbd90d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
