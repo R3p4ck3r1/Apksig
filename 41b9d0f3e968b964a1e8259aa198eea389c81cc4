@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "665b2640_c7033e2a",
+        "filename": "src/main/java/com/android/apksig/ApkVerifier.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2016-10-31T18:12:02Z",
+      "side": 1,
+      "message": "Do we need to possibly do this with max as well?",
+      "range": {
+        "startLine": 151,
+        "startChar": 30,
+        "endLine": 151,
+        "endChar": 43
+      },
+      "revId": "41b9d0f3e968b964a1e8259aa198eea389c81cc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
