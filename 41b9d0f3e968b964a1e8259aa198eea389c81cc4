@@ -22,6 +22,30 @@
       "revId": "41b9d0f3e968b964a1e8259aa198eea389c81cc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "066eea3f_07e6d8d4",
+        "filename": "src/main/java/com/android/apksig/ApkVerifier.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2016-10-31T18:13:39Z",
+      "side": 1,
+      "message": "maxSdkVersion is no longer used by Android.",
+      "parentUuid": "665b2640_c7033e2a",
+      "range": {
+        "startLine": 151,
+        "startChar": 30,
+        "endLine": 151,
+        "endChar": 43
+      },
+      "revId": "41b9d0f3e968b964a1e8259aa198eea389c81cc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
