@@ -52,6 +52,24 @@
       "revId": "29f40b0f6be6990992e74166ce414114f7508936",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "903934bb_7dcb1f35",
+        "filename": "src/main/java/com/android/apksig/apk/ApkUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1010199
+      },
+      "writtenOn": "2016-11-28T20:01:22Z",
+      "side": 1,
+      "message": "Ah, yep. Got it. The \"platform code to API level mapping\" confused me but the below Javadoc is much more clear on the mapping\u0027s semantics. Thanks.",
+      "parentUuid": "b03478bf_901a7c88",
+      "revId": "29f40b0f6be6990992e74166ce414114f7508936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
