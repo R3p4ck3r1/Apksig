@@ -70,6 +70,24 @@
       "revId": "29f40b0f6be6990992e74166ce414114f7508936",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "103c64a3_707b4e93",
+        "filename": "src/main/java/com/android/apksig/apk/ApkUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2016-11-28T20:02:25Z",
+      "side": 1,
+      "message": "You\u0027re welcome. I\u0027ve also added a blurb about this in the commit message.",
+      "parentUuid": "903934bb_7dcb1f35",
+      "revId": "29f40b0f6be6990992e74166ce414114f7508936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
