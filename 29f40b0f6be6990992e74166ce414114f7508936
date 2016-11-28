@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "903934bb_7297ce31",
+        "filename": "src/main/java/com/android/apksig/apk/ApkUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1010199
+      },
+      "writtenOn": "2016-11-28T19:15:05Z",
+      "side": 1,
+      "message": "This list isn\u0027t accurate with respect to API levels. It should be:\n\n * C --\u003e 3\n * D --\u003e 4\n * E --\u003e 5\n * F --\u003e 8\n * G --\u003e 9\n * H --\u003e 11\n * I --\u003e 14\n * J --\u003e 16\n * K --\u003e 19\n * L --\u003e 21\n * M --\u003e 23\n * N --\u003e 24\n * O --\u003e 26",
+      "revId": "29f40b0f6be6990992e74166ce414114f7508936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
