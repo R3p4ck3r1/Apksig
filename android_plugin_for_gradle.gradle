@@ -4,6 +4,10 @@ apply from: "$rootDir/buildSrc/base/baseJava.gradle"
 
 apply plugin: 'maven'
 
+dependencies {
+    testCompile libs.junit
+}
+
 group = "com.android.tools.build"
 archivesBaseName = 'apksig'
 version = rootProject.ext.buildVersion
