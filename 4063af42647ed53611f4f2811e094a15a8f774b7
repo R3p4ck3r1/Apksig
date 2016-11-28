@@ -1,0 +1,8 @@
+Code-Review+2: Chris Warrington <cmw@google.com>
+Verified+1: Alex Klyubin <klyubin@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Alex Klyubin <klyubin@google.com>
+Submitted-at: Mon, 28 Nov 2016 19:01:22 +0000
+Reviewed-on: https://android-review.googlesource.com/307382
+Project: platform/tools/apksig
+Branch: refs/heads/master
