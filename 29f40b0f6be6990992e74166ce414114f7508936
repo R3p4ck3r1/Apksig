@@ -16,6 +16,24 @@
       "revId": "29f40b0f6be6990992e74166ce414114f7508936",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d041ec2c_dfc24b24",
+        "filename": "src/main/java/com/android/apksig/apk/ApkUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2016-11-28T19:19:28Z",
+      "side": 1,
+      "message": "No, the list is accurate for the purposes of the one and only method that\u0027s using it. See the Javadoc of getMinSdkVersionForCodename below. Codenames generally start out with API Level at least one lower than the API Level on which they are released. The API Level bump occurs at the end of Android platform development iteration.",
+      "parentUuid": "903934bb_7297ce31",
+      "revId": "29f40b0f6be6990992e74166ce414114f7508936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
