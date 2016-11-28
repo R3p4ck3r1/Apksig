@@ -34,6 +34,24 @@
       "revId": "29f40b0f6be6990992e74166ce414114f7508936",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b03478bf_901a7c88",
+        "filename": "src/main/java/com/android/apksig/apk/ApkUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2016-11-28T19:46:36Z",
+      "side": 1,
+      "message": "P. S. To clarify, confusingly, these are codenames which are sometimes encountered in android:minSdkVersion on non-release builds of Android platform. These are not the same as the codenames in android.os.Build.VERSION_CODES. For example, an APK with minSdkVersion\u003d\"N\" will not run on release builds of Android Nougat devices. Generally, release builds of Android reject APKs with minSdkVersion set to a codename.",
+      "parentUuid": "d041ec2c_dfc24b24",
+      "revId": "29f40b0f6be6990992e74166ce414114f7508936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
