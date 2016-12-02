@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d506749_536fb369",
+        "filename": "BUILD",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1078623
+      },
+      "writtenOn": "2016-12-02T17:13:44Z",
+      "side": 1,
+      "message": "This is inappropriate.\n\nhttps://bazel.build/versions/master/docs/be/java.html#java_test.main_class",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 55
+      },
+      "revId": "44132f69daa9ef20aad35d6e1e46cc6d54282b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
