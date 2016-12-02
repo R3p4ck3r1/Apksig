@@ -1,0 +1,12 @@
+Verified+1: Dana Dahlstrom <dahlstrom@google.com>
+Verified+1: Alex Klyubin <klyubin@google.com>
+Code-Review+1: Dana Dahlstrom <dahlstrom@google.com>
+Code-Review+2: Alex Klyubin <klyubin@google.com>
+Presubmit-Ready+1: Dana Dahlstrom <dahlstrom@google.com>
+Presubmit-Ready+1: Alex Klyubin <klyubin@google.com>
+Autosubmit+1: Alex Klyubin <klyubin@google.com>
+Submitted-by: Dana Dahlstrom <dahlstrom@google.com>
+Submitted-at: Fri, 02 Dec 2016 17:38:37 +0000
+Reviewed-on: https://android-review.googlesource.com/309371
+Project: platform/tools/apksig
+Branch: refs/heads/master
