@@ -22,6 +22,30 @@
       "revId": "44132f69daa9ef20aad35d6e1e46cc6d54282b16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_735c779c",
+        "filename": "BUILD",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1078623
+      },
+      "writtenOn": "2016-12-02T17:39:48Z",
+      "side": 1,
+      "message": "removed by Change Ia142a300",
+      "parentUuid": "6d506749_536fb369",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 55
+      },
+      "revId": "44132f69daa9ef20aad35d6e1e46cc6d54282b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
