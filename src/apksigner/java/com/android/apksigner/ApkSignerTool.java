@@ -29,8 +29,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.security.Key;
@@ -284,10 +282,9 @@ public class ApkSignerTool {
                     e);
         }
         if (!tmpOutputApk.getCanonicalPath().equals(outputApk.getCanonicalPath())) {
-            FileSystem fs = FileSystems.getDefault();
             Files.move(
-                    fs.getPath(tmpOutputApk.getPath()),
-                    fs.getPath(outputApk.getPath()),
+                    tmpOutputApk.toPath(),
+                    outputApk.toPath(),
                     StandardCopyOption.REPLACE_EXISTING);
         }
 
