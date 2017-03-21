@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f803b627_50296d1f",
+        "filename": "src/main/java/com/android/apksig/internal/asn1/ber/ByteBufferBerDataValueReader.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2017-03-21T03:30:21Z",
+      "side": 1,
+      "message": "\u003c 0 doesn\u0027t seem like a great overflow check, maybe be more explicit?",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 29
+      },
+      "revId": "8b18093fe6480cbb477561dc5a38074cf97a445b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7234a94_59d454bc",
+        "filename": "src/main/java/com/android/apksig/internal/asn1/ber/ByteBufferBerDataValueReader.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2017-03-21T03:30:21Z",
+      "side": 1,
+      "message": "Unneeded?",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 25
+      },
+      "revId": "8b18093fe6480cbb477561dc5a38074cf97a445b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
