@@ -1,0 +1,9 @@
+Verified+1: Alex Klyubin <klyubin@google.com>
+Autosubmit+1: Alex Klyubin <klyubin@google.com>
+Presubmit-Ready+1: Alex Klyubin <klyubin@google.com>
+Code-Review+2: Chad Brubaker <cbrubaker@google.com>
+Submitted-by: Alex Klyubin <klyubin@google.com>
+Submitted-at: Wed, 26 Apr 2017 17:42:00 +0000
+Reviewed-on: https://android-review.googlesource.com/381138
+Project: platform/tools/apksig
+Branch: refs/heads/master
