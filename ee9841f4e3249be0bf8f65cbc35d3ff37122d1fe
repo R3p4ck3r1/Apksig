@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65571381_f6761c51",
+        "filename": "src/main/java/com/android/apksig/ApkVerifier.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2017-05-05T22:55:18Z",
+      "side": 1,
+      "message": "v2 doesn\u0027t require target\u003dO, you could have a target\u003dN sandbox v2 (which would still require v2 signature)",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 61
+      },
+      "revId": "ee9841f4e3249be0bf8f65cbc35d3ff37122d1fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
