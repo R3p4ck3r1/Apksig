@@ -526,6 +526,31 @@ public class ApkVerifierTest {
     }
 
     @Test
+    public void testTargetSandboxVersion2AndHigher() throws Exception {
+        // This APK (and its variants below) use minSdkVersion 18, meaning it needs to be signed
+        // with v1 and v2 schemes
+
+        // This APK is signed with v1 and v2 schemes and thus should verify
+        assertVerified(verify("targetSandboxVersion-2.apk"));
+
+        // v1 signature is needed only if minSdkVersion is lower than 24
+        assertVerificationFailure(
+                verify("v2-only-targetSandboxVersion-2.apk"), Issue.JAR_SIG_NO_MANIFEST);
+        assertVerified(verifyForMinSdkVersion("v2-only-targetSandboxVersion-2.apk", 24));
+
+        // v2 signature is required
+        assertVerificationFailure(
+                verify("v1-only-targetSandboxVersion-2.apk"),
+                Issue.NO_SIG_FOR_TARGET_SANDBOX_VERSION);
+        assertVerificationFailure(
+                verify("unsigned-targetSandboxVersion-2.apk"),
+                Issue.NO_SIG_FOR_TARGET_SANDBOX_VERSION);
+
+        // minSdkVersion 28, meaning v1 signature not needed
+        assertVerified(verify("v2-only-targetSandboxVersion-3.apk"));
+    }
+
+    @Test
     public void testV1MultipleDigestAlgsInManifestAndSignatureFile() throws Exception {
         // MANIFEST.MF contains SHA-1 and SHA-256 digests for each entry, .SF contains only SHA-1
         // digests. This file was obtained by:
