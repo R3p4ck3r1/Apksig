@@ -690,6 +690,29 @@ public class ApkSigner {
     }
 
     /**
+     * Returns the contents of the APK's {@code AndroidManifest.xml} or {@code null} if this entry
+     * is not present in the APK.
+     */
+    static ByteBuffer getAndroidManifestFromApk(
+            List<CentralDirectoryRecord> cdRecords, DataSource lhfSection)
+                    throws IOException, ZipFormatException {
+        CentralDirectoryRecord androidManifestCdRecord = null;
+        for (CentralDirectoryRecord cdRecord : cdRecords) {
+            if (ANDROID_MANIFEST_ZIP_ENTRY_NAME.equals(cdRecord.getName())) {
+                androidManifestCdRecord = cdRecord;
+                break;
+            }
+        }
+        if (androidManifestCdRecord == null) {
+            return null;
+        }
+
+        return ByteBuffer.wrap(
+                LocalFileRecord.getUncompressedData(
+                        lhfSection, androidManifestCdRecord, lhfSection.size()));
+    }
+
+    /**
      * Returns the minimum Android version (API Level) supported by the provided APK. This is based
      * on the {@code android:minSdkVersion} attributes of the APK's {@code AndroidManifest.xml}.
      */
