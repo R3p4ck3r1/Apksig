@@ -22,6 +22,30 @@
       "revId": "ee9841f4e3249be0bf8f65cbc35d3ff37122d1fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f4cf08f_1f06336d",
+        "filename": "src/main/java/com/android/apksig/ApkVerifier.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-05-06T00:49:53Z",
+      "side": 1,
+      "message": "Huh? Pre-O Android Package Manager has no idea about android:targetSandboxVersion. So, it\u0027ll happily accept APKs with android:targetSandboxVersion\u003d\"2\" which are signed with v1 scheme only.",
+      "parentUuid": "65571381_f6761c51",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 61
+      },
+      "revId": "ee9841f4e3249be0bf8f65cbc35d3ff37122d1fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
