@@ -46,6 +46,30 @@
       "revId": "ee9841f4e3249be0bf8f65cbc35d3ff37122d1fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f32bfe06_3bead584",
+        "filename": "src/main/java/com/android/apksig/ApkVerifier.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2017-05-22T19:33:01Z",
+      "side": 1,
+      "message": "Right but O will accept a targetSandboxVersion\u003d\"2\" targetSdk\u003dN APK.",
+      "parentUuid": "8f4cf08f_1f06336d",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 61
+      },
+      "revId": "ee9841f4e3249be0bf8f65cbc35d3ff37122d1fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
