@@ -22,6 +22,30 @@
       "revId": "b40d3e4821bc9cb094b0ff13153340e3a0da1b3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9124ca04_39c8be24",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v1/V1SchemeVerifier.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-07-10T17:53:27Z",
+      "side": 1,
+      "message": "These will go, eventually. However, these don\u0027t block the building \u0026 use of SignApk which is what needs to be unblocked for Android build process to work (without workarounds) with Java 9.",
+      "parentUuid": "01651001_5ca9b50c",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 36
+      },
+      "revId": "b40d3e4821bc9cb094b0ff13153340e3a0da1b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
