@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01651001_5ca9b50c",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v1/V1SchemeVerifier.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-07-10T11:41:36Z",
+      "side": 1,
+      "message": "these also need to go (if they are used, they need to be replaced with something else; otherwise, the code and imports need to be dropped)",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 36
+      },
+      "revId": "b40d3e4821bc9cb094b0ff13153340e3a0da1b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
