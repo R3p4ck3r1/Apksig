@@ -1,0 +1,8 @@
+Verified+1: Tobias Thierer <tobiast@google.com>
+Code-Review+2: Alex Klyubin <klyubin@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Tobias Thierer <tobiast@google.com>
+Submitted-at: Tue, 18 Jul 2017 14:56:52 +0000
+Reviewed-on: https://android-review.googlesource.com/437115
+Project: platform/tools/apksig
+Branch: refs/heads/master
