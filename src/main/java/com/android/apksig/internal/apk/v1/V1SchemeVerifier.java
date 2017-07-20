@@ -657,32 +657,38 @@ public abstract class V1SchemeVerifier {
                             Asn1BerParser.parseImplicitSetOf(
                                     signerInfo.signedAttrs.getEncoded(), Attribute.class);
                     SignedAttributes signedAttrs = new SignedAttributes(signedAttributes);
-                    String contentType =
-                            signedAttrs.getSingleObjectIdentifierValue(
-                                    Pkcs7Constants.OID_CONTENT_TYPE);
-                    if (contentType == null) {
-                        throw new SignatureException("No Content Type in signed attributes");
-                    }
-                    if (!contentType.equals(signedData.encapContentInfo.contentType)) {
-                        // Did not verify: Content type signed attribute does not match
-                        // SignedData.encapContentInfo.eContentType
-                        return null;
+                    if (maxSdkVersion >= AndroidSdkVersion.N) {
+                        // Content Type attribute is checked only on Android N and newer
+                        String contentType =
+                                signedAttrs.getSingleObjectIdentifierValue(
+                                        Pkcs7Constants.OID_CONTENT_TYPE);
+                        if (contentType == null) {
+                            throw new SignatureException("No Content Type in signed attributes");
+                        }
+                        if (!contentType.equals(signedData.encapContentInfo.contentType)) {
+                            // Did not verify: Content type signed attribute does not match
+                            // SignedData.encapContentInfo.eContentType. This fails verification of
+                            // this SignerInfo but should not prevent verification of other
+                            // SignerInfos. Hence, no exception is thrown.
+                            return null;
+                        }
                     }
                     byte[] expectedSignatureFileDigest =
                             signedAttrs.getSingleOctetStringValue(
                                     Pkcs7Constants.OID_MESSAGE_DIGEST);
                     if (expectedSignatureFileDigest == null) {
-                        // Skip verification: no signature file digest in signed attributes
-                        return null;
+                        throw new SignatureException("No content digest in signed attributes");
                     }
                     byte[] actualSignatureFileDigest =
                             MessageDigest.getInstance(
                                     getJcaDigestAlgorithm(digestAlgorithmOid))
-                                    .digest(mSigFileBytes);
+                                    .digest(signatureFile);
                     if (!Arrays.equals(
                             expectedSignatureFileDigest, actualSignatureFileDigest)) {
                         // Skip verification: signature file digest in signed attributes does not
-                        // match the signature file
+                        // match the signature file. This fails verification of
+                        // this SignerInfo but should not prevent verification of other
+                        // SignerInfos. Hence, no exception is thrown.
                         return null;
                     }
                 } catch (Asn1DecodingException e) {
@@ -699,11 +705,13 @@ public abstract class V1SchemeVerifier {
             } else {
                 // No signed attributes present -- verify signature against the contents of the
                 // signature file
-                s.update(mSigFileBytes);
+                s.update(signatureFile);
             }
             byte[] sigBytes = ByteBufferUtils.toByteArray(signerInfo.signature.slice());
             if (!s.verify(sigBytes)) {
-                // Cryptographic signature did not verify
+                // Cryptographic signature did not verify. This fails verification of this
+                // SignerInfo but should not prevent verification of other SignerInfos. Hence, no
+                // exception is thrown.
                 return null;
             }
             // Cryptographic signature verified
