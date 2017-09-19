@@ -17,10 +17,12 @@
 package com.android.apksig.util;
 
 import com.android.apksig.internal.util.ByteArrayDataSink;
+import com.android.apksig.internal.util.ByteBufferSink;
 import com.android.apksig.internal.util.OutputStreamDataSink;
 import com.android.apksig.internal.util.RandomAccessFileDataSink;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
 
 /**
  * Utility methods for working with {@link DataSink} abstraction.
@@ -42,6 +44,14 @@ public abstract class DataSinks {
      */
     public static DataSink asDataSink(RandomAccessFile file) {
         return new RandomAccessFileDataSink(file);
+    }
+
+    /**
+     * Returns a {@link DataSink} which outputs received data into the provided {@link ByteBuffer},
+     * sequentially, starting at the current position of the {@link ByteBuffer}.
+     */
+    public static DataSink asDataSink(ByteBuffer buffer) {
+        return new ByteBufferSink(buffer);
     }
 
     /**
