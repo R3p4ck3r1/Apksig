@@ -1,0 +1,364 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c681422_2a49bdbf",
+        "filename": "src/main/java/com/android/apksig/internal/util/DigestSink.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "feeds",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d19b5830_e27b58e3",
+        "filename": "src/main/java/com/android/apksig/internal/util/DigestSink.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "Javadoc style: Use \u003cp\u003e to start new paragraphs:\n\n\u003cp\u003eIf salt ...",
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8abd32a0_0dfc98ef",
+        "filename": "src/main/java/com/android/apksig/internal/util/DigestSink.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "Why not replace all this with a single method, such as\n  byte[] getSaltedDigest(MessageDigest md, byte[] salt, ByteBuffer input)\nThis doesn\u0027t look like a generic sink which takes input using multiple invocations of consume() method.\n\nIf you want to keep this DataSink, then move it into VerifyTreeBuilder or rename appropriate, so that it\u0027s clear that it\u0027s not a generic DataSink which computes the digest of its contents.",
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66d3ac05_2718c033",
+        "filename": "src/main/java/com/android/apksig/internal/util/DigestSink.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "fed",
+      "range": {
+        "startLine": 63,
+        "startChar": 32,
+        "endLine": 63,
+        "endChar": 38
+      },
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0eb3fbe4_768c3506",
+        "filename": "src/main/java/com/android/apksig/internal/util/HexEncoding.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "Why was this file moved?",
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0545386a_3486805e",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "can",
+      "range": {
+        "startLine": 32,
+        "startChar": 17,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ec88237_b25ca4eb",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "is not",
+      "range": {
+        "startLine": 33,
+        "startChar": 18,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dce52e49_43a6fa3b",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "Javadoc style: This Javadoc is supposed to document the contract/purpose of this field, rather than the impl detail of how its value was arrived at. For example, \"Maximum size (in bytes) of each node of the tree\"",
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31db4ce0_c6745017",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "Same issue as above: purpose rather than impl detail. For example, \"Digest algorithm (JCA Digest algorithm name) used in the tree\".",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 57
+      },
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37149afd_d3f3af05",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "What\u0027s the reason for not supporting larger input?",
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dc29e09_1fb884de",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "Why throw away this MessageDigest instance? Why not use it below.",
+      "range": {
+        "startLine": 69,
+        "startChar": 29,
+        "endLine": 69,
+        "endChar": 69
+      },
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3869546_fb19a227",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "Ironically, asReadOnlyBuffer can have negative performance consequences because it has to guarantee that not even native code can modify contents. You may want to test this though.",
+      "range": {
+        "startLine": 83,
+        "startChar": 69,
+        "endLine": 83,
+        "endChar": 88
+      },
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd0b335_9868c5a9",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "I think it\u0027s best to make this method declare that it throws NoSuchAlgorithmException. The reason is that its pretty clear that this method uses crypto algorithms and it\u0027s also clear that it\u0027ll be up to the caller to figure out how to handle when the algorithms are not available for some reason.",
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cba0ee50_896696e7",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "Use the Java 7 diamond operator. So: new ArrayList\u003c\u003e();",
+      "range": {
+        "startLine": 124,
+        "startChar": 53,
+        "endLine": 124,
+        "endChar": 60
+      },
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff22bcbe_636a8f64",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "I\u0027d suggest chunkCount, to make it clearer that it\u0027s not the index/position of some chunk, but rather the number of chunks for this level.",
+      "range": {
+        "startLine": 126,
+        "startChar": 16,
+        "endLine": 126,
+        "endChar": 27
+      },
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "163d47c1_cad0f2be",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "Can be static",
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f199fdc7_c6f7e82d",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "This is not guaranteed to work. For example, if buffer.position is 10, and begin is 1 and end is 3, this will throw an InvalidArgumentException because this will be trying set b.limit to 3 when b.position is 10, whereas the requirement is that position \u003c\u003d limit \u003c\u003d capacity.",
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa360faf_7a9f142e",
+        "filename": "src/test/java/com/android/apksig/internal/util/VerityTreeBuilderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:06:29Z",
+      "side": 1,
+      "message": "Why not HexEncoding.encode(byte[]) instead of all this?",
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
