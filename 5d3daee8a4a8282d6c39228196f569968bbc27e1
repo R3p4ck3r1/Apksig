@@ -362,6 +362,23 @@
     },
     {
       "key": {
+        "uuid": "6ee6e747_f9d53675",
+        "filename": "src/test/java/com/android/apksig/internal/util/VerityTreeBuilderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:16:34Z",
+      "side": 1,
+      "message": "Unused import",
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa360faf_7a9f142e",
         "filename": "src/test/java/com/android/apksig/internal/util/VerityTreeBuilderTest.java",
         "patchSetId": 1
