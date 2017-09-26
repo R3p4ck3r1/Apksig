@@ -345,6 +345,23 @@
     },
     {
       "key": {
+        "uuid": "82cc5f06_354e665f",
+        "filename": "src/main/java/com/android/apksig/util/DataSinks.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-26T19:08:22Z",
+      "side": 1,
+      "message": "The issue here that this DataSink is pretty non-standard. It is fixed-length, as opposed to all other sinks here which grow as the input is received. I thus suggest either not exposing this method at all (this becomes public API of this library) or at least exposing this as asFixedSizeDataSink or something...",
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa360faf_7a9f142e",
         "filename": "src/test/java/com/android/apksig/internal/util/VerityTreeBuilderTest.java",
         "patchSetId": 1
