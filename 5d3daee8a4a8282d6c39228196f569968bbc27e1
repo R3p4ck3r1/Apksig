@@ -506,6 +506,30 @@
     },
     {
       "key": {
+        "uuid": "dc471312_3231c356",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-27T19:17:06Z",
+      "side": 1,
+      "message": "FYI this code is not just for developer machine. It\u0027s running on servers as well.",
+      "parentUuid": "d3071e1d_ed8fc79a",
+      "range": {
+        "startLine": 83,
+        "startChar": 69,
+        "endLine": 83,
+        "endChar": 88
+      },
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd0b335_9868c5a9",
         "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
         "patchSetId": 1
