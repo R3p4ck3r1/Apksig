@@ -530,6 +530,30 @@
     },
     {
       "key": {
+        "uuid": "835f33c2_270b3d57",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-09-27T22:59:46Z",
+      "side": 1,
+      "message": "The *current libcore implementation* ByteBuffer.allocate returns HeapByteBuffer, where readonly looks mostly a flag check in the methods.  So performance hit is probably small.",
+      "parentUuid": "dc471312_3231c356",
+      "range": {
+        "startLine": 83,
+        "startChar": 69,
+        "endLine": 83,
+        "endChar": 88
+      },
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd0b335_9868c5a9",
         "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
         "patchSetId": 1

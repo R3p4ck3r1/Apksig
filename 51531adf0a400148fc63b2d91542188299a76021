@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a9270497_509310ab",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-09-27T22:59:46Z",
+      "side": 1,
+      "message": "Done.  Now we fail only if the verity tree is larger then Integer.MAX_VALUE.",
+      "parentUuid": "fefc6696_34270adb",
+      "revId": "51531adf0a400148fc63b2d91542188299a76021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0f5f221_0322489f",
         "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "684d3f7e_994af3e4",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-09-27T22:59:46Z",
+      "side": 1,
+      "message": "ah you\u0027re right, fixed.",
+      "parentUuid": "b0f5f221_0322489f",
+      "revId": "51531adf0a400148fc63b2d91542188299a76021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8170135f_3100ec68",
         "filename": "src/test/java/com/android/apksig/internal/util/VerityTreeBuilderTest.java",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2017-09-27T19:17:50Z",
       "side": 1,
       "message": "Why not HexEncoding.encode(bytes) instead of this method?",
+      "revId": "51531adf0a400148fc63b2d91542188299a76021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85614b1f_a1a7ade9",
+        "filename": "src/test/java/com/android/apksig/internal/util/VerityTreeBuilderTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-09-27T22:59:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8170135f_3100ec68",
       "revId": "51531adf0a400148fc63b2d91542188299a76021",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
