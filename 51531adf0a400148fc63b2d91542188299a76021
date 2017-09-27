@@ -33,6 +33,23 @@
       "revId": "51531adf0a400148fc63b2d91542188299a76021",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8170135f_3100ec68",
+        "filename": "src/test/java/com/android/apksig/internal/util/VerityTreeBuilderTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-27T19:17:50Z",
+      "side": 1,
+      "message": "Why not HexEncoding.encode(bytes) instead of this method?",
+      "revId": "51531adf0a400148fc63b2d91542188299a76021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
