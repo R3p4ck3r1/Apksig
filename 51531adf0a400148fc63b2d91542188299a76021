@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fefc6696_34270adb",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-27T19:16:04Z",
+      "side": 1,
+      "message": "What I meant here is that you\u0027re explicitly failing to support APKs larger than 2 GB. APKs are currently permitted to be up to 4 GB in size.\n\nRejecting 2+ GB APKs in experimental code is fine for now, but it\u0027s not fine if this code gets invoked during APK signing/verification by default.\n\nI thus suggest either adding a TODO here or rewriting to support fileSource larger than 2 GB.",
+      "revId": "51531adf0a400148fc63b2d91542188299a76021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0f5f221_0322489f",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-27T19:16:04Z",
+      "side": 1,
+      "message": "Same issue as before. You\u0027re assuming that begin \u003c\u003d buffer.limit, which is not guaranteed to be the case. The safe pattern is:\n  b.position(0);\n  b.limit(end);\n  b.position(begin);\nOR\n  b.limit(b.capacity());\n  b.position(begin);\n  b.limit(end);\n\nThe reason this works is that it\u0027s always safe to set position to 0 or set limit to capacity.",
+      "revId": "51531adf0a400148fc63b2d91542188299a76021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
