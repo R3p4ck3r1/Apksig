@@ -578,6 +578,30 @@
     },
     {
       "key": {
+        "uuid": "5ab57408_3c2f9ec2",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-09-28T16:43:44Z",
+      "side": 1,
+      "message": "right, of course :P",
+      "parentUuid": "1e3205f7_285f6b0f",
+      "range": {
+        "startLine": 83,
+        "startChar": 69,
+        "endLine": 83,
+        "endChar": 88
+      },
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd0b335_9868c5a9",
         "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
         "patchSetId": 1
