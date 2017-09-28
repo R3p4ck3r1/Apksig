@@ -554,6 +554,30 @@
     },
     {
       "key": {
+        "uuid": "1e3205f7_285f6b0f",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-09-28T16:33:15Z",
+      "side": 1,
+      "message": "This code does not run on Android/libcore. It runs on host-side JVMs.",
+      "parentUuid": "835f33c2_270b3d57",
+      "range": {
+        "startLine": 83,
+        "startChar": 69,
+        "endLine": 83,
+        "endChar": 88
+      },
+      "revId": "5d3daee8a4a8282d6c39228196f569968bbc27e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd0b335_9868c5a9",
         "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
         "patchSetId": 1
