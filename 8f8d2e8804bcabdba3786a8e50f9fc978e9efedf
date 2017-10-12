@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76ca9110_4bea0ff5",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-12T23:14:56Z",
+      "side": 1,
+      "message": "There\u0027s something iffy with this approach:\n1. It doesn\u0027t take minSdkVersion into account. For example, if I set minSdkVersion to 28, for an APK signed with RSA with 1 MB tree and with RSA with 4 kB tree (available since API Level 28), I\u0027d expect this method to return only RSA with 4 kB tree, not both.\n2. This method or its caller needs to handle the situation where there are no supports algs for some SDK versions in the requested range. For exampler, for an APK signed with RSA with 4 kB tree, this method or its caller should fail verification because the APK\u0027s v2 signature won\u0027t verify on API Levels 27 and lower.",
+      "revId": "8f8d2e8804bcabdba3786a8e50f9fc978e9efedf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
