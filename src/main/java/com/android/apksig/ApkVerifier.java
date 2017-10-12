@@ -154,7 +154,8 @@ public class ApkVerifier {
         if (maxSdkVersion >= AndroidSdkVersion.N) {
             foundApkSigSchemeIds = new HashSet<>(1);
             try {
-                V2SchemeVerifier.Result v2Result = V2SchemeVerifier.verify(apk, zipSections);
+                V2SchemeVerifier.Result v2Result = V2SchemeVerifier.verify(apk, zipSections,
+                        maxSdkVersion);
                 foundApkSigSchemeIds.add(APK_SIGNATURE_SCHEME_V2_ID);
                 result.mergeFrom(v2Result);
             } catch (V2SchemeVerifier.SignatureNotFoundException ignored) {}
