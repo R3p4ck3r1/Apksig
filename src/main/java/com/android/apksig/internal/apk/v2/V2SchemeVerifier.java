@@ -20,6 +20,7 @@ import com.android.apksig.ApkVerifier.Issue;
 import com.android.apksig.ApkVerifier.IssueWithParams;
 import com.android.apksig.apk.ApkFormatException;
 import com.android.apksig.apk.ApkUtils;
+import com.android.apksig.internal.util.AndroidSdkVersion;
 import com.android.apksig.internal.util.ByteBufferDataSource;
 import com.android.apksig.internal.util.GuaranteedEncodedFormX509Certificate;
 import com.android.apksig.internal.util.Pair;
@@ -45,12 +46,14 @@ import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * APK Signature Scheme v2 verifier.
@@ -83,9 +86,9 @@ public abstract class V2SchemeVerifier {
      * @throws SignatureNotFoundException if no APK Signature Scheme v2 signatures are found
      * @throws IOException if an I/O error occurs when reading the APK
      */
-    public static Result verify(DataSource apk, ApkUtils.ZipSections zipSections)
-            throws IOException, ApkFormatException, NoSuchAlgorithmException,
-                    SignatureNotFoundException {
+    public static Result verify(DataSource apk, ApkUtils.ZipSections zipSections, int minSdkVersion,
+            int maxSdkVersion) throws IOException, ApkFormatException, NoSuchAlgorithmException,
+           SignatureNotFoundException {
         Result result = new Result();
         SignatureInfo signatureInfo = findSignature(apk, zipSections, result);
 
@@ -100,6 +103,8 @@ public abstract class V2SchemeVerifier {
                 signatureInfo.signatureBlock,
                 centralDir,
                 eocd,
+                minSdkVersion,
+                maxSdkVersion,
                 result);
         return result;
     }
@@ -114,14 +119,18 @@ public abstract class V2SchemeVerifier {
             ByteBuffer apkSignatureSchemeV2Block,
             DataSource centralDir,
             ByteBuffer eocd,
-            Result result) throws IOException, NoSuchAlgorithmException {
+            int minSdkVersion,
+            int maxSdkVersion,
+            Result result)
+            throws IOException, NoSuchAlgorithmException, SignatureNotFoundException {
         Set<ContentDigestAlgorithm> contentDigestsToVerify = new HashSet<>(1);
-        parseSigners(apkSignatureSchemeV2Block, contentDigestsToVerify, result);
+        parseSigners(apkSignatureSchemeV2Block, contentDigestsToVerify, minSdkVersion,
+                maxSdkVersion, result);
         if (result.containsErrors()) {
             return;
         }
-        verifyIntegrity(
-                beforeApkSigningBlock, centralDir, eocd, contentDigestsToVerify, result);
+        verifyIntegrity(beforeApkSigningBlock, centralDir, eocd, contentDigestsToVerify,
+                maxSdkVersion, result);
         if (!result.containsErrors()) {
             result.verified = true;
         }
@@ -138,7 +147,9 @@ public abstract class V2SchemeVerifier {
     private static void parseSigners(
             ByteBuffer apkSignatureSchemeV2Block,
             Set<ContentDigestAlgorithm> contentDigestsToVerify,
-            Result result) throws NoSuchAlgorithmException {
+            int minSdkVersion,
+            int maxSdkVersion,
+            Result result) throws NoSuchAlgorithmException, SignatureNotFoundException {
         ByteBuffer signers;
         try {
             signers = getLengthPrefixedSlice(apkSignatureSchemeV2Block);
@@ -166,7 +177,8 @@ public abstract class V2SchemeVerifier {
             result.signers.add(signerInfo);
             try {
                 ByteBuffer signer = getLengthPrefixedSlice(signers);
-                parseSigner(signer, certFactory, signerInfo, contentDigestsToVerify);
+                parseSigner(signer, certFactory, signerInfo, contentDigestsToVerify, minSdkVersion,
+                        maxSdkVersion);
             } catch (ApkFormatException | BufferUnderflowException e) {
                 signerInfo.addError(Issue.V2_SIG_MALFORMED_SIGNER);
                 return;
@@ -185,8 +197,11 @@ public abstract class V2SchemeVerifier {
             ByteBuffer signerBlock,
             CertificateFactory certFactory,
             Result.SignerInfo result,
-            Set<ContentDigestAlgorithm> contentDigestsToVerify)
-                    throws ApkFormatException, NoSuchAlgorithmException {
+            Set<ContentDigestAlgorithm> contentDigestsToVerify,
+            int minSdkVersion,
+            int maxSdkVersion)
+                    throws ApkFormatException, NoSuchAlgorithmException,
+                           SignatureNotFoundException {
         ByteBuffer signedData = getLengthPrefixedSlice(signerBlock);
         byte[] signedDataBytes = new byte[signedData.remaining()];
         signedData.get(signedDataBytes);
@@ -224,7 +239,8 @@ public abstract class V2SchemeVerifier {
         }
 
         // Verify signatures over signed-data block using the public key
-        List<SupportedSignature> signaturesToVerify = getSignaturesToVerify(supportedSignatures);
+        Collection<SupportedSignature> signaturesToVerify = getSignaturesToVerify(
+                supportedSignatures, minSdkVersion, maxSdkVersion);
         if (signaturesToVerify.isEmpty()) {
             result.addError(Issue.V2_SIG_NO_SUPPORTED_SIGNATURES);
             return;
@@ -366,25 +382,75 @@ public abstract class V2SchemeVerifier {
         }
     }
 
-    private static List<SupportedSignature> getSignaturesToVerify(
-            List<SupportedSignature> signatures) {
-        // Pick the signature with the strongest algorithm, to mimic Android's behavior.
-        SignatureAlgorithm bestSigAlgorithm = null;
-        byte[] bestSigAlgorithmSignatureBytes = null;
+    /**
+     * Collect the set of signature algorithms on all Android platform versions between
+     * minSdkVersion and maxSdkVersion.  This is to mimic Android's verification behavior on the
+     * targeted version range.
+     *
+     * @throws SignatureNotFoundException if no sigature is found on some Android platform version
+     *         in the specific range.
+     */
+    private static Collection<SupportedSignature> getSignaturesToVerify(
+            List<SupportedSignature> signatures, int minSdkVersion, int maxSdkVersion)
+            throws SignatureNotFoundException {
+        // We will have to verify with all algorithms introduced between minSdkVersion (Vmin below)
+        // and maxSdkVersion (Vmax), plus the latest algorithm available on Android at
+        // minSdkVersion.
+        //
+        // Example:
+        //   v1  --------------> (time)
+        //   v24      --------->
+        //   v28           ---->
+        //  range: Vmin ^----^ Vmax
+        //
+        // In the above example, although we are looking for Vmin, the effective min version is v24.
+        // In other words, we are finding the latest algorithm's SDK version before or at Vmin.
+        int effectiveMinSdkVersion = AndroidSdkVersion.N;
         for (SupportedSignature sig : signatures) {
-            SignatureAlgorithm sigAlgorithm = sig.algorithm;
-            if ((bestSigAlgorithm == null)
-                    || (compareSignatureAlgorithm(sigAlgorithm, bestSigAlgorithm) > 0)) {
-                bestSigAlgorithm = sigAlgorithm;
-                bestSigAlgorithmSignatureBytes = sig.signature;
+            int version = sig.algorithm.getMinSdkVersion();
+            if (version <= minSdkVersion && version > effectiveMinSdkVersion) {
+                effectiveMinSdkVersion = version;
             }
         }
 
-        if (bestSigAlgorithm == null) {
+        // Effectively, we need to collect signatures introduced between effectiveMinSdkVersion and
+        // maxSdkVersion.
+        final int finalEffectiveMinSdkVersion = effectiveMinSdkVersion;
+        signatures = signatures.stream()
+                .filter(s -> s.algorithm.getMinSdkVersion() <= maxSdkVersion &&
+                             s.algorithm.getMinSdkVersion() >= finalEffectiveMinSdkVersion)
+                .collect(Collectors.toList());
+
+        // Pick the signature with the strongest algorithm at all required SDK versions, to mimic
+        // Android's behavior on those versions.
+        HashSet<Integer> requiredVersions = new HashSet<>();
+        Map<Integer, SupportedSignature> bestSigAlgorithmOnSdkVersion = new HashMap<>();
+        for (SupportedSignature sig : signatures) {
+            SignatureAlgorithm sigAlgorithm = sig.algorithm;
+            requiredVersions.add(sigAlgorithm.getMinSdkVersion());
+
+            SupportedSignature candidate = bestSigAlgorithmOnSdkVersion.get(
+                    sigAlgorithm.getMinSdkVersion());
+            if ((candidate == null)
+                    || (compareSignatureAlgorithm(sigAlgorithm, candidate.algorithm) > 0)) {
+                bestSigAlgorithmOnSdkVersion.put(sigAlgorithm.getMinSdkVersion(),
+                        new SupportedSignature(sigAlgorithm, sig.signature));
+            }
+        }
+
+        // Must have signature algorithms for all platform versions in the range.
+        if (!bestSigAlgorithmOnSdkVersion.keySet().equals(requiredVersions)) {
+            requiredVersions.removeAll(bestSigAlgorithmOnSdkVersion.keySet());
+            throw new SignatureNotFoundException(
+                    "Missing signatures on Android platform versions " +
+                    String.join(", ", requiredVersions.stream()
+                        .map(v -> v.toString()).collect(Collectors.toSet())));
+        }
+
+        if (bestSigAlgorithmOnSdkVersion.isEmpty()) {
             return Collections.emptyList();
         } else {
-            return Collections.singletonList(
-                    new SupportedSignature(bestSigAlgorithm, bestSigAlgorithmSignatureBytes));
+            return new HashSet<>(bestSigAlgorithmOnSdkVersion.values());
         }
     }
 
@@ -449,6 +515,7 @@ public abstract class V2SchemeVerifier {
             DataSource centralDir,
             ByteBuffer eocd,
             Set<ContentDigestAlgorithm> contentDigestAlgorithms,
+            int maxSdkVersion,
             Result result) throws IOException, NoSuchAlgorithmException {
         if (contentDigestAlgorithms.isEmpty()) {
             // This should never occur because this method is invoked once at least one signature
