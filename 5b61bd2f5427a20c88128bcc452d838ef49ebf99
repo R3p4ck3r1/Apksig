@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "c23a0a23_5789a226",
+        "filename": "src/main/java/com/android/apksig/ApkVerifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-13T17:52:22Z",
+      "side": 1,
+      "message": "I\u0027d suggest using Math.max(minSdkVersion, AndroidSdkVersion.N) here instead of minSdkVersion. This will ensure that V2SchemeVerifier never sees minSdkVersion lower than 24 which would be a weird scenario given that v2 scheme wasn\u0027t implemented in 23 and lower.",
+      "revId": "5b61bd2f5427a20c88128bcc452d838ef49ebf99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0291bae6_66fdc625",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-13T17:52:22Z",
+      "side": 1,
+      "message": "It might be worth considering a simpler solution where you split the minSdkVersion - maxSdkVersion range into two, based on API Level 28 (P). For minSdkVersion - min(P, maxSdkVersion), you ignore the case if the range is empty, if not, you invoke the old version of this method and exit early if it returns no supported sigs. Then, for P - maxSdkVersion, you ignore the case if the range is empty, if not, you invoke a new method designed for P+, and exit early if it returns no supported sigs. If there are supported sigs for both ranges, combine the two sets and return.",
+      "revId": "5b61bd2f5427a20c88128bcc452d838ef49ebf99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5b0a352_02a5299b",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 2
