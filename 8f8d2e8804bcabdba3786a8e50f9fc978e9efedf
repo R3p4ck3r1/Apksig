@@ -34,6 +34,24 @@
       "revId": "8f8d2e8804bcabdba3786a8e50f9fc978e9efedf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85acc8c1_bbf36a09",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-13T17:33:13Z",
+      "side": 1,
+      "message": "In example #2, this method will return a non-empty set and the caller will not fail with V2_SIG_NO_SUPPORTED_SIGNATURES. The caller will actually verify the RSA with 4 kB chunk tree signature and, if it verifies, will report that this APK is good -- meaning its signature is expected to verify on API Level 27 and lower too, which isn\u0027t the case.",
+      "parentUuid": "fad27d6b_23a95955",
+      "revId": "8f8d2e8804bcabdba3786a8e50f9fc978e9efedf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

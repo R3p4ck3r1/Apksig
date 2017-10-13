@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5b0a352_02a5299b",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-13T17:33:13Z",
+      "side": 1,
+      "message": "I\u0027ve been looking at this loop and I still can\u0027t figure out what it\u0027s supposed to be doing. Would you mind adding a comment at the top that this first step does, before the second for loop below. For example:\n\n// Leave only signature algorithms supported by at least one platform version in the minSdkVersion - maxSdkVersion range.\n\n\nIf this is indeed the intended step, then I\u0027m having trouble understanding how this goal is achieved. The first loop looks weird: I think it\u0027s clearer in its refactored form:\n  for (SupportedSignature sig : signatures) {\n    int version \u003d sig.algorithm.getMinSdkVersion();\n    if (version \u003c effectiveMinSdkVersion) {\n      break;\n    }\n    effectiveMinSdkVersion \u003d version;\n  }\nAssuming my refactoring is correct, this loop is weird. It\u0027ll assign to effectiveMinSdkVersion the minSdkVersion of the very first provided signature, and then might incorrectly terminate. For example, input signatures consists of two: RSA with 4 kB chunk tree (minSdkVersion: 28), and RSA with 1 MB chunk tree (minSdkVersion: 24). After this loop, effectiveMinSdkVersion will be 28, which sounds wrong.",
+      "revId": "5b61bd2f5427a20c88128bcc452d838ef49ebf99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
