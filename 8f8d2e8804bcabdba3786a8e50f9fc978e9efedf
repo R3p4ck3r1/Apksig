@@ -16,6 +16,24 @@
       "revId": "8f8d2e8804bcabdba3786a8e50f9fc978e9efedf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fad27d6b_23a95955",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-13T17:12:22Z",
+      "side": 1,
+      "message": "Done, please see if it works.  For 2, the caller is already checking, and with no supported signatures, it will fail with V2_SIG_NO_SUPPORTED_SIGNATURES.",
+      "parentUuid": "76ca9110_4bea0ff5",
+      "revId": "8f8d2e8804bcabdba3786a8e50f9fc978e9efedf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
