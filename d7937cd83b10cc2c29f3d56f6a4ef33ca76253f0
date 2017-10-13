@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02340690_eb357356",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-13T21:48:04Z",
+      "side": 1,
+      "message": "I\u0027m still very confused by this. What is effective minSdkVersion supposed to represent/reflect?",
+      "revId": "d7937cd83b10cc2c29f3d56f6a4ef33ca76253f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06785205_9444896c",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-13T21:48:04Z",
+      "side": 1,
+      "message": "Refactored loop:\n  for (SupportedSignature sig : signatures) {\n    int version \u003d sig.algorithm.getMinSdkVersion();\n    if (version \u003e minSdkVersion) {\n      break;\n    }\n    effectiveMinSdkVersion \u003d version;\n  }\n\nIt looks like effectiveMinSdkVersion depends on the order in which signatures are provided to this function. This smells wrong.",
+      "revId": "d7937cd83b10cc2c29f3d56f6a4ef33ca76253f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c57c8ac3_b6a9ae11",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-13T21:48:04Z",
+      "side": 1,
+      "message": "This comment is now out of date. You\u0027re also somehow using minSdkVersion in this filter.",
+      "revId": "d7937cd83b10cc2c29f3d56f6a4ef33ca76253f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
