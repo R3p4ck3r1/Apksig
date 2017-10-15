@@ -349,6 +349,7 @@ public abstract class V2SchemeSigner {
         //     uint64:           size (excluding this field)
         //     uint32:           ID
         //     (size - 4) bytes: value
+        // (4096 - total size of other fields % 4096) bytes: padding
         // uint64:  size (same as the one above)
         // uint128: magic
 
@@ -358,6 +359,9 @@ public abstract class V2SchemeSigner {
                 + 8 // size
                 + 16 // magic
                 ;
+        int padding = 4096 - (resultSize % 4096);
+        resultSize += padding;
+
         ByteBuffer result = ByteBuffer.allocate(resultSize);
         result.order(ByteOrder.LITTLE_ENDIAN);
         long blockSizeFieldValue = resultSize - 8;
@@ -367,6 +371,7 @@ public abstract class V2SchemeSigner {
         result.putLong(pairSizeFieldValue);
         result.putInt(APK_SIGNATURE_SCHEME_V2_BLOCK_ID);
         result.put(apkSignatureSchemeV2Block);
+        result.put(ByteBuffer.allocate(padding));
 
         result.putLong(blockSizeFieldValue);
         result.put(APK_SIGNING_BLOCK_MAGIC);
