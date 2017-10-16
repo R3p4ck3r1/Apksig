@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8cd530ce_f9516876",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-16T16:20:34Z",
+      "side": 1,
+      "message": "Added some illustration in the comment.  Hope that helps.",
+      "parentUuid": "02340690_eb357356",
+      "revId": "d7937cd83b10cc2c29f3d56f6a4ef33ca76253f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06785205_9444896c",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c762fa8e_7f76813a",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-16T16:20:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06785205_9444896c",
+      "revId": "d7937cd83b10cc2c29f3d56f6a4ef33ca76253f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c57c8ac3_b6a9ae11",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2017-10-13T21:48:04Z",
       "side": 1,
       "message": "This comment is now out of date. You\u0027re also somehow using minSdkVersion in this filter.",
+      "revId": "d7937cd83b10cc2c29f3d56f6a4ef33ca76253f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e0222f4_449744ee",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-16T16:20:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c57c8ac3_b6a9ae11",
       "revId": "d7937cd83b10cc2c29f3d56f6a4ef33ca76253f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
