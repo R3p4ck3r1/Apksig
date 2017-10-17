@@ -27,6 +27,8 @@ public class EocdRecord {
     private static final int CD_RECORD_COUNT_TOTAL_OFFSET = 10;
     private static final int CD_SIZE_OFFSET = 12;
     private static final int CD_OFFSET_OFFSET = 16;
+    private static final int CD_OFFSET_SIZE = 4;
+    private static final byte[] EOCD_MAGIC = new byte[] { 0x50, 0x4b, 0x05, 0x06 };
 
     public static ByteBuffer createWithModifiedCentralDirectoryInfo(
             ByteBuffer original,
@@ -43,6 +45,23 @@ public class EocdRecord {
                 result, CD_RECORD_COUNT_TOTAL_OFFSET, centralDirectoryRecordCount);
         ZipUtils.setUnsignedInt32(result, CD_SIZE_OFFSET, centralDirectorySizeBytes);
         ZipUtils.setUnsignedInt32(result, CD_OFFSET_OFFSET, centralDirectoryOffset);
+        return result;
+    }
+
+    public static ByteBuffer createWithCentralDirectoryFieldHidden(ByteBuffer original) {
+        if (original.get() != EOCD_MAGIC[0] || original.get() != EOCD_MAGIC[1] ||
+                original.get() != EOCD_MAGIC[2] || original.get() != EOCD_MAGIC[3]) {
+            throw new IllegalArgumentException("Invalid EoCD");
+        }
+        original.rewind();
+
+        ByteBuffer result = ByteBuffer.allocate(original.remaining());
+        result.order(ByteOrder.LITTLE_ENDIAN);
+        byte[] originalArray = original.array();
+        result.put(originalArray, 0, CD_OFFSET_OFFSET);
+        result.put(originalArray, CD_OFFSET_OFFSET + CD_OFFSET_SIZE,
+                original.limit() - CD_OFFSET_OFFSET - CD_OFFSET_SIZE);
+        result.flip();
         return result;
     }
 }
