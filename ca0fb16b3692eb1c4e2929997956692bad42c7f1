@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f74935b5_f3aeb898",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T17:29:51Z",
+      "side": 1,
+      "message": "Nit: This is supposed to collect the set of signature algorithms that Android platform versions in the minSdkVersion-maxSdkVersion range will verify for this APK. It\u0027s not necessarily the \"strongest\" -- it\u0027s what Android will pick.",
+      "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57feecbd_2d81b545",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T17:29:51Z",
+      "side": 1,
+      "message": "That\u0027s not what this method is supposed to do. On each platform version, Android picks a single algorithm from the provided set. This method is supposed to return the set of picked algorithms for platform versions minSdkVersion-maxSdkVersion.\n\nHow to structure this method to achieve the above contract is the interesting bit. Previously, all v2-signature supporting platform versions picked exactly the same algorithm from the provided set. Thus, a simple loop over the set, looking for the alg Android would pick, was sufficient. Now that you\u0027re planning to introduce a change in Android P, we either need to have two such loops (pre-P and P+), or something else.",
+      "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc82e97f_fc692d71",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T17:29:51Z",
+      "side": 1,
+      "message": "This is order dependent which it\u0027s not supposed to be. For example, if you see signatures minSdkVersion\u0027s as {24, 26, 28} and minSdkVersion is 30, effectiveMinSdkVersion is 24. If you see the same set of signatures in this order -- {28, 26, 24} -- effectiveMinSdkVersion is 28.",
+      "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
