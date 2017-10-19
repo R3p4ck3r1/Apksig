@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13e58e1d_04fcd0cc",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T23:41:27Z",
+      "side": 1,
+      "message": "This now needs to be a catch block of the try-catch around getSignaturesToVerify, now that we changed the contract either return at least one or throw.",
+      "revId": "3815f730f97207bca7f8ae38b60314730d610f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "421b9ca3_33063a84",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T23:41:27Z",
+      "side": 1,
+      "message": "This isn\u0027t precise enough. It sounds like it\u0027s all algorithms, which defeats the purpose of this method. How about \"Returns the subset of signatures verified by the union of requested Android platform versions. Each Android platform version typically picks just one signature to verify. However, because this method is dealing with more than one platform version, the result may be more than one signature.\"",
+      "revId": "3815f730f97207bca7f8ae38b60314730d610f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "100a785a_783a379d",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T23:41:27Z",
+      "side": 1,
+      "message": "Please create a new exception class. SignatureNotFoundException one\u0027s has a very different meaning. I\u0027d suggest something like NoSupportedSignaturesException",
+      "range": {
+        "startLine": 395,
+        "startChar": 19,
+        "endLine": 395,
+        "endChar": 45
+      },
+      "revId": "3815f730f97207bca7f8ae38b60314730d610f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6045300_7caee65c",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T23:41:27Z",
+      "side": 1,
+      "message": "Remind me, why do we need to ignore signatures whose minSdkVersion is lower than requested minSdkVersion? Doesn\u0027t the algorithm below assume that Android continues supporting older signature algorithms forever? If so, it sounds like this condition and the effectiveMinSdkVersion stuff above isn\u0027t even needed.",
+      "revId": "3815f730f97207bca7f8ae38b60314730d610f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30dc52a2_27b05572",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T23:41:27Z",
+      "side": 1,
+      "message": "I\u0027d suggest adding an additional clarifying comment. Something along the lines of:\n\nHere we assume that, once introduced, a signature algorithm continues to be supported in all future Android versions. We also assume that the better-than relationship between algorithms is exactly the same on all Android platform versions (except that older platforms might support fewer algorithms). If these assumption are no longer true, the logic here will need to change accordingly.",
+      "revId": "3815f730f97207bca7f8ae38b60314730d610f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08ea17d4_6118c904",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T23:41:27Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this set. All you need is a simple int to track the lowest minSdkVersion over algorithms added to bestSigAlgorithmOnSdkVersion. The idea is that this variable, after the loop, tells you that for all Android platform versions \u003e\u003d than that variable, there\u0027s at least one supported algorithm. So, you can then check that variable \u003c\u003d minSdkVersion and you\u0027re good to go.",
+      "revId": "3815f730f97207bca7f8ae38b60314730d610f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03d3fbe2_ff4d2be8",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T23:41:27Z",
+      "side": 1,
+      "message": "throw instead of returning empty.",
+      "revId": "3815f730f97207bca7f8ae38b60314730d610f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d9e8d0b_ec81929b",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T23:41:27Z",
+      "side": 1,
+      "message": "This doesn\u0027t appear to be used for anything. If you don\u0027t need this here now, just remove it -- avoids warnings about unused parameters. You can always add this in a follow-up commit where you actually need this.",
+      "revId": "3815f730f97207bca7f8ae38b60314730d610f43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
