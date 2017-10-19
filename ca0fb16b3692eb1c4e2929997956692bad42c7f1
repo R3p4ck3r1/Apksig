@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e4fe111c_1f9a0889",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-19T21:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f74935b5_f3aeb898",
+      "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57feecbd_2d81b545",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 4
@@ -47,6 +65,24 @@
       "writtenOn": "2017-10-19T20:13:57Z",
       "side": 1,
       "message": "This should start at N.",
+      "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6664542_1058e350",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-19T21:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8ebd5e4_973b572b",
       "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -111,6 +147,30 @@
     },
     {
       "key": {
+        "uuid": "651b8311_8b2b840b",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-19T21:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60eb5f41_6a2cadbd",
+      "range": {
+        "startLine": 418,
+        "startChar": 66,
+        "endLine": 418,
+        "endChar": 88
+      },
+      "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bddb52f4_7fc76cc7",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 4
@@ -128,6 +188,24 @@
     },
     {
       "key": {
+        "uuid": "e2ce523e_c0b0905a",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-19T21:02:50Z",
+      "side": 1,
+      "message": "Added a check with requiredAlgorithms.",
+      "parentUuid": "bddb52f4_7fc76cc7",
+      "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ea60154_bb365671",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 4
@@ -139,6 +217,24 @@
       "writtenOn": "2017-10-19T20:13:57Z",
       "side": 1,
       "message": "This may result in an array with repeated values. Please dedupe.",
+      "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0fff2bf_6972d6ad",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-19T21:02:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ea60154_bb365671",
       "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
