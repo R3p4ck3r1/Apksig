@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "a8ebd5e4_973b572b",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T20:13:57Z",
+      "side": 1,
+      "message": "This should start at N.",
+      "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc82e97f_fc692d71",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 4
@@ -47,6 +64,81 @@
       "writtenOn": "2017-10-19T17:29:51Z",
       "side": 1,
       "message": "This is order dependent which it\u0027s not supposed to be. For example, if you see signatures minSdkVersion\u0027s as {24, 26, 28} and minSdkVersion is 30, effectiveMinSdkVersion is 24. If you see the same set of signatures in this order -- {28, 26, 24} -- effectiveMinSdkVersion is 28.",
+      "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "948ecbb2_cdce2e8b",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T20:13:57Z",
+      "side": 1,
+      "message": "Please ignore -- I misinterpreted the loop.",
+      "parentUuid": "dc82e97f_fc692d71",
+      "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60eb5f41_6a2cadbd",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T20:13:57Z",
+      "side": 1,
+      "message": "requested SDK versions",
+      "range": {
+        "startLine": 418,
+        "startChar": 66,
+        "endLine": 418,
+        "endChar": 88
+      },
+      "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bddb52f4_7fc76cc7",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T20:13:57Z",
+      "side": 1,
+      "message": "This doesn\u0027t handle the case where none of the provided signatures are supported on minSdkVersion",
+      "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ea60154_bb365671",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-19T20:13:57Z",
+      "side": 1,
+      "message": "This may result in an array with repeated values. Please dedupe.",
       "revId": "ca0fb16b3692eb1c4e2929997956692bad42c7f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
