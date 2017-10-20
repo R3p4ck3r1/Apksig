@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ca79b5ae_23208499",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-20T20:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f412f61_055b2048",
+      "revId": "a5fc6a2527b043337f364fdfe7133b82f227fea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "498e97ec_80059ffe",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "41334f62_75949a2c",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-20T20:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "498e97ec_80059ffe",
+      "range": {
+        "startLine": 368,
+        "startChar": 36,
+        "endLine": 368,
+        "endChar": 40
+      },
+      "revId": "a5fc6a2527b043337f364fdfe7133b82f227fea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c302235_e1292230",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
         "patchSetId": 3
@@ -53,6 +95,24 @@
       "writtenOn": "2017-10-20T20:43:54Z",
       "side": 1,
       "message": "The buffer must use little-endian order. So, paddingPair.order(ByteOrder.LITTLE_ENDIAN).",
+      "revId": "a5fc6a2527b043337f364fdfe7133b82f227fea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "948160b7_95d8d37b",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-20T20:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c302235_e1292230",
       "revId": "a5fc6a2527b043337f364fdfe7133b82f227fea7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
