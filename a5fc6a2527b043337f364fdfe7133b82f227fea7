@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f412f61_055b2048",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T20:43:54Z",
+      "side": 1,
+      "message": "to make block size a multiple of 4096",
+      "revId": "a5fc6a2527b043337f364fdfe7133b82f227fea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "498e97ec_80059ffe",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T20:43:54Z",
+      "side": 1,
+      "message": "minimum size",
+      "range": {
+        "startLine": 368,
+        "startChar": 36,
+        "endLine": 368,
+        "endChar": 40
+      },
+      "revId": "a5fc6a2527b043337f364fdfe7133b82f227fea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c302235_e1292230",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T20:43:54Z",
+      "side": 1,
+      "message": "The buffer must use little-endian order. So, paddingPair.order(ByteOrder.LITTLE_ENDIAN).",
+      "revId": "a5fc6a2527b043337f364fdfe7133b82f227fea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
