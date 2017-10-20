@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6dbbcd9_8887cc1b",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T17:23:18Z",
+      "side": 1,
+      "message": "LINUX -\u003e ANDROID",
+      "revId": "a7eb1e0acf8c833b038d56a7c771f9bb6a4add0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9a36450_0b66b85d",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T17:23:18Z",
+      "side": 1,
+      "message": "* Wasteful: padSize is 4096 when outputOffset is aligned.\n* Please rename padSize to make it more descriptive. How about apkSigningBlockPadSize?\n* This is only needed if we output an APK Signing Block. Thus, please move this logic into the conditional inside Step 10 (Generate and output APK Signature Scheme v2 signatures...)",
+      "revId": "a7eb1e0acf8c833b038d56a7c771f9bb6a4add0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a279da8_5236e73a",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T17:23:18Z",
+      "side": 1,
+      "message": "Java style: space missing between (int) and padSize",
+      "revId": "a7eb1e0acf8c833b038d56a7c771f9bb6a4add0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc9a52d7_7ea93b56",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T17:23:18Z",
+      "side": 1,
+      "message": "This is incompatible with existing spec because the run of 0x00 will be interpreted as repeated ID-value pairs, making parsers blow up. To remain compatible, if padding is required, you\u0027ll need to insert an ID-value pair for padding purposes.",
+      "revId": "a7eb1e0acf8c833b038d56a7c771f9bb6a4add0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6dab75a_0f2f2501",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T17:23:18Z",
+      "side": 1,
+      "message": "Please declare a constant for 4096, for symmetry with how you did this in ApkSigner.java",
+      "revId": "a7eb1e0acf8c833b038d56a7c771f9bb6a4add0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
