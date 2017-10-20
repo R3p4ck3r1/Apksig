@@ -1,0 +1,9 @@
+Verified+1: Victor Hsieh <victorhsieh@google.com>
+Autosubmit+1: Victor Hsieh <victorhsieh@google.com>
+Code-Review+2: Alex Klyubin <klyubin@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 20 Oct 2017 23:09:10 +0000
+Reviewed-on: https://android-review.googlesource.com/512322
+Project: platform/tools/apksig
+Branch: refs/heads/master
