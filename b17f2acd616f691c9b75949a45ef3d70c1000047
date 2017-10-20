@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ae291534_132907b4",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-20T21:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e644205_842bf28e",
+      "revId": "b17f2acd616f691c9b75949a45ef3d70c1000047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63ad5589_0a8f6dbf",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 8
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "98837999_0c8995d7",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-20T21:36:58Z",
+      "side": 1,
+      "message": "Sorry, wrong one...",
+      "parentUuid": "63ad5589_0a8f6dbf",
+      "revId": "b17f2acd616f691c9b75949a45ef3d70c1000047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "196e655f_fce741a3",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 8
@@ -47,6 +83,24 @@
       "writtenOn": "2017-10-20T20:55:36Z",
       "side": 1,
       "message": "This sorting does not guarantee a stable order, because there are multiple signature algorithms with the same minSdkVersion. I think you should sort on sig.algorithm.getId().",
+      "revId": "b17f2acd616f691c9b75949a45ef3d70c1000047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d08cafbd_a2a1c063",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-20T21:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "196e655f_fce741a3",
       "revId": "b17f2acd616f691c9b75949a45ef3d70c1000047",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
