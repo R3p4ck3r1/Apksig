@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bb8468df_d238afc7",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-20T20:28:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6dbbcd9_8887cc1b",
+      "revId": "a7eb1e0acf8c833b038d56a7c771f9bb6a4add0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9a36450_0b66b85d",
         "filename": "src/main/java/com/android/apksig/ApkSigner.java",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-10-20T17:23:18Z",
       "side": 1,
       "message": "* Wasteful: padSize is 4096 when outputOffset is aligned.\n* Please rename padSize to make it more descriptive. How about apkSigningBlockPadSize?\n* This is only needed if we output an APK Signing Block. Thus, please move this logic into the conditional inside Step 10 (Generate and output APK Signature Scheme v2 signatures...)",
+      "revId": "a7eb1e0acf8c833b038d56a7c771f9bb6a4add0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7a8704d_d76ec3fe",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-20T20:28:14Z",
+      "side": 1,
+      "message": "We need to 1) adjust outputOffset before constructing EoCD in step 9, and 2) the adjusted \"before signing block\" for generating the 1MB-based digest.\n\nOne way I can think of is to revert these change if v2 is not done.  WDYT?",
+      "parentUuid": "e9a36450_0b66b85d",
       "revId": "a7eb1e0acf8c833b038d56a7c771f9bb6a4add0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "12899e76_b2051de5",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-20T20:28:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a279da8_5236e73a",
+      "revId": "a7eb1e0acf8c833b038d56a7c771f9bb6a4add0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc9a52d7_7ea93b56",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
         "patchSetId": 2
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "4f699033_13f7bf95",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-20T20:28:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc9a52d7_7ea93b56",
+      "revId": "a7eb1e0acf8c833b038d56a7c771f9bb6a4add0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6dab75a_0f2f2501",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
         "patchSetId": 2
@@ -81,6 +153,24 @@
       "writtenOn": "2017-10-20T17:23:18Z",
       "side": 1,
       "message": "Please declare a constant for 4096, for symmetry with how you did this in ApkSigner.java",
+      "revId": "a7eb1e0acf8c833b038d56a7c771f9bb6a4add0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30f425ea_657aeef1",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-20T20:28:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6dab75a_0f2f2501",
       "revId": "a7eb1e0acf8c833b038d56a7c771f9bb6a4add0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
