@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5cd7a7a_57440912",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T20:57:04Z",
+      "side": 1,
+      "message": "\"up\" is weird here. Drop",
+      "range": {
+        "startLine": 354,
+        "startChar": 53,
+        "endLine": 354,
+        "endChar": 55
+      },
+      "revId": "ad6662106306622ba8a777092c93bf3ccbfd17ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
