@@ -1,0 +1,210 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b16cbfcd_97fa2705",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T19:48:27Z",
+      "side": 1,
+      "message": "Not needed. Please revert.",
+      "range": {
+        "startLine": 204,
+        "startChar": 27,
+        "endLine": 204,
+        "endChar": 53
+      },
+      "revId": "84454b44d0350b4ab92918c52e7e75f36630a61d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebda50d6_c3d03c90",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T19:48:27Z",
+      "side": 1,
+      "message": "Please leave this as List. Collection is not guaranteed to be ordered, whereas List is. The reason we care about this is that we want to ensure the loop below verifies chosen signatures in guaranteed same order across all hosts/JVMs. This also means the output of getSignaturesToVerify has to have deterministic order.",
+      "revId": "84454b44d0350b4ab92918c52e7e75f36630a61d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c933dd2_f144f14f",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T19:48:27Z",
+      "side": 1,
+      "message": "\"no supported sigantures were found for some ...\"",
+      "range": {
+        "startLine": 405,
+        "startChar": 49,
+        "endLine": 405,
+        "endChar": 77
+      },
+      "revId": "84454b44d0350b4ab92918c52e7e75f36630a61d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50f00b3f_4765a4c8",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T19:48:27Z",
+      "side": 1,
+      "message": "Please use List instead of Collection",
+      "revId": "84454b44d0350b4ab92918c52e7e75f36630a61d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13cb28d4_3b0077a7",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T19:48:27Z",
+      "side": 1,
+      "message": "Existing -\u003e Provided or Found",
+      "range": {
+        "startLine": 420,
+        "startChar": 15,
+        "endLine": 420,
+        "endChar": 23
+      },
+      "revId": "84454b44d0350b4ab92918c52e7e75f36630a61d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12c2f42e_9ea22560",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T19:48:27Z",
+      "side": 1,
+      "message": "why not \"sig\"?",
+      "range": {
+        "startLine": 435,
+        "startChar": 24,
+        "endLine": 435,
+        "endChar": 75
+      },
+      "revId": "84454b44d0350b4ab92918c52e7e75f36630a61d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7eba9305_41837983",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T19:48:27Z",
+      "side": 1,
+      "message": "You also need to throw NoSupportedSignaturesException when signatures.isEmpty(). Otherwise the contract of this method is broken, that it returns at least one signature or throws.",
+      "revId": "84454b44d0350b4ab92918c52e7e75f36630a61d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "acfee942_bddb14b3",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T19:48:27Z",
+      "side": 1,
+      "message": "existing -\u003e provided or found",
+      "range": {
+        "startLine": 442,
+        "startChar": 29,
+        "endLine": 442,
+        "endChar": 37
+      },
+      "revId": "84454b44d0350b4ab92918c52e7e75f36630a61d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "747b0cab_effb091a",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T19:48:27Z",
+      "side": 1,
+      "message": "* Please ensure the same order of resulting List on all hosts/JVMs. Sorting is one of the options here.\n* Please note that SupportedSignature does not currently implement hashCode and equals and thus this new HashSet\u003c\u003e() trick doesn\u0027t actually dedupe them unless you put existing \"sig\" into bestSigAlgorithmOnSdkVersion map.",
+      "revId": "84454b44d0350b4ab92918c52e7e75f36630a61d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c101fb4b_dc659554",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-20T19:48:27Z",
+      "side": 1,
+      "message": "Unused. Please revert.",
+      "range": {
+        "startLine": 509,
+        "startChar": 16,
+        "endLine": 509,
+        "endChar": 29
+      },
+      "revId": "84454b44d0350b4ab92918c52e7e75f36630a61d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
