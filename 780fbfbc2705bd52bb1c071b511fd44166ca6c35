@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3db3023f_ca6f1350",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T16:54:11Z",
+      "side": 1,
+      "message": "generating",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "780fbfbc2705bd52bb1c071b511fd44166ca6c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cff405c9_fff02633",
+        "filename": "src/main/java/com/android/apksig/internal/util/ChainedDataSource.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T16:54:11Z",
+      "side": 1,
+      "message": "Javadoc style: (1) drop \"A\", (2) @link not @Link",
+      "range": {
+        "startLine": 27,
+        "startChar": 55,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "780fbfbc2705bd52bb1c071b511fd44166ca6c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f863ea3_40dd27c5",
+        "filename": "src/main/java/com/android/apksig/internal/util/ChainedDataSource.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T16:54:11Z",
+      "side": 1,
+      "message": "Indent continuation by 8",
+      "revId": "780fbfbc2705bd52bb1c071b511fd44166ca6c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a9b5967_c43faeac",
+        "filename": "src/main/java/com/android/apksig/internal/util/ChainedDataSource.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T16:54:11Z",
+      "side": 1,
+      "message": "No need for a ByteBuffer here at all. Just invoke DataSource.feed for each source from which data needs to be fed into the sink.",
+      "revId": "780fbfbc2705bd52bb1c071b511fd44166ca6c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a86f672c_c9e7a5ca",
+        "filename": "src/main/java/com/android/apksig/internal/util/ChainedDataSource.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T16:54:11Z",
+      "side": 1,
+      "message": "read",
+      "range": {
+        "startLine": 61,
+        "startChar": 41,
+        "endLine": 61,
+        "endChar": 47
+      },
+      "revId": "780fbfbc2705bd52bb1c071b511fd44166ca6c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7a27aee_8a456716",
+        "filename": "src/main/java/com/android/apksig/internal/util/ChainedDataSource.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T16:54:11Z",
+      "side": 1,
+      "message": "No need for a variable-sizes/growable buffer here. There are two scenarios:\n1. If offset + size identify a chunk inside a single DataSource, invoke that DataSource\u0027s getByteBuffer and that\u0027s it.\n2. Otherwise, create a ByteBuffer of size \"size\", invoke copyTo(offset, size, this new buffer), then return the new buffer.",
+      "revId": "780fbfbc2705bd52bb1c071b511fd44166ca6c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a58d3aa6_6c70694d",
+        "filename": "src/main/java/com/android/apksig/internal/util/ChainedDataSource.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T16:54:11Z",
+      "side": 1,
+      "message": "This needs to be implemented, otherwise this is not a DataSource",
+      "revId": "780fbfbc2705bd52bb1c071b511fd44166ca6c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cb3b4a_28a9643b",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T16:54:11Z",
+      "side": 1,
+      "message": "It might be page-aligned. What\u0027s wrong here is that the block\u0027s size is not a multiple of page size. Please mention that in the error message instead and also mention the size of the block. This will make it easier to troubleshoot issues.",
+      "revId": "780fbfbc2705bd52bb1c071b511fd44166ca6c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0463a79d_14bd77f6",
+        "filename": "src/main/java/com/android/apksig/internal/zip/EocdRecord.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T16:54:11Z",
+      "side": 1,
+      "message": "I don\u0027t understand what this method\u0027s contract is. What does it mean \"with CD field hidden\"? Please add a Javadoc describing what this method is supposed to do, or rename so that that\u0027s clear from the method\u0027s name.",
+      "range": {
+        "startLine": 51,
+        "startChar": 35,
+        "endLine": 51,
+        "endChar": 66
+      },
+      "revId": "780fbfbc2705bd52bb1c071b511fd44166ca6c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "982384d0_db48a2e1",
+        "filename": "src/main/java/com/android/apksig/internal/zip/EocdRecord.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T16:54:11Z",
+      "side": 1,
+      "message": "Consistency: Why do we need this check here but not in the method above?",
+      "revId": "780fbfbc2705bd52bb1c071b511fd44166ca6c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
