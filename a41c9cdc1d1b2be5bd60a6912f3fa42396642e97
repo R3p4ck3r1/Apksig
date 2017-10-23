@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b80bb32_606022ac",
+        "filename": "src/main/java/com/android/apksig/internal/util/ChainedDataSource.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T22:09:45Z",
+      "side": 1,
+      "message": "Why the downcast? (here and below)",
+      "range": {
+        "startLine": 60,
+        "startChar": 33,
+        "endLine": 60,
+        "endChar": 48
+      },
+      "revId": "a41c9cdc1d1b2be5bd60a6912f3fa42396642e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a06bb847_7d52acc9",
+        "filename": "src/main/java/com/android/apksig/internal/util/ChainedDataSource.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T22:09:45Z",
+      "side": 1,
+      "message": "locateDataSource can return null",
+      "revId": "a41c9cdc1d1b2be5bd60a6912f3fa42396642e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46d4ed2d_bf4c786e",
+        "filename": "src/main/java/com/android/apksig/internal/util/ChainedDataSource.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T22:09:45Z",
+      "side": 1,
+      "message": "new buffer",
+      "range": {
+        "startLine": 87,
+        "startChar": 34,
+        "endLine": 87,
+        "endChar": 40
+      },
+      "revId": "a41c9cdc1d1b2be5bd60a6912f3fa42396642e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4196e0a8_f23de90a",
+        "filename": "src/main/java/com/android/apksig/internal/util/ChainedDataSource.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T22:09:45Z",
+      "side": 1,
+      "message": "Just curious, why can\u0027t this first source be handled in the loop below as well? Looks weird.",
+      "revId": "a41c9cdc1d1b2be5bd60a6912f3fa42396642e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba94e348_e9eec7c4",
+        "filename": "src/main/java/com/android/apksig/internal/util/ChainedDataSource.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T22:09:45Z",
+      "side": 1,
+      "message": "You can also use buffer.remaining() instead of ensuring size gets updated correctly. Might lead to easier to read code (not sure -- haven\u0027t tried myself)",
+      "revId": "a41c9cdc1d1b2be5bd60a6912f3fa42396642e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90030b8f_608794da",
+        "filename": "src/main/java/com/android/apksig/internal/util/ChainedDataSource.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T22:09:45Z",
+      "side": 1,
+      "message": "locateDataSource can return null",
+      "revId": "a41c9cdc1d1b2be5bd60a6912f3fa42396642e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98da400c_b751cf06",
+        "filename": "src/main/java/com/android/apksig/internal/util/VerityTreeBuilder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T22:09:45Z",
+      "side": 1,
+      "message": "It\u0027s not that the block is not page aligned. It\u0027s that its size is not a multiple of page size. Just say \"APK Signing Block size not a multiple of \" + CHUNK_SIZE + \": \" + beforeApkSigningBlock.size()",
+      "revId": "a41c9cdc1d1b2be5bd60a6912f3fa42396642e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "081f074f_8f6640ae",
+        "filename": "src/main/java/com/android/apksig/internal/zip/EocdRecord.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-23T22:09:45Z",
+      "side": 1,
+      "message": "original.remianing() - CD_OFFSET_SIZE?",
+      "revId": "a41c9cdc1d1b2be5bd60a6912f3fa42396642e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
