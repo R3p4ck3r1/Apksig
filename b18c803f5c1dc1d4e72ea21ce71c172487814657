@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eea52c1b_a9c4608a",
+        "filename": "src/main/java/com/android/apksig/internal/util/ChainedDataSource.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-24T17:36:53Z",
+      "side": 1,
+      "message": "Nit: consider buffer.hasRemaining() -- your call though",
+      "range": {
+        "startLine": 89,
+        "startChar": 38,
+        "endLine": 89,
+        "endChar": 60
+      },
+      "revId": "b18c803f5c1dc1d4e72ea21ce71c172487814657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
