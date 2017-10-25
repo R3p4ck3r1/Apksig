@@ -190,7 +190,8 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
                 V1SchemeSigner.getOutputEntryNames(mV1SignerConfigs);
     }
 
-    private List<V2SchemeSigner.SignerConfig> getV2SignerConfigs() throws InvalidKeyException {
+    private List<V2SchemeSigner.SignerConfig> getV2SignerConfigs(
+            boolean apkSigningBlockPaddingSupported) throws InvalidKeyException {
         if (mV2SignerConfigs != null) {
             return mV2SignerConfigs;
         }
@@ -204,7 +205,8 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
             v2SignerConfig.privateKey = signerConfig.getPrivateKey();
             v2SignerConfig.certificates = certificates;
             v2SignerConfig.signatureAlgorithms =
-                    V2SchemeSigner.getSuggestedSignatureAlgorithms(publicKey, mMinSdkVersion);
+                    V2SchemeSigner.getSuggestedSignatureAlgorithms(publicKey, mMinSdkVersion,
+                            apkSigningBlockPaddingSupported);
             mV2SignerConfigs.add(v2SignerConfig);
         }
         return mV2SignerConfigs;
@@ -492,7 +494,8 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
             return null;
         }
         invalidateV2Signature();
-        List<V2SchemeSigner.SignerConfig> v2SignerConfigs = getV2SignerConfigs();
+        List<V2SchemeSigner.SignerConfig> v2SignerConfigs = getV2SignerConfigs(
+                apkSigningBlockPaddingSupported);
         Pair<byte[], Integer> result =
                 V2SchemeSigner.generateApkSigningBlock(
                         zipEntries, zipCentralDirectory, zipEocd, v2SignerConfigs,
