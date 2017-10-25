@@ -91,7 +91,31 @@ public enum SignatureAlgorithm {
             ContentDigestAlgorithm.CHUNKED_SHA256,
             "DSA",
             Pair.of("SHA256withDSA", null),
-            AndroidSdkVersion.N);
+            AndroidSdkVersion.N),
+
+    /** Same as the non-verity variant above, but APK verity style digest algorithm. */
+    VERITY_RSA_PKCS1_V1_5_WITH_SHA256(
+            0x0401,
+            ContentDigestAlgorithm.VERITY_CHUNKED_SHA256,
+            "RSA",
+            Pair.of("SHA256withRSA", null),
+            AndroidSdkVersion.P),
+
+    /** Same as the non-verity variant above, but APK verity style digest algorithm. */
+    VERITY_ECDSA_WITH_SHA256(
+            0x0403,
+            ContentDigestAlgorithm.VERITY_CHUNKED_SHA256,
+            "EC",
+            Pair.of("SHA256withECDSA", null),
+            AndroidSdkVersion.P),
+
+    /** Same as the non-verity variant above, but APK verity style digest algorithm. */
+    VERITY_DSA_WITH_SHA256(
+            0x0405,
+            ContentDigestAlgorithm.VERITY_CHUNKED_SHA256,
+            "DSA",
+            Pair.of("SHA256withDSA", null),
+            AndroidSdkVersion.P);
 
     private final int mId;
     private final String mJcaKeyAlgorithm;
