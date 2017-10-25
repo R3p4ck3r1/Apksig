@@ -111,6 +111,7 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
     private DefaultApkSignerEngine(
             List<SignerConfig> signerConfigs,
             int minSdkVersion,
+            int maxSdkVersion,
             boolean v1SigningEnabled,
             boolean v2SigningEnabled,
             boolean otherSignersSignaturesPreserved,
@@ -186,7 +187,8 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
                 v2SignerConfig.privateKey = signerConfig.getPrivateKey();
                 v2SignerConfig.certificates = certificates;
                 v2SignerConfig.signatureAlgorithms =
-                        V2SchemeSigner.getSuggestedSignatureAlgorithms(publicKey, minSdkVersion);
+                        V2SchemeSigner.getSuggestedSignatureAlgorithms(publicKey, minSdkVersion,
+                                maxSdkVersion);
                 mV2SignerConfigs.add(v2SignerConfig);
             }
         }
@@ -867,6 +869,7 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
     public static class Builder {
         private final List<SignerConfig> mSignerConfigs;
         private final int mMinSdkVersion;
+        private final int mMaxSdkVersion;
 
         private boolean mV1SigningEnabled = true;
         private boolean mV2SigningEnabled = true;
@@ -882,15 +885,21 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
          *        supposed to be installed. See {@code minSdkVersion} attribute in the APK's
          *        {@code AndroidManifest.xml}. The higher the version, the stronger signing features
          *        will be enabled.
+         * @param maxSdkVersion API Level of the latest Android platform on which the APK is
+         *        supposed to be installed. See {@code maxSdkVersion} attribute in the APK's
+         *        {@code AndroidManifest.xml}. The higher the version, the stronger signing features
+         *        will be enabled.
          */
         public Builder(
                 List<SignerConfig> signerConfigs,
-                int minSdkVersion) {
+                int minSdkVersion,
+                int maxSdkVersion) {
             if (signerConfigs.isEmpty()) {
                 throw new IllegalArgumentException("At least one signer config must be provided");
             }
             mSignerConfigs = new ArrayList<>(signerConfigs);
             mMinSdkVersion = minSdkVersion;
+            mMaxSdkVersion = maxSdkVersion;
         }
 
         /**
@@ -901,6 +910,7 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
             return new DefaultApkSignerEngine(
                     mSignerConfigs,
                     mMinSdkVersion,
+                    mMaxSdkVersion,
                     mV1SigningEnabled,
                     mV2SigningEnabled,
                     mOtherSignersSignaturesPreserved,
