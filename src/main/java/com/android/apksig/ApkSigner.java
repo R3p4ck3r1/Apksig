@@ -86,6 +86,7 @@ public class ApkSigner {
 
     private final List<SignerConfig> mSignerConfigs;
     private final Integer mMinSdkVersion;
+    private final Integer mMaxSdkVersion;
     private final boolean mV1SigningEnabled;
     private final boolean mV2SigningEnabled;
     private final boolean mOtherSignersSignaturesPreserved;
@@ -103,6 +104,7 @@ public class ApkSigner {
     private ApkSigner(
             List<SignerConfig> signerConfigs,
             Integer minSdkVersion,
+            Integer maxSdkVersion,
             boolean v1SigningEnabled,
             boolean v2SigningEnabled,
             boolean otherSignersSignaturesPreserved,
@@ -116,6 +118,7 @@ public class ApkSigner {
 
         mSignerConfigs = signerConfigs;
         mMinSdkVersion = minSdkVersion;
+        mMaxSdkVersion = maxSdkVersion;
         mV1SigningEnabled = v1SigningEnabled;
         mV2SigningEnabled = v2SigningEnabled;
         mOtherSignersSignaturesPreserved = otherSignersSignaturesPreserved;
@@ -242,6 +245,7 @@ public class ApkSigner {
                 // Need to extract minSdkVersion from the APK's AndroidManifest.xml
                 minSdkVersion = getMinSdkVersionFromApk(inputCdRecords, inputApkLfhSection);
             }
+            int maxSdkVersion = mMaxSdkVersion != null ? mMaxSdkVersion : Integer.MAX_VALUE;
             List<DefaultApkSignerEngine.SignerConfig> engineSignerConfigs =
                     new ArrayList<>(mSignerConfigs.size());
             for (SignerConfig signerConfig : mSignerConfigs) {
@@ -252,11 +256,11 @@ public class ApkSigner {
                                 signerConfig.getCertificates())
                                 .build());
             }
-            DefaultApkSignerEngine.Builder signerEngineBuilder =
-                    new DefaultApkSignerEngine.Builder(engineSignerConfigs, minSdkVersion)
-                            .setV1SigningEnabled(mV1SigningEnabled)
-                            .setV2SigningEnabled(mV2SigningEnabled)
-                            .setOtherSignersSignaturesPreserved(mOtherSignersSignaturesPreserved);
+            DefaultApkSignerEngine.Builder signerEngineBuilder = new DefaultApkSignerEngine.Builder(
+                    engineSignerConfigs, minSdkVersion, maxSdkVersion)
+                    .setV1SigningEnabled(mV1SigningEnabled)
+                    .setV2SigningEnabled(mV2SigningEnabled)
+                    .setOtherSignersSignaturesPreserved(mOtherSignersSignaturesPreserved);
             if (mCreatedBy != null) {
                 signerEngineBuilder.setCreatedBy(mCreatedBy);
             }
@@ -842,6 +846,7 @@ public class ApkSigner {
         private boolean mOtherSignersSignaturesPreserved;
         private String mCreatedBy;
         private Integer mMinSdkVersion;
+        private Integer mMaxSdkVersion;
 
         private final ApkSignerEngine mSignerEngine;
 
@@ -993,6 +998,27 @@ public class ApkSigner {
         }
 
         /**
+         * Sets the maximum Android platform version (API Level) on which APK signatures produced
+         * by the signer being built must verify. This method is useful for overriding the default
+         * behavior where all API levels later than the minimum API Level are accepted. Note that
+         * this method does not derive maximum API Level from the APK yet.
+         *
+         * <p><em>Note:</em> This method may result in APK signatures which don't verify on some
+         * Android platform versions supported by the APK.
+         *
+         * <p><em>Note:</em> This method may only be invoked when this builder is not initialized
+         * with an {@link ApkSignerEngine}.
+         *
+         * @throws IllegalStateException if this builder was initialized with an
+         *         {@link ApkSignerEngine}
+         */
+        public Builder setMaxSdkVersion(int maxSdkVersion) {
+            checkInitializedWithoutEngine();
+            mMaxSdkVersion = maxSdkVersion;
+            return this;
+        }
+
+        /**
          * Sets whether the APK should be signed using JAR signing (aka v1 signature scheme).
          *
          * <p>By default, whether APK is signed using JAR signing is determined by
@@ -1094,6 +1120,7 @@ public class ApkSigner {
             return new ApkSigner(
                     mSignerConfigs,
                     mMinSdkVersion,
+                    mMaxSdkVersion,
                     mV1SigningEnabled,
                     mV2SigningEnabled,
                     mOtherSignersSignaturesPreserved,
