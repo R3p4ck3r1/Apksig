@@ -111,6 +111,7 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
     private DefaultApkSignerEngine(
             List<SignerConfig> signerConfigs,
             int minSdkVersion,
+            int maxSdkVersion,
             boolean v1SigningEnabled,
             boolean v2SigningEnabled,
             boolean otherSignersSignaturesPreserved,
@@ -186,7 +187,8 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
                 v2SignerConfig.privateKey = signerConfig.getPrivateKey();
                 v2SignerConfig.certificates = certificates;
                 v2SignerConfig.signatureAlgorithms =
-                        V2SchemeSigner.getSuggestedSignatureAlgorithms(publicKey, minSdkVersion);
+                        V2SchemeSigner.getSuggestedSignatureAlgorithms(publicKey, minSdkVersion,
+                                maxSdkVersion);
                 mV2SignerConfigs.add(v2SignerConfig);
             }
         }
@@ -868,6 +870,7 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
         private final List<SignerConfig> mSignerConfigs;
         private final int mMinSdkVersion;
 
+        private int mMaxSdkVersion = Integer.MAX_VALUE;
         private boolean mV1SigningEnabled = true;
         private boolean mV2SigningEnabled = true;
         private boolean mOtherSignersSignaturesPreserved;
@@ -901,10 +904,20 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
             return new DefaultApkSignerEngine(
                     mSignerConfigs,
                     mMinSdkVersion,
+                    mMaxSdkVersion,
                     mV1SigningEnabled,
                     mV2SigningEnabled,
                     mOtherSignersSignaturesPreserved,
                     mCreatedBy);
+        }
+
+        /**
+         * Sets the maximum API Level of the latest Android platform on which the APK is supposed to
+         * be installed.
+         */
+        public Builder setMaxSdkVersion(int version) {
+            mMaxSdkVersion = version;
+            return this;
         }
 
         /**

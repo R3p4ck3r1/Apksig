@@ -315,6 +315,7 @@ public class ApkSignerTool {
                 new ApkSigner.Builder(signerConfigs)
                         .setInputApk(inputApk)
                         .setOutputApk(tmpOutputApk)
+                        .setMaxSdkVersion(maxSdkVersion)
                         .setOtherSignersSignaturesPreserved(false)
                         .setV1SigningEnabled(v1SigningEnabled)
                         .setV2SigningEnabled(v2SigningEnabled);
