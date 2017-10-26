@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0b4315f0_9651a0bc",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-26T21:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "767989d5_45f9f7e1",
+      "revId": "4e9d6dc9b55aa363ea6011aa8f7a3ddb34e196cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5e1a4d9_1261a29b",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/ContentDigestAlgorithm.java",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-10-26T20:48:23Z",
       "side": 1,
       "message": "White-space only change. Please revert",
+      "revId": "4e9d6dc9b55aa363ea6011aa8f7a3ddb34e196cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bb9ec86_4f084e44",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/ContentDigestAlgorithm.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-26T21:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5e1a4d9_1261a29b",
       "revId": "4e9d6dc9b55aa363ea6011aa8f7a3ddb34e196cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "fe27d492_fe734c3f",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/SignatureAlgorithm.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-26T21:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a8d57ae_08e2710a",
+      "range": {
+        "startLine": 98,
+        "startChar": 29,
+        "endLine": 98,
+        "endChar": 41
+      },
+      "revId": "4e9d6dc9b55aa363ea6011aa8f7a3ddb34e196cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7f92b3b_25514f53",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
         "patchSetId": 4
@@ -70,6 +130,24 @@
       "writtenOn": "2017-10-26T20:48:23Z",
       "side": 1,
       "message": "Why no verity-based algs here?",
+      "revId": "4e9d6dc9b55aa363ea6011aa8f7a3ddb34e196cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56a4be52_80160244",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-26T21:12:10Z",
+      "side": 1,
+      "message": "I\u0027ll check with Will.  If kernel will support SHA-512, I\u0027ll add new algorithms later.",
+      "parentUuid": "e7f92b3b_25514f53",
       "revId": "4e9d6dc9b55aa363ea6011aa8f7a3ddb34e196cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "1c30c56d_673a3539",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-26T21:12:10Z",
+      "side": 1,
+      "message": "Oops, this is ugly.  Done as suggested.",
+      "parentUuid": "315c1d6c_26fbc690",
+      "revId": "4e9d6dc9b55aa363ea6011aa8f7a3ddb34e196cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6bee9e9_b079fdd4",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
         "patchSetId": 4
@@ -104,6 +200,30 @@
       "writtenOn": "2017-10-26T20:48:23Z",
       "side": 1,
       "message": "new byte[8] -- it\u0027s shorter. In Java, arrays are guaranteed to be initialized to 0 or null.",
+      "range": {
+        "startLine": 367,
+        "startChar": 58,
+        "endLine": 367,
+        "endChar": 95
+      },
+      "revId": "4e9d6dc9b55aa363ea6011aa8f7a3ddb34e196cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08c84023_9d547b9d",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-26T21:12:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6bee9e9_b079fdd4",
       "range": {
         "startLine": 367,
         "startChar": 58,
