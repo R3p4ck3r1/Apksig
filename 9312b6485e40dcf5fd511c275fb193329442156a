@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a49aa99_7964e015",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/SignatureAlgorithm.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-26T23:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7003db53_16199b87",
+      "range": {
+        "startLine": 119,
+        "startChar": 68,
+        "endLine": 119,
+        "endChar": 72
+      },
+      "revId": "9312b6485e40dcf5fd511c275fb193329442156a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed971b8a_44c9995e",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 6
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "a769425b_6b9609b3",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-26T23:24:20Z",
+      "side": 1,
+      "message": "Done.  This would be a reason to decouple pkSignatureSchemeV2Verifier.verify and tree building at actual install time.",
+      "parentUuid": "ed971b8a_44c9995e",
+      "revId": "9312b6485e40dcf5fd511c275fb193329442156a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5f8482c_77ae9081",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 6
@@ -53,6 +95,24 @@
       "writtenOn": "2017-10-26T23:15:48Z",
       "side": 1,
       "message": "Should be -1 for SHA512",
+      "revId": "9312b6485e40dcf5fd511c275fb193329442156a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33384cab_67130fee",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-26T23:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5f8482c_77ae9081",
       "revId": "9312b6485e40dcf5fd511c275fb193329442156a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
