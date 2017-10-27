@@ -16,6 +16,7 @@
 
 package com.android.apksig.internal.apk.v2;
 
+import com.android.apksig.internal.util.ChainedDataSource;
 import com.android.apksig.internal.util.MessageDigestSink;
 import com.android.apksig.internal.util.Pair;
 import com.android.apksig.internal.zip.ZipUtils;
@@ -171,7 +172,7 @@ public abstract class V2SchemeSigner {
      * @throws SignatureException if an error occurs when computing digests of generating
      *         signatures
      */
-    public static byte[] generateApkSigningBlock(
+    public static Pair<byte[], Integer> generateApkSigningBlock(
             DataSource beforeCentralDir,
             DataSource centralDir,
             DataSource eocd,
@@ -189,6 +190,17 @@ public abstract class V2SchemeSigner {
             for (SignatureAlgorithm signatureAlgorithm : signerConfig.signatureAlgorithms) {
                 contentDigestAlgorithms.add(signatureAlgorithm.getContentDigestAlgorithm());
             }
+        }
+
+        // Ensure APK Signing Block starts from page boundary.
+        int padSizeBeforeSigningBlock = 0;
+        if (beforeCentralDir.size() % ANDROID_COMMON_PAGE_ALIGNMENT_BYTES != 0) {
+            padSizeBeforeSigningBlock = (int) (ANDROID_COMMON_PAGE_ALIGNMENT_BYTES -
+                    beforeCentralDir.size() % ANDROID_COMMON_PAGE_ALIGNMENT_BYTES);
+            beforeCentralDir = new ChainedDataSource(
+                    beforeCentralDir,
+                    DataSources.asDataSource(
+                            ByteBuffer.allocate(padSizeBeforeSigningBlock)));
         }
 
         // Ensure that, when digesting, ZIP End of Central Directory record's Central Directory
@@ -218,7 +230,8 @@ public abstract class V2SchemeSigner {
         }
 
         // Sign the digests and wrap the signatures and signer info into an APK Signing Block.
-        return generateApkSigningBlock(signerConfigs, contentDigests);
+        return Pair.of(generateApkSigningBlock(signerConfigs, contentDigests),
+                padSizeBeforeSigningBlock);
     }
 
     static Map<ContentDigestAlgorithm, byte[]> computeContentDigests(
