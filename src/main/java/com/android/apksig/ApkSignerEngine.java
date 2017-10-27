@@ -17,6 +17,7 @@
 package com.android.apksig;
 
 import com.android.apksig.apk.ApkFormatException;
+import com.android.apksig.internal.util.Pair;
 import com.android.apksig.util.DataSink;
 import com.android.apksig.util.DataSource;
 import java.io.Closeable;
@@ -231,6 +232,41 @@ public interface ApkSignerEngine extends Closeable {
      *         entries or to output JAR signature, or if the engine is closed
      */
     OutputApkSigningBlockRequest outputZipSections(
+            DataSource zipEntries,
+            DataSource zipCentralDirectory,
+            DataSource zipEocd)
+                    throws IOException, ApkFormatException, NoSuchAlgorithmException,
+                            InvalidKeyException, SignatureException, IllegalStateException;
+
+    /**
+     * Indicates to this engine that the ZIP sections comprising the output APK have been output.
+     *
+     * <p>The provided data sources are guaranteed to not be used by the engine after this method
+     * terminates.
+     *
+     * @param zipEntries the section of ZIP archive containing Local File Header records and data of
+     *        the ZIP entries. In a well-formed archive, this section starts at the start of the
+     *        archive and extends all the way to the ZIP Central Directory.
+     * @param zipCentralDirectory ZIP Central Directory section
+     * @param zipEocd ZIP End of Central Directory (EoCD) record
+     *
+     * @return request to add an APK Signing Block to the output or {@code null} if the output must
+     *         not contain an APK Signing Block. The request must be fulfilled before
+     *         {@link #outputDone()} is invoked.
+     *
+     * @throws IOException if an I/O error occurs while reading the provided ZIP sections
+     * @throws ApkFormatException if the provided APK is malformed in a way which prevents this
+     *         engine from producing a valid signature. For example, if the APK Signing Block
+     *         provided to the engine is malformed.
+     * @throws NoSuchAlgorithmException if a signature could not be generated because a required
+     *         cryptographic algorithm implementation is missing
+     * @throws InvalidKeyException if a signature could not be generated because a signing key is
+     *         not suitable for generating the signature
+     * @throws SignatureException if an error occurred while generating a signature
+     * @throws IllegalStateException if there are unfulfilled requests, such as to inspect some JAR
+     *         entries or to output JAR signature, or if the engine is closed
+     */
+    Pair<OutputApkSigningBlockRequest, Integer> outputZipSections2(
             DataSource zipEntries,
             DataSource zipCentralDirectory,
             DataSource zipEocd)

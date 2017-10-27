@@ -61,6 +61,8 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
     // 3. If APK Signature Scheme v2 (v2 signing) is enabled, the engine emits an APK Signing Block
     //    from outputZipSections() and asks its client to insert this block into the output.
 
+    private static final int ANDROID_COMMON_PAGE_ALIGNMENT_BYTES = 4096;
+
     private final boolean mV1SigningEnabled;
     private final boolean mV2SigningEnabled;
     private final boolean mOtherSignersSignaturesPreserved;
@@ -466,6 +468,24 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
 
         mAddV2SignatureRequest = new OutputApkSigningBlockRequestImpl(apkSigningBlock);
         return mAddV2SignatureRequest;
+    }
+
+    @Override
+    public Pair<OutputApkSigningBlockRequest, Integer> outputZipSections2(
+            DataSource zipEntries,
+            DataSource zipCentralDirectory,
+            DataSource zipEocd)
+                    throws IOException, InvalidKeyException, SignatureException,
+                            NoSuchAlgorithmException {
+        // Extra padding to ensure APK Signing Block will start from page boundary.
+        int padSizeBeforeCentralDir = 0;
+        if (zipEntries.size() % ANDROID_COMMON_PAGE_ALIGNMENT_BYTES != 0) {
+            padSizeBeforeCentralDir = (int) (ANDROID_COMMON_PAGE_ALIGNMENT_BYTES -
+                    zipEntries.size() % ANDROID_COMMON_PAGE_ALIGNMENT_BYTES);
+        }
+        return Pair.of(
+                outputZipSections(zipEntries, zipCentralDirectory, zipEocd),
+                padSizeBeforeCentralDir);
     }
 
     @Override

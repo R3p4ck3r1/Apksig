@@ -16,6 +16,7 @@
 
 package com.android.apksig.internal.apk.v2;
 
+import com.android.apksig.internal.util.ChainedDataSource;
 import com.android.apksig.internal.util.MessageDigestSink;
 import com.android.apksig.internal.util.Pair;
 import com.android.apksig.internal.zip.ZipUtils;
@@ -189,6 +190,16 @@ public abstract class V2SchemeSigner {
             for (SignatureAlgorithm signatureAlgorithm : signerConfig.signatureAlgorithms) {
                 contentDigestAlgorithms.add(signatureAlgorithm.getContentDigestAlgorithm());
             }
+        }
+
+        // Always make APK Signing Block starts from page boundary.
+        int lastChunkSize = (int) (beforeCentralDir.size() % ANDROID_COMMON_PAGE_ALIGNMENT_BYTES);
+        if (lastChunkSize != 0) {
+            int padSizeBeforeSigningBlock = ANDROID_COMMON_PAGE_ALIGNMENT_BYTES - lastChunkSize;
+            beforeCentralDir = new ChainedDataSource(
+                    beforeCentralDir,
+                    DataSources.asDataSource(
+                            ByteBuffer.allocate(padSizeBeforeSigningBlock)));
         }
 
         // Ensure that, when digesting, ZIP End of Central Directory record's Central Directory
