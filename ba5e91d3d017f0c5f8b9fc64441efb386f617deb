@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfb2c057_47ba8ca0",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-30T20:04:12Z",
+      "side": 1,
+      "message": "100 col lines",
+      "revId": "ba5e91d3d017f0c5f8b9fc64441efb386f617deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "326c364a_8e295d4e",
+        "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-30T20:04:12Z",
+      "side": 1,
+      "message": "This would make the internal class Pair a public API. We don\u0027t want that. Instead, just create a new interface OutputApkSigningBlockRequest2 which is same as OutputApkSigningBlockRequest except that it\u0027ll contain an additional method to do with finding out what padding to use (e.g., either size in bytes or the actual padding as byte[] or ByteBuffer)",
+      "revId": "ba5e91d3d017f0c5f8b9fc64441efb386f617deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "acdb484e_02769858",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-30T20:04:12Z",
+      "side": 1,
+      "message": "I\u0027m somewhat uneasy that this padding logic is duplicated in two places: here and in V2SchemeSigner. This logic is caused by your changes to APK Signature Scheme v2 and thus should probably be contained (as much as feasible) in V2SchemeSigner.",
+      "revId": "ba5e91d3d017f0c5f8b9fc64441efb386f617deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "acd0a082_67cb2025",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-30T20:04:12Z",
+      "side": 1,
+      "message": "\"make ... starts\" doesn\u0027t parse\n\nHow about \"Ensure APK Signing Block starts at page boundary\"?",
+      "revId": "ba5e91d3d017f0c5f8b9fc64441efb386f617deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
