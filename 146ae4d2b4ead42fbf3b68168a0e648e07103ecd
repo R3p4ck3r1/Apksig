@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71bf4998_c50d47dd",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-30T21:44:58Z",
+      "side": 1,
+      "message": "Thanks for fixing the typo!",
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21cbe013_e56f2774",
+        "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-30T21:44:58Z",
+      "side": 1,
+      "message": "Please mark this @Deprecated and mention in its Javadoc that it is superseded by outputZipSection2. See https://docs.oracle.com/javase/7/docs/technotes/guides/javadoc/deprecation/deprecation.html",
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e62723f_e51aee2c",
+        "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-30T21:44:58Z",
+      "side": 1,
+      "message": "Same as for outputZipSection() -- please deprecate.",
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e967b43_b23ea9b3",
+        "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-30T21:44:58Z",
+      "side": 1,
+      "message": "\"0 padding\" sounds unclear. How about \"padding consisting of the number of 0x00 bytes returned by ...)",
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fdc65ea_e1c76641",
+        "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-30T21:44:58Z",
+      "side": 1,
+      "message": "Since we want to deprecate OutputApkSigningBlockRequest, please don\u0027t make this interface extend that one. Instead, copy all methods from OutputApkSigningBlockRequest.",
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd039b51_8a4c154a",
+        "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-30T21:44:58Z",
+      "side": 1,
+      "message": "Wrong Javadoc?",
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c9c7705_e993089e",
+        "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-30T21:44:58Z",
+      "side": 1,
+      "message": "Pad -\u003e Padding",
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac9dae18_cddc9cba",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-30T21:44:58Z",
+      "side": 1,
+      "message": "* Nit: paddingSupported or, better yet, apkSigningBlockPaddingSupported\u0027\n* This parameter doesn\u0027t appear to be used",
+      "range": {
+        "startLine": 473,
+        "startChar": 20,
+        "endLine": 473,
+        "endChar": 31
+      },
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7de4c3b2_a82d1083",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-30T21:44:58Z",
+      "side": 1,
+      "message": "... and the number of 0x00 bytes to pad the start of the APK Signing Block.",
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
