@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf4f8460_a0e8f9da",
+        "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-30T23:24:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26637c1f_7eab7579",
+      "range": {
+        "startLine": 212,
+        "startChar": 52,
+        "endLine": 212,
+        "endChar": 72
+      },
+      "revId": "e8f4c6444de758add620d6101a5d0ca838a5be33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df36bc4e_de55520d",
         "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5b1df842_38bef487",
+        "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-30T23:24:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df36bc4e_de55520d",
+      "range": {
+        "startLine": 453,
+        "startChar": 52,
+        "endLine": 453,
+        "endChar": 72
+      },
+      "revId": "e8f4c6444de758add620d6101a5d0ca838a5be33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28d175c0_07fdb511",
         "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
         "patchSetId": 3
@@ -59,6 +107,24 @@
       "writtenOn": "2017-10-30T23:08:38Z",
       "side": 1,
       "message": "If this results in an APK Signing Block that needs padding, it\u0027ll break the APK because the caller of this outputZipSections method will not add any padding. So, this method needs to somehow tell the v2 signing code that padding is not supported, which should enable the V2 signing code to disable your new sig algs which may require padding.",
+      "revId": "e8f4c6444de758add620d6101a5d0ca838a5be33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38a7ac23_22c31c15",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-30T23:24:28Z",
+      "side": 1,
+      "message": "Done.  I plumbed the boolean through but am thinking to migrate build/make to outputZipSections2, and get rid of the variation.",
+      "parentUuid": "28d175c0_07fdb511",
       "revId": "e8f4c6444de758add620d6101a5d0ca838a5be33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
