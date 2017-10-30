@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "e8287651_41f748a8",
+        "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-30T22:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21cbe013_e56f2774",
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e62723f_e51aee2c",
         "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2017-10-30T21:44:58Z",
       "side": 1,
       "message": "Same as for outputZipSection() -- please deprecate.",
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3e64422_2e255bf2",
+        "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-30T22:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e62723f_e51aee2c",
       "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "c5ff2c3d_a42d315a",
+        "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-30T22:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e967b43_b23ea9b3",
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0fdc65ea_e1c76641",
         "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
         "patchSetId": 2
@@ -81,6 +135,24 @@
       "writtenOn": "2017-10-30T21:44:58Z",
       "side": 1,
       "message": "Since we want to deprecate OutputApkSigningBlockRequest, please don\u0027t make this interface extend that one. Instead, copy all methods from OutputApkSigningBlockRequest.",
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8415fde_07f9fa33",
+        "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-30T22:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fdc65ea_e1c76641",
       "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "65558423_c4fe2d52",
+        "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-30T22:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd039b51_8a4c154a",
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c9c7705_e993089e",
         "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
         "patchSetId": 2
@@ -115,6 +205,24 @@
       "writtenOn": "2017-10-30T21:44:58Z",
       "side": 1,
       "message": "Pad -\u003e Padding",
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "833cd30e_7967d790",
+        "filename": "src/main/java/com/android/apksig/ApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-30T22:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c9c7705_e993089e",
       "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -144,6 +252,30 @@
     },
     {
       "key": {
+        "uuid": "6c1aa34f_87f4de0f",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-30T22:21:54Z",
+      "side": 1,
+      "message": "Removed.  I think we won\u0027t need this as the contract is of outputZipSections2 is the caller should do the padding of the returned size.",
+      "parentUuid": "ac9dae18_cddc9cba",
+      "range": {
+        "startLine": 473,
+        "startChar": 20,
+        "endLine": 473,
+        "endChar": 31
+      },
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7de4c3b2_a82d1083",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
         "patchSetId": 2
@@ -155,6 +287,24 @@
       "writtenOn": "2017-10-30T21:44:58Z",
       "side": 1,
       "message": "... and the number of 0x00 bytes to pad the start of the APK Signing Block.",
+      "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1dd361d_6e19f8dd",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-10-30T22:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7de4c3b2_a82d1083",
       "revId": "146ae4d2b4ead42fbf3b68168a0e648e07103ecd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
