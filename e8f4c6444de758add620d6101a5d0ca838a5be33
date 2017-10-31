@@ -128,6 +128,24 @@
       "revId": "e8f4c6444de758add620d6101a5d0ca838a5be33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cac8dc81_67e305e1",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-10-31T00:39:07Z",
+      "side": 1,
+      "message": "You can\u0027t get rid of outputZipSections. This is public API and used outside of Google too. We\u0027ll have to carefully deprecate it over time. Marking it with @deprecate and switching out own tools to the new API is only the first step.",
+      "parentUuid": "38a7ac23_22c31c15",
+      "revId": "e8f4c6444de758add620d6101a5d0ca838a5be33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
