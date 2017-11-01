@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e0c93f4f_d5f1d338",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-11-01T20:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f236e4df_8f9e5bf7",
+      "revId": "a476e1cb91b451429f2a3d9e80f796a661ecc9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d578f29_616204aa",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-11-01T20:30:36Z",
       "side": 1,
       "message": "This belongs into a separate CL, perhaps, the one adding 4 kB Merkle tree algs.",
+      "revId": "a476e1cb91b451429f2a3d9e80f796a661ecc9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ab62f47_7316aaf8",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-11-01T20:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d578f29_616204aa",
       "revId": "a476e1cb91b451429f2a3d9e80f796a661ecc9aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
