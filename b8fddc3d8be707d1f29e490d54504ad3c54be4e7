@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6503fb0f_e879a7f8",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-11-01T18:04:05Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be conditional on whether padding (for alignment) APK Signing Block is supported? (here and below)",
+      "revId": "b8fddc3d8be707d1f29e490d54504ad3c54be4e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
