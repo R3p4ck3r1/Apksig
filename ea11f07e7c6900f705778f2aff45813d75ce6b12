@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f12041b2_1ce200a9",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-11-01T21:30:16Z",
+      "side": 1,
+      "message": "Marking done() and getApkSigningBlock() deprecated doesn\u0027t seem to fix the warning on Bazel.  Suppressed the warning instead mainly because we have mAddV2SignatureRequest to track the state, but is now used in new and deprecated API.",
+      "range": {
+        "startLine": 630,
+        "startChar": 4,
+        "endLine": 630,
+        "endChar": 36
+      },
+      "revId": "ea11f07e7c6900f705778f2aff45813d75ce6b12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
