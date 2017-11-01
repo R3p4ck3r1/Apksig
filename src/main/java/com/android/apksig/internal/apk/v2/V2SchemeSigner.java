@@ -121,7 +121,8 @@ public abstract class V2SchemeSigner {
      *         APK Signature Scheme v2
      */
     public static List<SignatureAlgorithm> getSuggestedSignatureAlgorithms(
-            PublicKey signingKey, int minSdkVersion) throws InvalidKeyException {
+            PublicKey signingKey, int minSdkVersion, boolean apkSigningBlockPaddingSupported)
+            throws InvalidKeyException {
         String keyAlgorithm = signingKey.getAlgorithm();
         if ("RSA".equalsIgnoreCase(keyAlgorithm)) {
             // Use RSASSA-PKCS1-v1_5 signature scheme instead of RSASSA-PSS to guarantee
