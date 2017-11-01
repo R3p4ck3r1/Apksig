@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f236e4df_8f9e5bf7",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-11-01T20:30:36Z",
+      "side": 1,
+      "message": "outputZipSections can be invoked multiple times for the same instance of DefaultApkSignerEngine. Please modify this code or, probably better yet, createV2SignerConfigs so that it creates configs only once and does nothing on subsequent invocations.",
+      "revId": "a476e1cb91b451429f2a3d9e80f796a661ecc9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d578f29_616204aa",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-11-01T20:30:36Z",
+      "side": 1,
+      "message": "This belongs into a separate CL, perhaps, the one adding 4 kB Merkle tree algs.",
+      "revId": "a476e1cb91b451429f2a3d9e80f796a661ecc9aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
