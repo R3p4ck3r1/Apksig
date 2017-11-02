@@ -16,6 +16,24 @@
       "revId": "37ef4faf9226ff5818142e1ec4c67b508405ad7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4cb0aaf3_536d3272",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-11-02T17:06:08Z",
+      "side": 1,
+      "message": "doh, thanks",
+      "parentUuid": "35ddf62e_675a5630",
+      "revId": "37ef4faf9226ff5818142e1ec4c67b508405ad7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
