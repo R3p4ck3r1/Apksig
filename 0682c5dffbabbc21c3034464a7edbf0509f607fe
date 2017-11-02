@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7b8abb69_3d93f300",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-11-02T16:56:58Z",
+      "side": 1,
+      "message": "Remove caching per offline discussion",
+      "parentUuid": "342083c7_7aedd25c",
+      "revId": "0682c5dffbabbc21c3034464a7edbf0509f607fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0cf8c857_4cfd1c7e",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
         "patchSetId": 10
@@ -30,6 +48,24 @@
       "writtenOn": "2017-11-02T16:39:26Z",
       "side": 1,
       "message": "Unused import?",
+      "revId": "0682c5dffbabbc21c3034464a7edbf0509f607fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca006f45_f215add7",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2017-11-02T16:56:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cf8c857_4cfd1c7e",
       "revId": "0682c5dffbabbc21c3034464a7edbf0509f607fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
