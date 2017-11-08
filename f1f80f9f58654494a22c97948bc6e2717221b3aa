@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ffbb636_2326d266",
+        "filename": "src/main/java/com/android/apksig/apk/ApkUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2017-11-08T23:45:21Z",
+      "side": 1,
+      "message": "NIT: Missing .",
+      "revId": "f1f80f9f58654494a22c97948bc6e2717221b3aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87ce52b2_6882b30e",
+        "filename": "src/main/java/com/android/apksig/apk/ApkUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2017-11-08T23:45:21Z",
+      "side": 1,
+      "message": "NIT: Missing .",
+      "revId": "f1f80f9f58654494a22c97948bc6e2717221b3aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
