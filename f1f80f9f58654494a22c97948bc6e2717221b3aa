@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "889b92da_d69eec64",
+        "filename": "src/main/java/com/android/apksig/apk/ApkUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-11-08T23:46:54Z",
+      "side": 1,
+      "message": "Latest guidelines are that, if a comment is not a full sentence, then they should not end with a period...",
+      "parentUuid": "6ffbb636_2326d266",
+      "revId": "f1f80f9f58654494a22c97948bc6e2717221b3aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87ce52b2_6882b30e",
         "filename": "src/main/java/com/android/apksig/apk/ApkUtils.java",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-11-08T23:45:21Z",
       "side": 1,
       "message": "NIT: Missing .",
+      "revId": "f1f80f9f58654494a22c97948bc6e2717221b3aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbd3ab43_fac91f14",
+        "filename": "src/main/java/com/android/apksig/apk/ApkUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-11-08T23:46:54Z",
+      "side": 1,
+      "message": "Latest guidelines are that, if a comment is not a full sentence, then they should not end with a period...",
+      "parentUuid": "87ce52b2_6882b30e",
       "revId": "f1f80f9f58654494a22c97948bc6e2717221b3aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
