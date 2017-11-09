@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b10bf11_d331e453",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-09T23:18:55Z",
+      "side": 1,
+      "message": "extra newline?",
+      "revId": "78cc70e94540a62ece02b917f7e306ed9e752f87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
