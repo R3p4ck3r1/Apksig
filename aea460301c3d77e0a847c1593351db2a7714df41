@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "acedf151_5d4e39c9",
+        "filename": "src/main/java/com/android/apksig/apk/ApkUtils.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-11-09T01:13:07Z",
+      "side": 1,
+      "message": "Not expected, but supported. See:\n* https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/content/pm/PackageParser.java#3468\n* https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/content/res/TypedArray.java#336\n* https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/util/TypedValue.java#480\n* https://android.googlesource.com/platform/frameworks/base/+/master/core/java/com/android/internal/util/XmlUtils.java#75",
+      "parentUuid": "35e5a997_6962a88d",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 72
+      },
+      "revId": "aea460301c3d77e0a847c1593351db2a7714df41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "077c85f6_0d1cf739",
         "filename": "src/test/java/com/android/apksig/ApkSignerTest.java",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-09T00:09:39Z",
       "side": 1,
       "message": "nit: the \"assertThrows\" is a better choice if it\u0027s available, same below  \n\nhttps://github.com/junit-team/junit4/blob/a832c5afe5b0e7c2590d057a1a49a344d207f8a0/src/main/java/org/junit/Assert.java#L980",
+      "range": {
+        "startLine": 374,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 48
+      },
+      "revId": "aea460301c3d77e0a847c1593351db2a7714df41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f16a76b0_ff1c56fc",
+        "filename": "src/test/java/com/android/apksig/ApkSignerTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2017-11-09T01:13:07Z",
+      "side": 1,
+      "message": "Interesting! However, for consistency with existing code in this class, I\u0027d rather use the try-fail-catch-expected pattern.",
+      "parentUuid": "077c85f6_0d1cf739",
       "range": {
         "startLine": 374,
         "startChar": 0,
