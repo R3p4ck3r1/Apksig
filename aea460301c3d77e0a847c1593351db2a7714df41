@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "829015e8_f8368fc1",
+        "filename": "src/main/java/com/android/apksig/apk/ApkUtils.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1112425
+      },
+      "writtenOn": "2017-11-09T01:35:34Z",
+      "side": 1,
+      "message": "Ok, thanks for the pointers!",
+      "parentUuid": "acedf151_5d4e39c9",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 72
+      },
+      "revId": "aea460301c3d77e0a847c1593351db2a7714df41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "077c85f6_0d1cf739",
         "filename": "src/test/java/com/android/apksig/ApkSignerTest.java",
         "patchSetId": 6
@@ -93,6 +117,30 @@
       "revId": "aea460301c3d77e0a847c1593351db2a7714df41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c560097_b6e06ab0",
+        "filename": "src/test/java/com/android/apksig/ApkSignerTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1112425
+      },
+      "writtenOn": "2017-11-09T01:35:34Z",
+      "side": 1,
+      "message": "Sure, make sense.",
+      "parentUuid": "f16a76b0_ff1c56fc",
+      "range": {
+        "startLine": 374,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 48
+      },
+      "revId": "aea460301c3d77e0a847c1593351db2a7714df41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
