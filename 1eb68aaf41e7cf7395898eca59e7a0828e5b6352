@@ -1,0 +1,10 @@
+Code-Review+2: Billy Lam <shiufai@google.com>
+Verified+1: Esteban de la Canal <estebandlc@google.com>
+Presubmit-Ready+1: Treehugger Robot <treehugger-gerrit@google.com>
+Presubmit-Ready+1: Esteban de la Canal <estebandlc@google.com>
+Autosubmit+1: Esteban de la Canal <estebandlc@google.com>
+Submitted-by: Esteban de la Canal <estebandlc@google.com>
+Submitted-at: Tue, 21 Nov 2017 05:11:50 +0000
+Reviewed-on: https://android-review.googlesource.com/543043
+Project: platform/tools/apksig
+Branch: refs/heads/master
