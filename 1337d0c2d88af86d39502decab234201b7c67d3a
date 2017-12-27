@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74ac70df_2ef890f6",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2017-12-27T17:19:59Z",
+      "side": 1,
+      "message": "I\u0027m guessing I\u0027ll see shortly why this is (rather than hiding them as non-public)",
+      "range": {
+        "startLine": 36,
+        "startChar": 84,
+        "endLine": 37,
+        "endChar": 94
+      },
+      "revId": "1337d0c2d88af86d39502decab234201b7c67d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a7aafb2_97827009",
+        "filename": "src/main/java/com/android/apksig/ApkVerifier.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2017-12-27T17:19:59Z",
+      "side": 1,
+      "message": "nit: s/expected to not verify/not expected to verify/\n\nOne could argue that \"not expected to verify\" is not the same as \"expected to not verify\" but since verification is a binary value, I think it\u0027s fine to go with the generally more english-usage-friendly version.",
+      "range": {
+        "startLine": 88,
+        "startChar": 86,
+        "endLine": 89,
+        "endChar": 17
+      },
+      "revId": "1337d0c2d88af86d39502decab234201b7c67d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46da37a8_22604526",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v1/V1SchemeVerifier.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2017-12-27T17:19:59Z",
+      "side": 1,
+      "message": "same as before.",
+      "range": {
+        "startLine": 95,
+        "startChar": 10,
+        "endLine": 95,
+        "endChar": 32
+      },
+      "revId": "1337d0c2d88af86d39502decab234201b7c67d3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
