@@ -35,10 +35,7 @@ certificate.
                       API Level 28. By default, signing using this scheme is
                       enabled based on min and max SDK version (see
                       --min-sdk-version and --max-sdk-version).  Multiple
-                      signers are not supported when using v3 signing, but
-                      multiple signers may be provided in conjunction with the
-                      "lineage" option to make sure that the app is signed by
-                      an appropriate signer on all supported platform versions.
+
 
 --min-sdk-version     Lowest API Level on which this APK's signatures will be
                       verified. By default, the value from AndroidManifest.xml
@@ -60,19 +57,12 @@ certificate.
                       backward compatibility with older apksigner versions.
 
 --lineage             Signing certificate history to use in the event that
-                      signing certificates changed for an APK using APK
-                      Signature Scheme v3 supported signing certificate
-                      rotation.  This object may be created by the apksigner
-                      "rotate" command.  If used, all signers used to sign the
-                      APK must be present in the signing lineage,
-                      and if v1 or v2 signing is enabled, the first (oldest)
-                      entry in the lineage must have a signer provided, so that
-                      it can be used for those v1 and/or v2 signing. Multiple
-                      signers are not supported when using APK Signature Scheme
-                      v3, so multiple signers input will correspond to different
-                      points in the lineage and will be used on older platform
-                      versions when the newest signer in the lineage is
-                      unsupported.
+                      signing certificates changed for an APK using APK Signature Scheme v3 supported signing certificate
+                      rotation.  This object may be created by the apksigner "rotate" command.  If
+                      used, all signers used to sign the APK must be present in the signing lineage,
+                      and if v1 or v2 signing is enabled, the first (oldest) entry in the lineage
+                      must have a signer provided, so that it can be used for those versions.
+                      Multiple signers are not supported when using
 
 -h, --help            Show help about this command and exit
 
@@ -231,7 +221,3 @@ $ apksigner sign --ks release.jks --pass-encoding ibm437 app.apk
 7. Sign an APK on Windows using a non-ASCII password KeyStore created on a
    modern OSX or Linux machine:
 $ apksigner sign --ks release.jks --pass-encoding utf-8 app.apk
-
-8. Sign an APK with rotated signing certificate:
-$ apksigner sign --ks release.jks --next-signer --ks release2.jks app.apk \
-    --lineage /path/to/signing/history/lineage
