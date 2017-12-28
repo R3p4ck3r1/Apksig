@@ -1,0 +1,146 @@
+USAGE: apksigner rotate [options]
+
+This takes the provided keys and creates a KeyLineage entry linking the old to the new, for use in a
+key rotation scenario using APK Signature Scheme v3.
+
+
+        GENERAL OPTIONS
+
+--in                  Input KeyLineage file to sign. This file contains a binary representation of a
+                      KeyLineage object, which contains the proof-of-rotation for different signing
+                      certificates.  This can be used with APK Signature Scheme v3 to rotate the
+                      signing key for an APK.
+
+
+--out                 File into which to put the binary representation of a KeyLineage object.
+
+-v, --verbose         Verbose output mode
+
+-h, --help            Show help about this command and exit
+
+        PER-SIGNER OPTIONS
+These options specify the configuration of a particular signer. To rotate keys, two signers must be
+specified, an old and a new.
+
+--old-signer          The signing information for the signer from which to be rotated.  This will
+                      be used to sign a new entry in the KeyLineage allowing the addition of the
+                      new-signer.  If an input KeyLineage object was provided, this signer must
+                      match the leaf descendant.
+
+--new-signer          The signing information for the signer to which you want to rotate.  This will
+                      be the last key in the KeyLineage object, signed by the old-signer.
+
+        PER-SIGNER SIGNING KEY & CERTIFICATE OPTIONS
+There are two ways to provide the signer's private key and certificate: (1) Java
+KeyStore (see --ks), or (2) private key file in PKCS #8 format and certificate
+file in X.509 format (see --key and --cert).
+
+--ks                  Load private key and certificate chain from the Java
+                      KeyStore initialized from the specified file. NONE means
+                      no file is needed by KeyStore, which is the case for some
+                      PKCS #11 KeyStores.
+
+--ks-key-alias        Alias under which the private key and certificate are
+                      stored in the KeyStore. This must be specified if the
+                      KeyStore contains multiple keys.
+
+--ks-pass             KeyStore password (see --ks). The following formats are
+                      supported:
+                          pass:<password> password provided inline
+                          env:<name>      password provided in the named
+                                          environment variable
+                          file:<file>     password provided in the named
+                                          file, as a single line
+                          stdin           password provided on standard input,
+                                          as a single line
+                      A password is required to open a KeyStore.
+                      By default, the tool will prompt for password via console
+                      or standard input.
+                      When the same file (including standard input) is used for
+                      providing multiple passwords, the passwords are read from
+                      the file one line at a time. Passwords are read in the
+                      order of old-signer then new-signer and, within each
+                      signer, KeyStore password is read before the key password
+                      is read.
+
+--key-pass            Password with which the private key is protected.
+                      The following formats are supported:
+                          pass:<password> password provided inline
+                          env:<name>      password provided in the named
+                                          environment variable
+                          file:<file>     password provided in the named
+                                          file, as a single line
+                          stdin           password provided on standard input,
+                                          as a single line
+                      If --key-pass is not specified for a KeyStore key, this
+                      tool will attempt to load the key using the KeyStore
+                      password and, if that fails, will prompt for key password
+                      and attempt to load the key using that password.
+                      If --key-pass is not specified for a private key file key,
+                      this tool will prompt for key password only if a password
+                      is required.
+                      When the same file (including standard input) is used for
+                      providing multiple passwords, the passwords are read from
+                      the file one line at a time. Passwords are read in the
+                      order of old-signer then new-signer and, within each
+                      signer, KeyStore password is read before the key password
+                      is read.
+
+--pass-encoding       Additional character encoding (e.g., ibm437 or utf-8) to
+                      try for passwords containing non-ASCII characters.
+                      KeyStores created by keytool are often encrypted not using
+                      the Unicode form of the password but rather using the form
+                      produced by encoding the password using the console's
+                      character encoding. apksigner by default tries to decrypt
+                      using several forms of the password: the Unicode form, the
+                      form encoded using the JVM default charset, and, on Java 8
+                      and older, the form encoded using the console's charset.
+                      On Java 9, apksigner cannot detect the console's charset
+                      and may need to be provided with --pass-encoding when a
+                      non-ASCII password is used. --pass-encoding may also need
+                      to be provided for a KeyStore created by keytool on a
+                      different OS or in a different locale.
+
+--ks-type             Type/algorithm of KeyStore to use. By default, the default
+                      type is used.
+
+--ks-provider-name    Name of the JCA Provider from which to request the
+                      KeyStore implementation. By default, the highest priority
+                      provider is used. See --ks-provider-class for the
+                      alternative way to specify a provider.
+
+--ks-provider-class   Fully-qualified class name of the JCA Provider from which
+                      to request the KeyStore implementation. By default, the
+                      provider is chosen based on --ks-provider-name.
+
+--ks-provider-arg     Value to pass into the constructor of the JCA Provider
+                      class specified by --ks-provider-class. The value is
+                      passed into the constructor as java.lang.String. By
+                      default, the no-arg provider's constructor is used.
+
+--key                 Load private key from the specified file. If the key is
+                      password-protected, the password will be prompted via
+                      standard input unless specified otherwise using
+                      --key-pass. The file must be in PKCS #8 DER format.
+
+--cert                Load certificate chain from the specified file. The file
+                      must be in X.509 PEM or DER format.
+
+
+        JCA PROVIDER INSTALLATION OPTIONS
+These options enable you to install additional Java Crypto Architecture (JCA)
+Providers, such as PKCS #11 providers. Use --next-provider to delimit options of
+different providers. Providers are installed in the order in which they appear
+on the command-line.
+
+--provider-class      Fully-qualified class name of the JCA Provider.
+
+--provider-arg        Value to pass into the constructor of the JCA Provider
+                      class specified by --provider-class. The value is passed
+                      into the constructor as java.lang.String. By default, the
+                      no-arg provider's constructor is used.
+
+--provider-pos        Position / priority at which to install this provider in
+                      the JCA provider list. By default, the provider is
+                      installed as the lowest priority provider.
+                      See java.security.Security.insertProviderAt.
