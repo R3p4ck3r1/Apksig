@@ -100,30 +100,6 @@ public class SigningCertificateLineage {
         mSigningLineage = list;
     }
 
-    public List<DefaultApkSignerEngine.SignerConfig> sortSignerConfigs(
-            List<DefaultApkSignerEngine.SignerConfig> signerConfigs) {
-
-        // not the most elegant sort, but we expect signerConfigs to be quite small (1 or 2 signers
-        // in most cases) and likely already sorted, so not worth the overhead of doing anything
-        // fancier
-        List<DefaultApkSignerEngine.SignerConfig> sortedSignerConfigs =
-                new ArrayList<>(signerConfigs.size());
-        for (int i = 0; i < mSigningLineage.size(); i++) {
-            for (int j = 0; j < signerConfigs.size(); j++) {
-                DefaultApkSignerEngine.SignerConfig config = signerConfigs.get(j);
-                if (mSigningLineage.get(i).signingCert.equals(config.getCertificates().get(0))) {
-                    sortedSignerConfigs.add(config);
-                    break;
-                }
-            }
-        }
-        if (sortedSignerConfigs.size() != signerConfigs.size()) {
-            throw new IllegalArgumentException("SignerConfigs supplied which are not present in the"
-                    + " SigningCertificateLineage");
-        }
-        return sortedSignerConfigs;
-    }
-
     /**
      * Creates a {@code SigningCertificateLineage}.
      *
