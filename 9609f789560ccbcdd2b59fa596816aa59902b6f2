@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "119995d0_d881cf44",
+        "filename": "src/test/java/com/android/apksig/ApkVerifierTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2017-12-28T23:08:00Z",
+      "side": 1,
+      "message": "nit: seems to imply big-endian.",
+      "range": {
+        "startLine": 407,
+        "startChar": 86,
+        "endLine": 407,
+        "endChar": 96
+      },
+      "revId": "9609f789560ccbcdd2b59fa596816aa59902b6f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
