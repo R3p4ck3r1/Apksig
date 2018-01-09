@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1857c10b_80511f3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-09T19:18:37Z",
+      "side": 1,
+      "message": "APK Signing Block",
+      "range": {
+        "startLine": 12,
+        "startChar": 49,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "48fbf96c292ffe6aa7ffd1fca0c77f5570df85e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad50ae0c_6bc13cd0",
+        "filename": "src/main/java/com/android/apksig/ApkVerifier.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-09T19:18:37Z",
+      "side": 1,
+      "message": "This suggests you don\u0027t want to separate v3 verification from v2 verification at this level of abstraction. Is that the plan? If not, then I suggest leaving this code as is, and adding v3 verification somewhere above this block, similar to how this is done v2-v1 verification.",
+      "revId": "48fbf96c292ffe6aa7ffd1fca0c77f5570df85e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03da1c94_fa2f996c",
+        "filename": "src/main/java/com/android/apksig/internal/apk/SigningBlockScheme/ApkSigningBlockUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-09T19:18:37Z",
+      "side": 1,
+      "message": "Java naming: Package names are all lower case. So, signingblockscheme",
+      "revId": "48fbf96c292ffe6aa7ffd1fca0c77f5570df85e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
