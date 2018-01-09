@@ -1,0 +1,284 @@
+/*
+ * Copyright (C) 2016 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.android.apksig.internal.apk.SigningBlockScheme.v2;
+
+import com.android.apksig.internal.apk.SigningBlockScheme.ApkSigningBlockUtils;
+import com.android.apksig.internal.apk.SigningBlockScheme.ContentDigestAlgorithm;
+import com.android.apksig.internal.apk.SigningBlockScheme.SignatureAlgorithm;
+import com.android.apksig.internal.util.Pair;
+
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.PublicKey;
+import java.security.Signature;
+import java.security.SignatureException;
+import java.security.cert.CertificateEncodingException;
+import java.security.interfaces.ECKey;
+import java.security.interfaces.RSAKey;
+import java.security.spec.AlgorithmParameterSpec;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * APK Signature Scheme v2 signer.
+ *
+ * <p>APK Signature Scheme v2 is a whole-file signature scheme which aims to protect every single
+ * bit of the APK, as opposed to the JAR Signature Scheme which protects only the names and
+ * uncompressed contents of ZIP entries.
+ *
+ * @see <a href="https://source.android.com/security/apksigning/v2.html">APK Signature Scheme v2</a>
+ */
+public abstract class V2SchemeSigner {
+    /*
+     * The two main goals of APK Signature Scheme v2 are:
+     * 1. Detect any unauthorized modifications to the APK. This is achieved by making the signature
+     *    cover every byte of the APK being signed.
+     * 2. Enable much faster signature and integrity verification. This is achieved by requiring
+     *    only a minimal amount of APK parsing before the signature is verified, thus completely
+     *    bypassing ZIP entry decompression and by making integrity verification parallelizable by
+     *    employing a hash tree.
+     *
+     * The generated signature block is wrapped into an APK Signing Block and inserted into the
+     * original APK immediately before the start of ZIP Central Directory. This is to ensure that
+     * JAR and ZIP parsers continue to work on the signed APK. The APK Signing Block is designed for
+     * extensibility. For example, a future signature scheme could insert its signatures there as
+     * well. The contract of the APK Signing Block is that all contents outside of the block must be
+     * protected by signatures inside the block.
+     */
+
+    private static final int APK_SIGNATURE_SCHEME_V2_BLOCK_ID = 0x7109871a;
+
+    /** Hidden constructor to prevent instantiation. */
+    private V2SchemeSigner() {}
+
+    /**
+     * Gets the APK Signature Scheme v2 signature algorithms to be used for signing an APK using the
+     * provided key.
+     *
+     * @param minSdkVersion minimum API Level of the platform on which the APK may be installed (see
+     *        AndroidManifest.xml minSdkVersion attribute).
+     *
+     * @throws InvalidKeyException if the provided key is not suitable for signing APKs using
+     *         APK Signature Scheme v2
+     */
+    public static List<SignatureAlgorithm> getSuggestedSignatureAlgorithms(
+            PublicKey signingKey, int minSdkVersion, boolean apkSigningBlockPaddingSupported)
+            throws InvalidKeyException {
+        String keyAlgorithm = signingKey.getAlgorithm();
+        if ("RSA".equalsIgnoreCase(keyAlgorithm)) {
+            // Use RSASSA-PKCS1-v1_5 signature scheme instead of RSASSA-PSS to guarantee
+            // deterministic signatures which make life easier for OTA updates (fewer files
+            // changed when deterministic signature schemes are used).
+
+            // Pick a digest which is no weaker than the key.
+            int modulusLengthBits = ((RSAKey) signingKey).getModulus().bitLength();
+            if (modulusLengthBits <= 3072) {
+                // 3072-bit RSA is roughly 128-bit strong, meaning SHA-256 is a good fit.
+                List<SignatureAlgorithm> algorithms = new ArrayList<>();
+                algorithms.add(SignatureAlgorithm.RSA_PKCS1_V1_5_WITH_SHA256);
+                if (apkSigningBlockPaddingSupported) {
+                    algorithms.add(SignatureAlgorithm.VERITY_RSA_PKCS1_V1_5_WITH_SHA256);
+                }
+                return algorithms;
+            } else {
+                // Keys longer than 3072 bit need to be paired with a stronger digest to avoid the
+                // digest being the weak link. SHA-512 is the next strongest supported digest.
+                return Collections.singletonList(SignatureAlgorithm.RSA_PKCS1_V1_5_WITH_SHA512);
+            }
+        } else if ("DSA".equalsIgnoreCase(keyAlgorithm)) {
+            // DSA is supported only with SHA-256.
+            List<SignatureAlgorithm> algorithms = new ArrayList<>();
+            algorithms.add(SignatureAlgorithm.DSA_WITH_SHA256);
+            if (apkSigningBlockPaddingSupported) {
+                algorithms.add(SignatureAlgorithm.VERITY_DSA_WITH_SHA256);
+            }
+            return algorithms;
+        } else if ("EC".equalsIgnoreCase(keyAlgorithm)) {
+            // Pick a digest which is no weaker than the key.
+            int keySizeBits = ((ECKey) signingKey).getParams().getOrder().bitLength();
+            if (keySizeBits <= 256) {
+                // 256-bit Elliptic Curve is roughly 128-bit strong, meaning SHA-256 is a good fit.
+                List<SignatureAlgorithm> algorithms = new ArrayList<>();
+                algorithms.add(SignatureAlgorithm.ECDSA_WITH_SHA256);
+                if (apkSigningBlockPaddingSupported) {
+                    algorithms.add(SignatureAlgorithm.VERITY_ECDSA_WITH_SHA256);
+                }
+                return algorithms;
+            } else {
+                // Keys longer than 256 bit need to be paired with a stronger digest to avoid the
+                // digest being the weak link. SHA-512 is the next strongest supported digest.
+                return Collections.singletonList(SignatureAlgorithm.ECDSA_WITH_SHA512);
+            }
+        } else {
+            throw new InvalidKeyException("Unsupported key algorithm: " + keyAlgorithm);
+        }
+    }
+
+    public static Pair<byte[], Integer> generateApkSignatureSchemeV2Block(
+            List<ApkSigningBlockUtils.SignerConfig> signerConfigs,
+            Map<ContentDigestAlgorithm, byte[]> contentDigests)
+                    throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
+        // FORMAT:
+        // * length-prefixed sequence of length-prefixed signer blocks.
+
+        List<byte[]> signerBlocks = new ArrayList<>(signerConfigs.size());
+        int signerNumber = 0;
+        for (ApkSigningBlockUtils.SignerConfig signerConfig : signerConfigs) {
+            signerNumber++;
+            byte[] signerBlock;
+            try {
+                signerBlock = generateSignerBlock(signerConfig, contentDigests);
+            } catch (InvalidKeyException e) {
+                throw new InvalidKeyException("Signer #" + signerNumber + " failed", e);
+            } catch (SignatureException e) {
+                throw new SignatureException("Signer #" + signerNumber + " failed", e);
+            }
+            signerBlocks.add(signerBlock);
+        }
+
+        return Pair.of(ApkSigningBlockUtils.encodeAsSequenceOfLengthPrefixedElements(
+                new byte[][] {
+                    ApkSigningBlockUtils.encodeAsSequenceOfLengthPrefixedElements(signerBlocks),
+                }), APK_SIGNATURE_SCHEME_V2_BLOCK_ID);
+    }
+
+    private static byte[] generateSignerBlock(
+            ApkSigningBlockUtils.SignerConfig signerConfig,
+            Map<ContentDigestAlgorithm, byte[]> contentDigests)
+                    throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
+        if (signerConfig.certificates.isEmpty()) {
+            throw new SignatureException("No certificates configured for signer");
+        }
+        PublicKey publicKey = signerConfig.certificates.get(0).getPublicKey();
+
+        byte[] encodedPublicKey = ApkSigningBlockUtils.encodePublicKey(publicKey);
+
+        V2SignatureSchemeBlock.SignedData signedData = new V2SignatureSchemeBlock.SignedData();
+        try {
+            signedData.certificates = ApkSigningBlockUtils.encodeCertificates(signerConfig.certificates);
+        } catch (CertificateEncodingException e) {
+            throw new SignatureException("Failed to encode certificates", e);
+        }
+
+        List<Pair<Integer, byte[]>> digests =
+                new ArrayList<>(signerConfig.signatureAlgorithms.size());
+        for (SignatureAlgorithm signatureAlgorithm : signerConfig.signatureAlgorithms) {
+            ContentDigestAlgorithm contentDigestAlgorithm =
+                    signatureAlgorithm.getContentDigestAlgorithm();
+            byte[] contentDigest = contentDigests.get(contentDigestAlgorithm);
+            if (contentDigest == null) {
+                throw new RuntimeException(
+                        contentDigestAlgorithm + " content digest for " + signatureAlgorithm
+                                + " not computed");
+            }
+            digests.add(Pair.of(signatureAlgorithm.getId(), contentDigest));
+        }
+        signedData.digests = digests;
+
+        V2SignatureSchemeBlock.Signer signer = new V2SignatureSchemeBlock.Signer();
+        // FORMAT:
+        // * length-prefixed sequence of length-prefixed digests:
+        //   * uint32: signature algorithm ID
+        //   * length-prefixed bytes: digest of contents
+        // * length-prefixed sequence of certificates:
+        //   * length-prefixed bytes: X.509 certificate (ASN.1 DER encoded).
+        // * length-prefixed sequence of length-prefixed additional attributes:
+        //   * uint32: ID
+        //   * (length - 4) bytes: value
+        signer.signedData = ApkSigningBlockUtils.encodeAsSequenceOfLengthPrefixedElements(new byte[][] {
+            ApkSigningBlockUtils.encodeAsSequenceOfLengthPrefixedPairsOfIntAndLengthPrefixedBytes(signedData.digests),
+            ApkSigningBlockUtils.encodeAsSequenceOfLengthPrefixedElements(signedData.certificates),
+            // additional attributes
+            new byte[0],
+        });
+        signer.publicKey = encodedPublicKey;
+        signer.signatures = new ArrayList<>(signerConfig.signatureAlgorithms.size());
+        for (SignatureAlgorithm signatureAlgorithm : signerConfig.signatureAlgorithms) {
+            Pair<String, ? extends AlgorithmParameterSpec> sigAlgAndParams =
+                    signatureAlgorithm.getJcaSignatureAlgorithmAndParams();
+            String jcaSignatureAlgorithm = sigAlgAndParams.getFirst();
+            AlgorithmParameterSpec jcaSignatureAlgorithmParams = sigAlgAndParams.getSecond();
+            byte[] signatureBytes;
+            try {
+                Signature signature = Signature.getInstance(jcaSignatureAlgorithm);
+                signature.initSign(signerConfig.privateKey);
+                if (jcaSignatureAlgorithmParams != null) {
+                    signature.setParameter(jcaSignatureAlgorithmParams);
+                }
+                signature.update(signer.signedData);
+                signatureBytes = signature.sign();
+            } catch (InvalidKeyException e) {
+                throw new InvalidKeyException("Failed to sign using " + jcaSignatureAlgorithm, e);
+            } catch (InvalidAlgorithmParameterException | SignatureException e) {
+                throw new SignatureException("Failed to sign using " + jcaSignatureAlgorithm, e);
+            }
+
+            try {
+                Signature signature = Signature.getInstance(jcaSignatureAlgorithm);
+                signature.initVerify(publicKey);
+                if (jcaSignatureAlgorithmParams != null) {
+                    signature.setParameter(jcaSignatureAlgorithmParams);
+                }
+                signature.update(signer.signedData);
+                if (!signature.verify(signatureBytes)) {
+                    throw new SignatureException("Signature did not verify");
+                }
+            } catch (InvalidKeyException e) {
+                throw new InvalidKeyException(
+                        "Failed to verify generated " + jcaSignatureAlgorithm + " signature using"
+                                + " public key from certificate", e);
+            } catch (InvalidAlgorithmParameterException | SignatureException e) {
+                throw new SignatureException(
+                        "Failed to verify generated " + jcaSignatureAlgorithm + " signature using"
+                                + " public key from certificate", e);
+            }
+
+            signer.signatures.add(Pair.of(signatureAlgorithm.getId(), signatureBytes));
+        }
+
+        // FORMAT:
+        // * length-prefixed signed data
+        // * length-prefixed sequence of length-prefixed signatures:
+        //   * uint32: signature algorithm ID
+        //   * length-prefixed bytes: signature of signed data
+        // * length-prefixed bytes: public key (X.509 SubjectPublicKeyInfo, ASN.1 DER encoded)
+        return ApkSigningBlockUtils.encodeAsSequenceOfLengthPrefixedElements(
+                new byte[][] {
+                    signer.signedData,
+                    ApkSigningBlockUtils.encodeAsSequenceOfLengthPrefixedPairsOfIntAndLengthPrefixedBytes(
+                            signer.signatures),
+                    signer.publicKey,
+                });
+    }
+
+    private static final class V2SignatureSchemeBlock {
+        private static final class Signer {
+            public byte[] signedData;
+            public List<Pair<Integer, byte[]>> signatures;
+            public byte[] publicKey;
+        }
+
+        private static final class SignedData {
+            public List<Pair<Integer, byte[]>> digests;
+            public List<byte[]> certificates;
+        }
+    }
+
+}
