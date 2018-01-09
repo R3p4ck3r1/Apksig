@@ -56,6 +56,75 @@
       "revId": "48fbf96c292ffe6aa7ffd1fca0c77f5570df85e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5f15cda_721fc985",
+        "filename": "src/main/java/com/android/apksig/internal/apk/SigningBlockScheme/ApkSigningBlockUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-09T20:21:30Z",
+      "side": 1,
+      "message": "license",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "48fbf96c292ffe6aa7ffd1fca0c77f5570df85e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d34d918_f89ca511",
+        "filename": "src/main/java/com/android/apksig/internal/apk/SigningBlockScheme/SignatureInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-09T20:21:30Z",
+      "side": 1,
+      "message": "missing license",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "48fbf96c292ffe6aa7ffd1fca0c77f5570df85e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4681382_8052a343",
+        "filename": "src/main/java/com/android/apksig/internal/apk/SigningBlockScheme/SignatureInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-09T20:21:30Z",
+      "side": 1,
+      "message": "can this be final like others?",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 33
+      },
+      "revId": "48fbf96c292ffe6aa7ffd1fca0c77f5570df85e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
