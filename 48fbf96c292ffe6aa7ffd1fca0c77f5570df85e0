@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea8b2ff4_2652e098",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-09T23:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1857c10b_80511f3f",
+      "range": {
+        "startLine": 12,
+        "startChar": 49,
+        "endLine": 13,
+        "endChar": 5
+      },
+      "revId": "48fbf96c292ffe6aa7ffd1fca0c77f5570df85e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad50ae0c_6bc13cd0",
         "filename": "src/main/java/com/android/apksig/ApkVerifier.java",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2018-01-09T19:18:37Z",
       "side": 1,
       "message": "This suggests you don\u0027t want to separate v3 verification from v2 verification at this level of abstraction. Is that the plan? If not, then I suggest leaving this code as is, and adding v3 verification somewhere above this block, similar to how this is done v2-v1 verification.",
+      "revId": "48fbf96c292ffe6aa7ffd1fca0c77f5570df85e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da8aef37_09b38004",
+        "filename": "src/main/java/com/android/apksig/ApkVerifier.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-09T23:43:20Z",
+      "side": 1,
+      "message": "I\u0027m not sure how I want to deal with the result yet, actually.  Moved back to V2 for now.  Will see what the v3 patch has in store for this one.",
+      "parentUuid": "ad50ae0c_6bc13cd0",
       "revId": "48fbf96c292ffe6aa7ffd1fca0c77f5570df85e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -82,6 +124,48 @@
     },
     {
       "key": {
+        "uuid": "11d195af_e7dafd54",
+        "filename": "src/main/java/com/android/apksig/internal/apk/SigningBlockScheme/ApkSigningBlockUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-09T23:43:20Z",
+      "side": 1,
+      "message": "re pgkname, it\u0027s dead now.",
+      "parentUuid": "03da1c94_fa2f996c",
+      "revId": "48fbf96c292ffe6aa7ffd1fca0c77f5570df85e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ddf7ea4_1919cfc5",
+        "filename": "src/main/java/com/android/apksig/internal/apk/SigningBlockScheme/ApkSigningBlockUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-09T23:43:20Z",
+      "side": 1,
+      "message": "re license: done.",
+      "parentUuid": "a5f15cda_721fc985",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "48fbf96c292ffe6aa7ffd1fca0c77f5570df85e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d34d918_f89ca511",
         "filename": "src/main/java/com/android/apksig/internal/apk/SigningBlockScheme/SignatureInfo.java",
         "patchSetId": 1
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "09cbe84a_f70d1eed",
+        "filename": "src/main/java/com/android/apksig/internal/apk/SigningBlockScheme/SignatureInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-09T23:43:20Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "1d34d918_f89ca511",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "48fbf96c292ffe6aa7ffd1fca0c77f5570df85e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4681382_8052a343",
         "filename": "src/main/java/com/android/apksig/internal/apk/SigningBlockScheme/SignatureInfo.java",
         "patchSetId": 1
@@ -116,6 +224,30 @@
       "writtenOn": "2018-01-09T20:21:30Z",
       "side": 1,
       "message": "can this be final like others?",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 33
+      },
+      "revId": "48fbf96c292ffe6aa7ffd1fca0c77f5570df85e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fce65f4_0ae10863",
+        "filename": "src/main/java/com/android/apksig/internal/apk/SigningBlockScheme/SignatureInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-09T23:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4681382_8052a343",
       "range": {
         "startLine": 17,
         "startChar": 4,
