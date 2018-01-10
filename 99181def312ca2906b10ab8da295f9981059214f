@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2d2bd5d1_d6c75066",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "hmm.  normally IDE takes care of that.  Done.",
+      "parentUuid": "e66037d7_34df1032",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78522815_0056d8e4",
         "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "99181def312ca2906b10ab8da295f9981059214f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22822f99_9d398373",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78522815_0056d8e4",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "460f6bd2_51cdd549",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5464f02f_0867cb1a",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a623ca02_34320195",
         "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2018-01-10T01:22:04Z",
       "side": 1,
       "message": "Why are v2-specific signature and digest generation steps exposed separately here? Is it for some upcoming optimization between v2 and v3 schemes? Normally there shouldn\u0027t be a need to expose these two steps (signing and contents digesting) as separate entities at this level of abstraction.",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebc39926_07443fd0",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a623ca02_34320195",
       "revId": "99181def312ca2906b10ab8da295f9981059214f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "199c02aa_128c1e5c",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "This is a consequence of the move of that class back to V2 from PS1.  Aside from that class, which I\u0027ll be looking at including in some form here when adding v3, there is nothing v2 specific about this method.  If you\u0027d like, I can re-add it here (happy to move it back) and then deal with which parts go to V2 and V3 in the next patch-set.\n\nUltimately, we will end up having either a general result here, with some optional fields that v2 doesn\u0027t use, or 3 classes: Result and a v2 and v3 subclass.\n\nUpdate: I went ahead and moved it back to where it is in PS1.  Will deal with specialization with regards to v3 in the v3 patchset.",
+      "parentUuid": "2b3fe718_f258a993",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75a42ef9_fc112ecb",
         "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2018-01-10T01:22:04Z",
       "side": 1,
       "message": "Java style: Line too long",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "563146f2_b3cee1d3",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "Taken care of by moving Result back to its PS1 location.",
+      "parentUuid": "75a42ef9_fc112ecb",
       "revId": "99181def312ca2906b10ab8da295f9981059214f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "d957c647_4ad3e80c",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "301e1b0f_d4d22788",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "683e41e9_d6938ede",
         "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
         "patchSetId": 2
@@ -132,6 +258,24 @@
       "writtenOn": "2018-01-10T01:22:04Z",
       "side": 1,
       "message": "Java style: line too long",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01c4c89c_7f6f4d07",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "Taken care of by moving Result back to PS1 location.",
+      "parentUuid": "683e41e9_d6938ede",
       "revId": "99181def312ca2906b10ab8da295f9981059214f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -178,6 +322,24 @@
     },
     {
       "key": {
+        "uuid": "de1eaffd_03883237",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1865e765_ed621ba4",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f89e7fbc_a9ad20d8",
         "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
         "patchSetId": 2
@@ -189,6 +351,24 @@
       "writtenOn": "2018-01-10T01:22:04Z",
       "side": 1,
       "message": "Java naming: The name of this method doesn\u0027t match its return type. The name suggests it\u0027s generating a ZIP Central Directory offset, but the return type is a DataSource... I\u0027d suggest renaming or adding a Javadoc to shed more light. Looking at the implementation, it sounds like this method generates a modified ZIP End of Central Directory. If so, how about copyWithModifiedCdOffset(DataSource eocd, long centralDirectoryOffset)?",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8900545f_96ba4fb8",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f89e7fbc_a9ad20d8",
       "revId": "99181def312ca2906b10ab8da295f9981059214f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -212,6 +392,24 @@
     },
     {
       "key": {
+        "uuid": "a2b452e4_1e473711",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "I actually originally had it that way, but the calling code in DefaultEngine was using \u003cbyte[], Integer\u003e so I changed this to match that.  Will change.\n\nRe v2: It currently is only v2.  That will be removed when I change this to a List of id + block pairs.  Yes, the same argument could be made across other parts of this change, but I\u0027d rather deal with this when adding v3 support, since it\u0027ll change the internals here anyway.\n\nAlternatively, we could support adding these in addition to existing ones, but that\u0027s a nice-to-have feature for me at the moment (corresponds to keeping existing signatures from inputapk).",
+      "parentUuid": "9cdbc1e3_538525ba",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66b9585b_5952063c",
         "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
         "patchSetId": 2
@@ -223,6 +421,24 @@
       "writtenOn": "2018-01-10T01:22:04Z",
       "side": 1,
       "message": "Java style: This (and thus the lines below until method body) needs to be indented by 8, since this is a continuation line.",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "208c4911_87ecbffd",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "For some reason I thought that didn\u0027t apply for signatures following return type.  Done.",
+      "parentUuid": "66b9585b_5952063c",
       "revId": "99181def312ca2906b10ab8da295f9981059214f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -246,6 +462,24 @@
     },
     {
       "key": {
+        "uuid": "4c11ebfe_7b9ab832",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8126987b_f18b1d7c",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80e7ecdd_99289f57",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
         "patchSetId": 2
@@ -257,6 +491,24 @@
       "writtenOn": "2018-01-10T01:22:04Z",
       "side": 1,
       "message": "Java style: Lines too long. Consider static-importing these helper methods (and classes such as SignatureNotFoundException). This will not only make for more readable code, but will also remove most of the changes in this file and in Verifier.java.",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a70cfbb3_319bbcd8",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "Yes this became particularly disgusting.",
+      "parentUuid": "80e7ecdd_99289f57",
       "revId": "99181def312ca2906b10ab8da295f9981059214f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -280,6 +532,24 @@
     },
     {
       "key": {
+        "uuid": "392278ae_3372c638",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "consequence of moving back-and-forth of V2 Result.  (which is now moved back again).",
+      "parentUuid": "4af45514_f5690e0d",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f80b5abb_1bee4f7b",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 2
@@ -297,6 +567,24 @@
     },
     {
       "key": {
+        "uuid": "bae0af80_e4443b6b",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f80b5abb_1bee4f7b",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "607a8d73_95102e91",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 2
@@ -308,6 +596,30 @@
       "writtenOn": "2018-01-10T00:38:14Z",
       "side": 1,
       "message": "nit: unnecessary change",
+      "range": {
+        "startLine": 191,
+        "startChar": 12,
+        "endLine": 192,
+        "endChar": 44
+      },
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b441dd_9e851083",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "consequence of moving back-and-forth of V2 Result.  (which is now moved back again).",
+      "parentUuid": "607a8d73_95102e91",
       "range": {
         "startLine": 191,
         "startChar": 12,
@@ -343,6 +655,30 @@
     },
     {
       "key": {
+        "uuid": "3ccee3a4_4db00d86",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "consequence of moving back-and-forth of V2 Result.  (which is now moved back again).",
+      "parentUuid": "b32d4b0e_425c0fd9",
+      "range": {
+        "startLine": 244,
+        "startChar": 16,
+        "endLine": 246,
+        "endChar": 59
+      },
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "681de875_dec8ef62",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 2
@@ -354,6 +690,30 @@
       "writtenOn": "2018-01-10T00:38:14Z",
       "side": 1,
       "message": "nit: unnecessary change",
+      "range": {
+        "startLine": 365,
+        "startChar": 16,
+        "endLine": 367,
+        "endChar": 62
+      },
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be6bc640_58dc5644",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T16:46:32Z",
+      "side": 1,
+      "message": "consequence of moving back-and-forth of V2 Result.  (which is now moved back again).",
+      "parentUuid": "681de875_dec8ef62",
       "range": {
         "startLine": 365,
         "startChar": 16,
