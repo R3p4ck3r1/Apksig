@@ -2,6 +2,301 @@
   "comments": [
     {
       "key": {
+        "uuid": "e66037d7_34df1032",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "Java style: Imports should be sorted alphabetically",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78522815_0056d8e4",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "Java style: Break lines at highest possible semantic level. In this case, after assignment operator.",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5464f02f_0867cb1a",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "What\u0027s with the capital K in ApK?",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a623ca02_34320195",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "Why are v2-specific signature and digest generation steps exposed separately here? Is it for some upcoming optimization between v2 and v3 schemes? Normally there shouldn\u0027t be a need to expose these two steps (signing and contents digesting) as separate entities at this level of abstraction.",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b3fe718_f258a993",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be verifyV2Integrity -- it looks like it\u0027s using v2-specific classes, such as V2SchemeVerifier.Result and V2SchemeVerifier.Result.SignerInfo.",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75a42ef9_fc112ecb",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "Java style: Line too long",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "301e1b0f_d4d22788",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "1. If you invoke this method twice, once for v3 and once v2, you\u0027ll get duplicate warnings.\n2. Somewhat off-topic: We should probably remove this warning in a follow-up commit. Now that APK Signing Block is used by multiple parties/organizations, there can no longer be an expectation that apksig knows about all types of entries which APK Signing Block can contain.",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "683e41e9_d6938ede",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "Java style: line too long",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1865e765_ed621ba4",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "From this method\u0027s signature (and lack of Javadoc) it\u0027s unclear what the pair contains. I can guess that the Integer is the padding amount, but what about that DataSource. I\u0027d suggest fixing this by either renaming for clarity, or by adding a Javadoc which says something along the lines \"Generates ... and returns X and Y\"",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01b263f0_09a962b9",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "ApK -\u003e Apk",
+      "range": {
+        "startLine": 619,
+        "startChar": 52,
+        "endLine": 619,
+        "endChar": 55
+      },
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f89e7fbc_a9ad20d8",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "Java naming: The name of this method doesn\u0027t match its return type. The name suggests it\u0027s generating a ZIP Central Directory offset, but the return type is a DataSource... I\u0027d suggest renaming or adding a Javadoc to shed more light. Looking at the implementation, it sounds like this method generates a modified ZIP End of Central Directory. If so, how about copyWithModifiedCdOffset(DataSource eocd, long centralDirectoryOffset)?",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cdbc1e3_538525ba",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "Design nit: The spec talks about ID-value pairs, but you\u0027re using value-ID pairs. Weird. Why not Pair\u003cInteger, byte[]\u003e. In fact, why not generateApkSigningBlockWithSingleEntry(int id, byte[] value)?\n\nP.S. This is not v2-specific. So, drop v2 from parameters and local vars below.",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66b9585b_5952063c",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "Java style: This (and thus the lines below until method body) needs to be indented by 8, since this is a continuation line.",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8126987b_f18b1d7c",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "Java style: Line too long",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80e7ecdd_99289f57",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "Java style: Lines too long. Consider static-importing these helper methods (and classes such as SignatureNotFoundException). This will not only make for more readable code, but will also remove most of the changes in this file and in Verifier.java.",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4af45514_f5690e0d",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "What\u0027s wrong with the original line break?",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f80b5abb_1bee4f7b",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T01:22:04Z",
+      "side": 1,
+      "message": "Java style: prefer to break at higher semantic level. In this case, after assignment operator.",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "607a8d73_95102e91",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 2
