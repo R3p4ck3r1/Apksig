@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "607a8d73_95102e91",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-10T00:38:14Z",
+      "side": 1,
+      "message": "nit: unnecessary change",
+      "range": {
+        "startLine": 191,
+        "startChar": 12,
+        "endLine": 192,
+        "endChar": 44
+      },
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b32d4b0e_425c0fd9",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-10T00:38:14Z",
+      "side": 1,
+      "message": "nit: unnecessary change",
+      "range": {
+        "startLine": 244,
+        "startChar": 16,
+        "endLine": 246,
+        "endChar": 59
+      },
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "681de875_dec8ef62",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-10T00:38:14Z",
+      "side": 1,
+      "message": "nit: unnecessary change",
+      "range": {
+        "startLine": 365,
+        "startChar": 16,
+        "endLine": 367,
+        "endChar": 62
+      },
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
