@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c6d9a86b_8d465e99",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T18:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea427790_67b130c8",
+      "revId": "62e2a663657248fae0527aa5c664bfe1e8ab2e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f8b888c_8a713761",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2018-01-10T17:46:04Z",
       "side": 1,
       "message": "Java style: Import lines should not be wrapped.",
+      "revId": "62e2a663657248fae0527aa5c664bfe1e8ab2e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35adadf5_c9874a78",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T18:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f8b888c_8a713761",
       "revId": "62e2a663657248fae0527aa5c664bfe1e8ab2e83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1f5cfa2a_ef326be6",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T18:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ba2ba96_d4c3b5d5",
+      "revId": "62e2a663657248fae0527aa5c664bfe1e8ab2e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd699ae8_2ad80f48",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2018-01-10T17:46:04Z",
       "side": 1,
       "message": "Looks like an unnecessary formatting-only change.",
+      "revId": "62e2a663657248fae0527aa5c664bfe1e8ab2e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4f4e991_c58fd2bf",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-10T18:13:31Z",
+      "side": 1,
+      "message": "original formatting wrong, so this was adjusted as imports changed.  Back to original.",
+      "parentUuid": "fd699ae8_2ad80f48",
       "revId": "62e2a663657248fae0527aa5c664bfe1e8ab2e83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
