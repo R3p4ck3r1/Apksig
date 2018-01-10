@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea427790_67b130c8",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "It\u0027s still unclear what this DataSource contains/represents. Please document.",
+      "revId": "62e2a663657248fae0527aa5c664bfe1e8ab2e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f8b888c_8a713761",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Java style: Import lines should not be wrapped.",
+      "revId": "62e2a663657248fae0527aa5c664bfe1e8ab2e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ba2ba96_d4c3b5d5",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Consider importing ApkSigningBlockUtils.SignerConfig --- this will remove this change and the one below.",
+      "revId": "62e2a663657248fae0527aa5c664bfe1e8ab2e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd699ae8_2ad80f48",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Looks like an unnecessary formatting-only change.",
+      "revId": "62e2a663657248fae0527aa5c664bfe1e8ab2e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "bdfcf0a4_e550942a",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2d2bd5d1_d6c75066",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78522815_0056d8e4",
         "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
         "patchSetId": 2
@@ -177,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "3d22ba72_8a23a895",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "199c02aa_128c1e5c",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75a42ef9_fc112ecb",
         "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
         "patchSetId": 2
@@ -209,6 +245,24 @@
       "revId": "99181def312ca2906b10ab8da295f9981059214f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a7c7fc5_d9fca4a1",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "563146f2_b3cee1d3",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -247,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "2c582b66_481b9f0d",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d957c647_4ad3e80c",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "683e41e9_d6938ede",
         "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
         "patchSetId": 2
@@ -279,6 +351,24 @@
       "revId": "99181def312ca2906b10ab8da295f9981059214f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de62e99e_a47d75bf",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "01c4c89c_7f6f4d07",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -340,6 +430,30 @@
     },
     {
       "key": {
+        "uuid": "e0c1c139_2f6164f5",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01b263f0_09a962b9",
+      "range": {
+        "startLine": 619,
+        "startChar": 52,
+        "endLine": 619,
+        "endChar": 55
+      },
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f89e7fbc_a9ad20d8",
         "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
         "patchSetId": 2
@@ -372,6 +486,24 @@
       "revId": "99181def312ca2906b10ab8da295f9981059214f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78252c80_9ad49775",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8900545f_96ba4fb8",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -410,6 +542,24 @@
     },
     {
       "key": {
+        "uuid": "f2e78a07_7efc4c77",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a2b452e4_1e473711",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66b9585b_5952063c",
         "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
         "patchSetId": 2
@@ -442,6 +592,24 @@
       "revId": "99181def312ca2906b10ab8da295f9981059214f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1eb6bb3_86a2a8ed",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "208c4911_87ecbffd",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -480,6 +648,24 @@
     },
     {
       "key": {
+        "uuid": "ed5c4f8f_33738026",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4c11ebfe_7b9ab832",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80e7ecdd_99289f57",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
         "patchSetId": 2
@@ -512,6 +698,24 @@
       "revId": "99181def312ca2906b10ab8da295f9981059214f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd33ad4f_ac99c2d2",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a70cfbb3_319bbcd8",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -550,6 +754,24 @@
     },
     {
       "key": {
+        "uuid": "43db1835_3bdf435a",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "392278ae_3372c638",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f80b5abb_1bee4f7b",
         "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
         "patchSetId": 2
@@ -582,6 +804,24 @@
       "revId": "99181def312ca2906b10ab8da295f9981059214f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efef45ba_af181ec5",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeVerifier.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-10T17:46:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bae0af80_e4443b6b",
+      "revId": "99181def312ca2906b10ab8da295f9981059214f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
