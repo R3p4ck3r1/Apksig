@@ -390,12 +390,25 @@ public abstract class V2SchemeVerifier {
 
         // Parse the additional attributes block.
         int additionalAttributeCount = 0;
+        boolean strippingProtectionEnabled = false;
         while (additionalAttributes.hasRemaining()) {
             additionalAttributeCount++;
             try {
                 ByteBuffer attribute =
                         ApkSigningBlockUtils.getLengthPrefixedSlice(additionalAttributes);
                 int id = attribute.getInt();
+                if (id == V2SchemeSigner.STRIPPING_PROTECTION_ATTR_ID) {
+                    strippingProtectionEnabled = true;
+                    int schemeId = attribute.getInt();
+                    if (schemeId == ApkSigningBlockUtils.VERSION_APK_SIGNATURE_SCHEME_V3) {
+                        // TODO enforce v3 stripping protection when v3 verification added
+                        result.addWarning(Issue.V2_SIG_MISSING_APK_SIG_REFERENCED,
+                                schemeId,
+                                "APK Signature Scheme v3");
+                    } else {
+                        result.addWarning(Issue.V2_SIG_UNKNOWN_APK_SIG_SCHEME_ID, schemeId);
+                    }
+                }
                 byte[] value = ByteBufferUtils.toByteArray(attribute);
                 result.additionalAttributes.add(
                         new ApkSigningBlockUtils.Result.SignerInfo.AdditionalAttribute(id, value));
@@ -405,6 +418,10 @@ public abstract class V2SchemeVerifier {
                         Issue.V2_SIG_MALFORMED_ADDITIONAL_ATTRIBUTE, additionalAttributeCount);
                 return;
             }
+        }
+        if (!strippingProtectionEnabled) {
+                // TODO: identify if this APK is actually v3-or-newer-signed
+                result.addWarning(Issue.V2_SIG_NO_APK_SIG_STRIP_PROTECTION);
         }
     }
 

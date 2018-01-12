@@ -40,6 +40,7 @@ import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -58,9 +59,21 @@ import java.util.Set;
  */
 public class ApkVerifier {
 
-    private static final int APK_SIGNATURE_SCHEME_V2_ID = 2;
+    private static final int APK_SIGNATURE_SCHEME_V2_ID =
+            ApkSigningBlockUtils.VERSION_APK_SIGNATURE_SCHEME_V2;
+    private static final int APK_SIGNATURE_SCHEME_V3_ID =
+            ApkSigningBlockUtils.VERSION_APK_SIGNATURE_SCHEME_V3;
     private static final Map<Integer, String> SUPPORTED_APK_SIG_SCHEME_NAMES =
-            Collections.singletonMap(APK_SIGNATURE_SCHEME_V2_ID, "APK Signature Scheme v2");
+            populateSupportedApkSigNames();
+
+    private static Map<Integer,String> populateSupportedApkSigNames() {
+        Map<Integer, String> supportedSigSchemeNames = new HashMap<>();
+        supportedSigSchemeNames.put(APK_SIGNATURE_SCHEME_V2_ID, "APK Signature Scheme v2");
+
+        // TODO enforce v3 stripping protection when v3 verification added
+        //supportedSigSchemeNames.put(APK_SIGNATURE_SCHEME_V3_ID, "APK Signature Scheme v3");
+        return supportedSigSchemeNames;
+    }
 
     private final File mApkFile;
     private final DataSource mApkDataSource;
@@ -1186,6 +1199,39 @@ public class ApkVerifier {
         V2_SIG_APK_DIGEST_DID_NOT_VERIFY(
                 "APK integrity check failed. %1$s digest mismatch."
                         + " Expected: <%2$s>, actual: <%3$s>"),
+
+        /**
+         * Apk Signature Scheme v2 signature indicates that the APK is supposed to be signed with
+         * additional signature scheme(s), but none were found.
+         * <ul>
+         * <li>Parameter 1: APK signature scheme ID ({@code} Integer)</li>
+         * <li>Parameter 2: APK signature scheme English name ({@code} String)</li>
+         * </ul>
+         */
+        V2_SIG_MISSING_APK_SIG_REFERENCED(
+                "APK Signature Scheme v2 signature indicates the APK is signed using %2$s but no"
+                        + " such signature was found. Signature stripped?"),
+
+        /**
+         * v2 signature file references an unknown APK signature scheme ID.
+         *
+         * <ul>
+         * <li>Parameter 1: unknown APK signature scheme ID ({@code} Integer)</li>
+         * </ul>
+         */
+        V2_SIG_UNKNOWN_APK_SIG_SCHEME_ID(
+                "APK Signature Scheme v2 signature references unknown APK signature scheme ID:"
+                        + " %2$d"),
+
+        /**
+         * APK is signed using APK Signature Scheme v3 or newer, but APK Signature Scheme v2
+         * signature file does not contain protections against stripping of these newer scheme
+         * signatures.
+         */
+        V2_SIG_NO_APK_SIG_STRIP_PROTECTION(
+                "APK is signed using APK Signature Scheme v3 or newer but these signatures may be"
+                        + " stripped without being detected because the APK Signature Scheme v2"
+                        + " signature does not contain anti-stripping protections."),
 
         /**
          * APK Signing Block contains an unknown entry.
