@@ -151,6 +151,23 @@
     },
     {
       "key": {
+        "uuid": "d7c45ebb_905c02e8",
+        "filename": "src/main/java/com/android/apksig/ApkSignerLineage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-12T21:16:05Z",
+      "side": 1,
+      "message": "I suggest dropping ApkSigner from the name. The concept of key lineage is not specific to apksig/apksigner. How about KeyLineage? Or SigningKeyLineage?",
+      "revId": "3c034107ab60200e64d831eac6c86c2e0d79b7c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84a9b22d_2f086d46",
         "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SchemeSigner.java",
         "patchSetId": 1
