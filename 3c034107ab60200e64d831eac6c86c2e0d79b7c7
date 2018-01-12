@@ -22,6 +22,92 @@
       "revId": "3c034107ab60200e64d831eac6c86c2e0d79b7c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a789d9ba_906bd02b",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2018-01-12T19:17:10Z",
+      "side": 1,
+      "message": "3?",
+      "range": {
+        "startLine": 270,
+        "startChar": 51,
+        "endLine": 270,
+        "endChar": 52
+      },
+      "revId": "3c034107ab60200e64d831eac6c86c2e0d79b7c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "333d8872_7960177a",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2018-01-12T19:17:10Z",
+      "side": 1,
+      "message": "Leave this out till there\u0027s a page for v3?",
+      "range": {
+        "startLine": 1153,
+        "startChar": 0,
+        "endLine": 1153,
+        "endChar": 108
+      },
+      "revId": "3c034107ab60200e64d831eac6c86c2e0d79b7c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "552f3902_77c2ccdb",
+        "filename": "src/main/java/com/android/apksig/ApkSignerLineage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2018-01-12T19:17:10Z",
+      "side": 1,
+      "message": "Add some TODOs if this is unfinished",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "3c034107ab60200e64d831eac6c86c2e0d79b7c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84a9b22d_2f086d46",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SchemeSigner.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2018-01-12T19:17:10Z",
+      "side": 1,
+      "message": "Use UnsupportedOperation instead",
+      "revId": "3c034107ab60200e64d831eac6c86c2e0d79b7c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
