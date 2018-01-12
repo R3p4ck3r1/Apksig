@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "fed4bb54_87447bea",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-12T19:28:57Z",
+      "side": 1,
+      "message": "Is it by design, since v2 allows additional signer(s)?  What\u0027s the implication if both v2 and v3 exist, with additional signer of v2?",
+      "range": {
+        "startLine": 953,
+        "startChar": 16,
+        "endLine": 953,
+        "endChar": 71
+      },
+      "revId": "3c034107ab60200e64d831eac6c86c2e0d79b7c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "333d8872_7960177a",
         "filename": "src/main/java/com/android/apksig/ApkSigner.java",
         "patchSetId": 1
