@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "ecc9cbbe_094c7005",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-12T21:13:29Z",
+      "side": 1,
+      "message": "Accidental and unsupported import. Remove.",
+      "revId": "3c034107ab60200e64d831eac6c86c2e0d79b7c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a789d9ba_906bd02b",
         "filename": "src/main/java/com/android/apksig/ApkSigner.java",
         "patchSetId": 1
@@ -42,6 +59,23 @@
         "endLine": 270,
         "endChar": 52
       },
+      "revId": "3c034107ab60200e64d831eac6c86c2e0d79b7c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4658ef54_8501558b",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-12T21:13:29Z",
+      "side": 1,
+      "message": "My intuition is that callers of this API should not be setting minSdkVersion and maxSdkVersion. apksig should be smart enough to make the correct choices in terms of for which API Levels to use what. The caller should be providing a list of keys + certs via KeyLineage, and apksig should do the rest. Having said that, I might be missing some twists.",
       "revId": "3c034107ab60200e64d831eac6c86c2e0d79b7c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
