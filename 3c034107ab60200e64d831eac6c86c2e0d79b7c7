@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9581bbb_b4ab5a3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-12T18:46:44Z",
+      "side": 1,
+      "message": "two tests fail actually, I need to regenerate some golden apks since the format now differs.",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "3c034107ab60200e64d831eac6c86c2e0d79b7c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
