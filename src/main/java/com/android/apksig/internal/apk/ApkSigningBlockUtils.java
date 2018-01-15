@@ -36,15 +36,18 @@ import java.nio.BufferUnderflowException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.security.DigestException;
+import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.Signature;
 import java.security.SignatureException;
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.X509Certificate;
+import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.ArrayList;
@@ -252,7 +255,7 @@ public class ApkSigningBlockUtils {
                 "No APK Signature Scheme block in APK Signing Block with ID: " + blockId);
     }
 
-    private static void checkByteOrderLittleEndian(ByteBuffer buffer) {
+    public static void checkByteOrderLittleEndian(ByteBuffer buffer) {
         if (buffer.order() != ByteOrder.LITTLE_ENDIAN) {
             throw new IllegalArgumentException("ByteBuffer byte order must be little endian");
         }
@@ -544,6 +547,12 @@ public class ApkSigningBlockUtils {
         return result;
     }
 
+    public static byte[] encodeAsLengthPrefixedElement(byte[] bytes) {
+        byte[][] adapterBytes = new byte[1][];
+        adapterBytes[0] = bytes;
+        return encodeAsSequenceOfLengthPrefixedElements(adapterBytes);
+    }
+
     public static byte[] encodeAsSequenceOfLengthPrefixedElements(List<byte[]> sequence) {
         return encodeAsSequenceOfLengthPrefixedElements(
                 sequence.toArray(new byte[sequence.size()][]));
@@ -796,6 +805,60 @@ public class ApkSigningBlockUtils {
         public SignatureNotFoundException(String message, Throwable cause) {
             super(message, cause);
         }
+    }
+
+    /**
+     * uses the given SignatureAlgorithm to sign the provided data
+     */
+    public static List<Pair<Integer, byte[]>> generateSignaturesOverData(
+            SignerConfig signerConfig, byte[] data)
+                    throws InvalidKeyException, NoSuchAlgorithmException, SignatureException {
+        List<Pair<Integer, byte[]>> signatures =
+                new ArrayList<>(signerConfig.signatureAlgorithms.size());
+        PublicKey publicKey = signerConfig.certificates.get(0).getPublicKey();
+        for (SignatureAlgorithm signatureAlgorithm : signerConfig.signatureAlgorithms) {
+            Pair<String, ? extends AlgorithmParameterSpec> sigAlgAndParams =
+                    signatureAlgorithm.getJcaSignatureAlgorithmAndParams();
+            String jcaSignatureAlgorithm = sigAlgAndParams.getFirst();
+            AlgorithmParameterSpec jcaSignatureAlgorithmParams = sigAlgAndParams.getSecond();
+            byte[] signatureBytes;
+            try {
+                Signature signature = Signature.getInstance(jcaSignatureAlgorithm);
+                signature.initSign(signerConfig.privateKey);
+                if (jcaSignatureAlgorithmParams != null) {
+                    signature.setParameter(jcaSignatureAlgorithmParams);
+                }
+                signature.update(data);
+                signatureBytes = signature.sign();
+            } catch (InvalidKeyException e) {
+                throw new InvalidKeyException("Failed to sign using " + jcaSignatureAlgorithm, e);
+            } catch (InvalidAlgorithmParameterException | SignatureException e) {
+                throw new SignatureException("Failed to sign using " + jcaSignatureAlgorithm, e);
+            }
+
+            try {
+                Signature signature = Signature.getInstance(jcaSignatureAlgorithm);
+                signature.initVerify(publicKey);
+                if (jcaSignatureAlgorithmParams != null) {
+                    signature.setParameter(jcaSignatureAlgorithmParams);
+                }
+                signature.update(data);
+                if (!signature.verify(signatureBytes)) {
+                    throw new SignatureException("Signature did not verify");
+                }
+            } catch (InvalidKeyException e) {
+                throw new InvalidKeyException(
+                        "Failed to verify generated " + jcaSignatureAlgorithm + " signature using"
+                                + " public key from certificate", e);
+            } catch (InvalidAlgorithmParameterException | SignatureException e) {
+                throw new SignatureException(
+                        "Failed to verify generated " + jcaSignatureAlgorithm + " signature using"
+                                + " public key from certificate", e);
+            }
+
+            signatures.add(Pair.of(signatureAlgorithm.getId(), signatureBytes));
+        }
+        return signatures;
     }
 
     /**
