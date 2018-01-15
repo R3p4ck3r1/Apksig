@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a91bcc22_dd0c1019",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-15T00:00:19Z",
+      "side": 1,
+      "message": "line too long",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f60a3e0_fc4596f2",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-15T00:00:19Z",
+      "side": 1,
+      "message": "What is minSdkVersion and maxSdkVersion used for? I can\u0027t seem to find where they are modified from their default values.",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5e24c6b_aea5484f",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-15T00:00:19Z",
+      "side": 1,
+      "message": "line too long",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7a5c736_9b8e59d5",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-15T00:00:19Z",
+      "side": 1,
+      "message": "Is the idea to have one SignerConfig for each old signing key/cert? If so, this setter approach doesn\u0027t support more than one old signing key.\n\nWould having a single SingerConfig contain the latest + older signing keys work?",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64637bbf_4ea2e9ab",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-15T00:00:19Z",
+      "side": 1,
+      "message": "BLock -\u003e Block",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e21b280_21fab89c",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-15T00:00:19Z",
+      "side": 1,
+      "message": "line too long",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97f582fa_642f11c2",
+        "filename": "src/main/java/com/android/apksig/SigningCertificateLineage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-15T00:00:19Z",
+      "side": 1,
+      "message": "line too long",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
