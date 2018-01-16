@@ -160,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "61f09030_fdaca792",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-16T21:42:37Z",
+      "side": 1,
+      "message": "1) rotate from RSA to EC\n- you would need to sign with RSA key for v1 and v2 (setOldSignerConfig), and sign with EC key in the normal signer configs, with minSdkVersion 0 and maxSdkVersion INT_MAX, you would also need to provide a SigningCertificateLineage which says v1 -\u003e v2 is ok\n2) rotating to EdDSA key, for plat version 30+\n- you would still need to provide RSA key for v1 and v2 signing (setOldSignerConfig), you would then provide two signers as part of the normal SignerConfigs:\n    * the same one provided in step 1, except minSdkVersion is now 0 and max is 29\n    * a new one with minSdkVersion 30, which also includes the SigningCertificateLineage for RSA-\u003eEC-\u003eEdDSA.  In both cases, only one oldSignerConfig is needed (and it\u0027s the same for both new signers).  The other two keys are provided via the normal mechanism for multiple signers, with the restriction that both of those need to have proper SigningCertificateLineage chains, and that they can\u0027t have overlapping sdkVersions.",
+      "parentUuid": "88cb5911_b636c009",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64637bbf_4ea2e9ab",
         "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
         "patchSetId": 2
