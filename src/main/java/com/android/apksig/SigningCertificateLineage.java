@@ -236,6 +236,15 @@ public class SigningCertificateLineage {
         return new SigningCertificateLineage(mMinSdkVersion, lineageCopy);
     }
 
+    /**
+     * The number of signing certificates in the lineage, including the current signer, which means
+     * this value can also be used to V2determine the number of signing certificate rotations by
+     * subtracting 1.
+     */
+    public int size() {
+        return mSigningLineage.size();
+    }
+
     private SignatureAlgorithm getSignatureAlgorithm(SignerConfig parent)
             throws InvalidKeyException {
         PublicKey publicKey = parent.getCertificate().getPublicKey();

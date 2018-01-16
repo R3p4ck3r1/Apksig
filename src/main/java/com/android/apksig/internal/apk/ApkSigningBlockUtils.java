@@ -198,11 +198,18 @@ public class ApkSigningBlockUtils {
                 byte[] expectedDigest = expected.getValue();
                 byte[] actualDigest = actualContentDigests.get(contentDigestAlgorithm);
                 if (!Arrays.equals(expectedDigest, actualDigest)) {
-                    signerInfo.addError(
-                            ApkVerifier.Issue.V2_SIG_APK_DIGEST_DID_NOT_VERIFY,
-                            contentDigestAlgorithm,
-                            toHex(expectedDigest),
-                            toHex(actualDigest));
+                    if (result.signatureSchemeVersion == VERSION_APK_SIGNATURE_SCHEME_V2) {
+                        signerInfo.addError(
+                                ApkVerifier.Issue.V2_SIG_APK_DIGEST_DID_NOT_VERIFY,
+                                contentDigestAlgorithm,
+                                toHex(expectedDigest),
+                                toHex(actualDigest));
+                    } else if (result.signatureSchemeVersion == VERSION_APK_SIGNATURE_SCHEME_V3) {
+                        ApkVerifier.Issue.V3_SIG_APK_DIGEST_DID_NOT_VERIFY,
+                                contentDigestAlgorithm,
+                                toHex(expectedDigest),
+                                toHex(actualDigest));
+                    }
                     continue;
                 }
                 signerInfo.verifiedContentDigests.put(contentDigestAlgorithm, actualDigest);
@@ -889,6 +896,7 @@ public class ApkSigningBlockUtils {
     }
 
     public static class Result {
+        public final int signatureSchemeVersion;
 
         /** Whether the APK's APK Signature Scheme signature verifies. */
         public boolean verified;
@@ -896,6 +904,10 @@ public class ApkSigningBlockUtils {
         public final List<SignerInfo> signers = new ArrayList<>();
         private final List<ApkVerifier.IssueWithParams> mWarnings = new ArrayList<>();
         private final List<ApkVerifier.IssueWithParams> mErrors = new ArrayList<>();
+
+        public Result(int signatureSchemeVersion) {
+            this.signatureSchemeVersion = signatureSchemeVersion;
+        }
 
         public boolean containsErrors() {
             if (!mErrors.isEmpty()) {
@@ -936,6 +948,9 @@ public class ApkSigningBlockUtils {
             public Map<SignatureAlgorithm, byte[]> verifiedSignatures = new HashMap<>();
             public List<AdditionalAttribute> additionalAttributes = new ArrayList<>();
             public byte[] signedData;
+            public int minSdkVersion;
+            public int maxSdkVersion;
+            public SigningCertificateLineage signingCertificateLineage;
 
             private final List<ApkVerifier.IssueWithParams> mWarnings = new ArrayList<>();
             private final List<ApkVerifier.IssueWithParams> mErrors = new ArrayList<>();
