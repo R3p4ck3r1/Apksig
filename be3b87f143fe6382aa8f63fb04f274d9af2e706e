@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6144328a_8a671168",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-16T19:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a91bcc22_dd0c1019",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f60a3e0_fc4596f2",
         "filename": "src/main/java/com/android/apksig/ApkSigner.java",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-01-15T00:00:19Z",
       "side": 1,
       "message": "What is minSdkVersion and maxSdkVersion used for? I can\u0027t seem to find where they are modified from their default values.",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "236021d3_4a25c032",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-16T19:03:21Z",
+      "side": 1,
+      "message": "They are used in the v3 specification to allow for multiple v3 signatures, which target different platform versions (this is to allow rotating to a new key algorithm supported by a future platform version).  There are some TODO\u0027s for that functionality, so right now they don\u0027t do anything.",
+      "parentUuid": "0f60a3e0_fc4596f2",
       "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1fd91ca1_22d29b8d",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-16T19:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5e24c6b_aea5484f",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7a5c736_9b8e59d5",
         "filename": "src/main/java/com/android/apksig/ApkSigner.java",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2018-01-15T00:00:19Z",
       "side": 1,
       "message": "Is the idea to have one SignerConfig for each old signing key/cert? If so, this setter approach doesn\u0027t support more than one old signing key.\n\nWould having a single SingerConfig contain the latest + older signing keys work?",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4556740_19967200",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-16T19:03:21Z",
+      "side": 1,
+      "message": "That is the idea, but v3 signature scheme explicitly decided not to support multiple-signer situations, so this method should only ever need to be set with one signer.\n\nThis could be done by adding an older signer to every new signer, but given the above design decision, I\u0027m not sure what it buys us.  I tried a few different combinations of this, and keeping the singers separate allowed me to change less code, I think, in the end.",
+      "parentUuid": "e7a5c736_9b8e59d5",
       "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "7a6aa584_ea742986",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-16T19:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64637bbf_4ea2e9ab",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e21b280_21fab89c",
         "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
         "patchSetId": 2
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "8db23c8f_ce5e56f1",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-16T19:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e21b280_21fab89c",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97f582fa_642f11c2",
         "filename": "src/main/java/com/android/apksig/SigningCertificateLineage.java",
         "patchSetId": 2
@@ -118,6 +226,24 @@
       "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ead6e68_56109b59",
+        "filename": "src/main/java/com/android/apksig/SigningCertificateLineage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-16T19:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97f582fa_642f11c2",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
