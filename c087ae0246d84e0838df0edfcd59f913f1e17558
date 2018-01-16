@@ -1,0 +1,363 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b91d316_e6f7c8b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "Something\u0027s off here",
+      "range": {
+        "startLine": 13,
+        "startChar": 18,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a85ff499_a4d6cc13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "something\u0027s off here",
+      "range": {
+        "startLine": 15,
+        "startChar": 12,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28c0134c_b7c98974",
+        "filename": "src/main/java/com/android/apksig/SigningCertificateLineage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "???",
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fea73f0a_5986195f",
+        "filename": "src/main/java/com/android/apksig/SigningCertificateLineage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "won -\u003e one?",
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aa88f98_ac2c6789",
+        "filename": "src/main/java/com/android/apksig/SigningCertificateLineage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "space missing after comma",
+      "range": {
+        "startLine": 214,
+        "startChar": 42,
+        "endLine": 214,
+        "endChar": 47
+      },
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8787ae2a_170c2a50",
+        "filename": "src/main/java/com/android/apksig/SigningCertificateLineage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "Looks like spawn* methods modify the state of the lineage. If so, why do we need a Builder pattern? Why not start with an empty lineage an offer a way to parse from encoded form?\n\nConsider going with immutable lineage objects. There, these spawn* methods would return a new modified instance of lineage as their result. Alternatively, you could expose spawn* methodsin the Builder. The pattern in that case is that lineage instances have a buildUpon() or builder() method which returns a Builder initialized to the state of the current lineage, and the Builder can then modify this state (without modifying the original lineage) and return a new potentially modified lineage.",
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f63f287f_1d4008cf",
+        "filename": "src/main/java/com/android/apksig/SigningCertificateLineage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "Just checking: are there any mandatory parameters for this builder? If so, they should be listed as parameters to its constructor.",
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d18264f6_cf245446",
+        "filename": "src/main/java/com/android/apksig/SigningCertificateLineage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "Why v3? This class doesn\u0027t appear to build or return a V3SigningCertificateLineage.",
+      "range": {
+        "startLine": 253,
+        "startChar": 63,
+        "endLine": 253,
+        "endChar": 90
+      },
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc14938a_658a13f3",
+        "filename": "src/main/java/com/android/apksig/SigningCertificateLineage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "If this method is about constructing a lineage from its encoded form, then it does not belong into a Builder. Normally, a Builder is for constructing an object using structured input -- a glorified Java constructor with named optional parameters. Factory or a static method of SigningCertificateLineage might be a better approach for creating an object from an encoded form.",
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af67c820_3f632126",
+        "filename": "src/main/java/com/android/apksig/SigningCertificateLineage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "line too long",
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26c4de0e_feab4c18",
+        "filename": "src/main/java/com/android/apksig/SigningCertificateLineage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "For consistency with other public API in this library and with Android public API concept \"minSdkVersion\" known to Android developers, it might be worth using setMinSdkVersion and minSdkVersion.",
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce9182c4_ea9c97c9",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "I don\u0027t see any SignatureAlgorithm provided to this method",
+      "range": {
+        "startLine": 811,
+        "startChar": 22,
+        "endLine": 811,
+        "endChar": 40
+      },
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c47d71ce_4518d9f5",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "Please mention in the Javadoc what the returned pairs consist of.",
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "475b1f0f_0c32baca",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "Please make the exception message more informative, similar to how this is done in the two exceptions below. I know this issue was there before this commit. It\u0027s just that it would be great to fix this small flaw while we\u0027re at it.",
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f301656_c54bd446",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "Java style: Imports should not be split across multiple lines...",
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c2e5ca8_745b1b49",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "Java style: don\u0027t break imports over multiple lines",
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7438fe54_6939ea68",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "Javadoc style: First sentence of Javadoc is always capitalized.",
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c80b2085_249aad7d",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "Tip: .hasRemaining()",
+      "range": {
+        "startLine": 77,
+        "startChar": 44,
+        "endLine": 77,
+        "endChar": 61
+      },
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "205414c1_61233b29",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:15:09Z",
+      "side": 1,
+      "message": "line too long",
+      "revId": "c087ae0246d84e0838df0edfcd59f913f1e17558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
