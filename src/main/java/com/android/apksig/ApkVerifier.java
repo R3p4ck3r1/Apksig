@@ -1188,6 +1188,214 @@ public class ApkVerifier {
                         + " Expected: <%2$s>, actual: <%3$s>"),
 
         /**
+         * APK which is both JAR-signed and signed using APK Signature Scheme v2 contains a JAR
+         * signature from this signer, but does not contain an APK Signature Scheme v2 signature
+         * from this signer.
+         */
+        V3_SIG_MISSING("No APK Signature Scheme v2 signature from this signer"),
+
+        /**
+         * Failed to parse the list of signers contained in the APK Signature Scheme v3 signature.
+         */
+        V3_SIG_MALFORMED_SIGNERS("Malformed list of signers"),
+
+        /**
+         * Failed to parse this signer's signer block contained in the APK Signature Scheme v2
+         * signature.
+         */
+        V3_SIG_MALFORMED_SIGNER("Malformed signer block"),
+
+        /**
+         * Public key embedded in the APK Signature Scheme v2 signature of this signer could not be
+         * parsed.
+         *
+         * <ul>
+         * <li>Parameter 1: error details ({@code Throwable})</li>
+         * </ul>
+         */
+        V3_SIG_MALFORMED_PUBLIC_KEY("Malformed public key: %1$s"),
+
+        /**
+         * This APK Signature Scheme v2 signer's certificate could not be parsed.
+         *
+         * <ul>
+         * <li>Parameter 1: index ({@code 0}-based) of the certificate in the signer's list of
+         *     certificates ({@code Integer})</li>
+         * <li>Parameter 2: sequence number ({@code 1}-based) of the certificate in the signer's
+         *     list of certificates ({@code Integer})</li>
+         * <li>Parameter 3: error details ({@code Throwable})</li>
+         * </ul>
+         */
+        V3_SIG_MALFORMED_CERTIFICATE("Malformed certificate #%2$d: %3$s"),
+
+        /**
+         * Failed to parse this signer's signature record contained in the APK Signature Scheme v2
+         * signature.
+         *
+         * <ul>
+         * <li>Parameter 1: record number (first record is {@code 1}) ({@code Integer})</li>
+         * </ul>
+         */
+        V3_SIG_MALFORMED_SIGNATURE("Malformed APK Signature Scheme v2 signature record #%1$d"),
+
+        /**
+         * Failed to parse this signer's digest record contained in the APK Signature Scheme v2
+         * signature.
+         *
+         * <ul>
+         * <li>Parameter 1: record number (first record is {@code 1}) ({@code Integer})</li>
+         * </ul>
+         */
+        V3_SIG_MALFORMED_DIGEST("Malformed APK Signature Scheme v2 digest record #%1$d"),
+
+        /**
+         * This APK Signature Scheme v2 signer contains a malformed additional attribute.
+         *
+         * <ul>
+         * <li>Parameter 1: attribute number (first attribute is {@code 1}) {@code Integer})</li>
+         * </ul>
+         */
+        V3_SIG_MALFORMED_ADDITIONAL_ATTRIBUTE("Malformed additional attribute #%1$d"),
+
+        /**
+         * APK Signature Scheme v3 signature contains no signers.
+         */
+        V3_SIG_NO_SIGNERS("No signers in APK Signature Scheme v3 signature"),
+
+        /**
+         * This APK Signature Scheme v3 signer contains a signature produced using an unknown
+         * algorithm.
+         *
+         * <ul>
+         * <li>Parameter 1: algorithm ID ({@code Integer})</li>
+         * </ul>
+         */
+        V3_SIG_UNKNOWN_SIG_ALGORITHM("Unknown signature algorithm: %1$#x"),
+
+        /**
+         * This APK Signature Scheme v2 signer contains an unknown additional attribute.
+         *
+         * <ul>
+         * <li>Parameter 1: attribute ID ({@code Integer})</li>
+         * </ul>
+         */
+        V3_SIG_UNKNOWN_ADDITIONAL_ATTRIBUTE("Unknown additional attribute: ID %1$#x"),
+
+        /**
+         * An exception was encountered while verifying APK Signature Scheme v2 signature of this
+         * signer.
+         *
+         * <ul>
+         * <li>Parameter 1: signature algorithm ({@link SignatureAlgorithm})</li>
+         * <li>Parameter 2: exception ({@code Throwable})</li>
+         * </ul>
+         */
+        V3_SIG_VERIFY_EXCEPTION("Failed to verify %1$s signature: %2$s"),
+
+        /**
+         * APK Signature Scheme v2 signature over this signer's signed-data block did not verify.
+         *
+         * <ul>
+         * <li>Parameter 1: signature algorithm ({@link SignatureAlgorithm})</li>
+         * </ul>
+         */
+        V3_SIG_DID_NOT_VERIFY("%1$s signature over signed-data did not verify"),
+
+        /**
+         * This APK Signature Scheme v2 signer offers no signatures.
+         */
+        V3_SIG_NO_SIGNATURES("No signatures"),
+
+        /**
+         * This APK Signature Scheme v2 signer offers signatures but none of them are supported.
+         */
+        V3_SIG_NO_SUPPORTED_SIGNATURES("No supported signatures"),
+
+        /**
+         * This APK Signature Scheme v2 signer offers no certificates.
+         */
+        V3_SIG_NO_CERTIFICATES("No certificates"),
+
+        /**
+         * This APK Signature Scheme v3 signer's minSdkVersion listed in the signer's signed data
+         * does not match the minSdkVersion listed in the signatures record.
+         *
+         * <ul>
+         * <li>Parameter 1: minSdkVersion in signature record ({@code Integer}) </li>
+         * <li>Parameter 2: minSdkVersion in signed data ({@code Integer}) </li>
+         * </ul>
+         */
+        V3_MIN_SDK_VERSION_MISMATCH_BETWEEN_SIGNER_AND_SIGNED_DATA_RECORD(
+                "minSdkVersion mismatch between signed data and signature record:"
+                        + " <%1$s> vs <%2$s>"),
+
+        /**
+         * This APK Signature Scheme v3 signer's maxSdkVersion listed in the signer's signed data
+         * does not match the maxSdkVersion listed in the signatures record.
+         *
+         * <ul>
+         * <li>Parameter 1: maxSdkVersion in signature record ({@code Integer}) </li>
+         * <li>Parameter 2: maxSdkVersion in signed data ({@code Integer}) </li>
+         * </ul>
+         */
+        V3_MAX_SDK_VERSION_MISMATCH_BETWEEN_SIGNER_AND_SIGNED_DATA_RECORD(
+                "maxSdkVersion mismatch between signed data and signature record:"
+                        + " <%1$s> vs <%2$s>"),
+
+        /**
+         * This APK Signature Scheme v2 signer's public key listed in the signer's certificate does
+         * not match the public key listed in the signatures record.
+         *
+         * <ul>
+         * <li>Parameter 1: hex-encoded public key from certificate ({@code String})</li>
+         * <li>Parameter 2: hex-encoded public key from signatures record ({@code String})</li>
+         * </ul>
+         */
+        V3_SIG_PUBLIC_KEY_MISMATCH_BETWEEN_CERTIFICATE_AND_SIGNATURES_RECORD(
+                "Public key mismatch between certificate and signature record: <%1$s> vs <%2$s>"),
+
+        /**
+         * This APK Signature Scheme v2 signer's signature algorithms listed in the signatures
+         * record do not match the signature algorithms listed in the signatures record.
+         *
+         * <ul>
+         * <li>Parameter 1: signature algorithms from signatures record ({@code List<Integer>})</li>
+         * <li>Parameter 2: signature algorithms from digests record ({@code List<Integer>})</li>
+         * </ul>
+         */
+        V3_SIG_SIG_ALG_MISMATCH_BETWEEN_SIGNATURES_AND_DIGESTS_RECORDS(
+                "Signature algorithms mismatch between signatures and digests records"
+                        + ": %1$s vs %2$s"),
+
+        /**
+         * The APK's digest does not match the digest contained in the APK Signature Scheme v2
+         * signature.
+         *
+         * <ul>
+         * <li>Parameter 1: content digest algorithm ({@link ContentDigestAlgorithm})</li>
+         * <li>Parameter 2: hex-encoded expected digest of the APK ({@code String})</li>
+         * <li>Parameter 3: hex-encoded actual digest of the APK ({@code String})</li>
+         * </ul>
+         */
+        V3_SIG_APK_DIGEST_DID_NOT_VERIFY(
+                "APK integrity check failed. %1$s digest mismatch."
+                        + " Expected: <%2$s>, actual: <%3$s>"),
+
+        /**
+         * The signer's SigningCertificateLineage attribute containd a proof-of-rotation record with
+         * signature(s) that did not verify.
+         */
+        V3_SIG_POR_DID_NOT_VERIFY("SigningCertificateLineage attribute containd a proof-of-rotation"
+                + " record with signature(s) that did not verify."),
+
+        /**
+         * Failed to parse the SigningCertificateLineage structure in the APK Signature Scheme v3
+         * signature's additional attributes section.
+         */
+        V3_SIG_MALFORMED_LINEAGE("Failed to parse the SigningCertificateLineage structure in the "
+                + "APK Signature Scheme v3 signature's additional attributes section."),
+
+        /**
          * APK Signing Block contains an unknown entry.
          *
          * <ul>

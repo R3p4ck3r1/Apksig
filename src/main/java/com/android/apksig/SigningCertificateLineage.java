@@ -37,8 +37,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.print.DocFlavor;
-
 /**
  * APK Signer Lineage.
  *
