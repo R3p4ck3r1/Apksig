@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "88cb5911_b636c009",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-16T21:23:29Z",
+      "side": 1,
+      "message": "What I meant is that there will be situations where you need to provide more than 2 keys for a single signer. For example, let\u0027s say I rotate signing key from RSA to EC. I now need to provide 2 keys to sign the APK: the RSA and EC key. I then rotate the signing key to to an EdDSA one, supported only one some newer platforms. Now I need to provide 3 keys to sign the APK. However, the approach in this code doesn\u0027t appear to let me provide more than two keys.",
+      "parentUuid": "b4556740_19967200",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64637bbf_4ea2e9ab",
         "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
         "patchSetId": 2
