@@ -196,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "c7d33249_04c7aebb",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-01-17T18:07:51Z",
+      "side": 1,
+      "message": "I agree that would be better, but I was wary of design paralysis and my general approach is to do the simple thing first and improve upon it as necessary.  In the vast majority of actual use cases, clients won\u0027t need to change at all (no rotation) and even with rotation, will act the same.\n\nThat being said, it might be more prudent to assume we get this information from the key lineage and make sure we don\u0027t expose any API that we would have to support later.  I\u0027ll consider the implications and changes required of \"one key lineage to rule them all\" as we had discussed previously, but likely will leave the current patch series as-is (unmerged) for purpose of generating CTS and platform changes for key rotation to be able to test the platform.",
+      "parentUuid": "a5e1bc02_e04b0759",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64637bbf_4ea2e9ab",
         "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
         "patchSetId": 2
