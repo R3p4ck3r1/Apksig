@@ -31,6 +31,7 @@ import com.android.apksig.util.DataSource;
 import com.android.apksig.util.DataSources;
 import com.android.apksig.util.ReadableDataSink;
 import com.android.apksig.zip.ZipFormatException;
+
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
@@ -84,9 +85,11 @@ public class ApkSigner {
     private static final String ANDROID_MANIFEST_ZIP_ENTRY_NAME = "AndroidManifest.xml";
 
     private final List<SignerConfig> mSignerConfigs;
+    private final SignerConfig mOldSignerConfig;
     private final Integer mMinSdkVersion;
     private final boolean mV1SigningEnabled;
     private final boolean mV2SigningEnabled;
+    private final boolean mV3SigningEnabled;
     private final boolean mDebuggableApkPermitted;
     private final boolean mOtherSignersSignaturesPreserved;
     private final String mCreatedBy;
@@ -102,9 +105,11 @@ public class ApkSigner {
 
     private ApkSigner(
             List<SignerConfig> signerConfigs,
+            SignerConfig oldSignerConfig,
             Integer minSdkVersion,
             boolean v1SigningEnabled,
             boolean v2SigningEnabled,
+            boolean v3SigningEnabled,
             boolean debuggableApkPermitted,
             boolean otherSignersSignaturesPreserved,
             String createdBy,
@@ -116,9 +121,11 @@ public class ApkSigner {
             DataSource outputApkDataSource) {
 
         mSignerConfigs = signerConfigs;
+        mOldSignerConfig = oldSignerConfig;
         mMinSdkVersion = minSdkVersion;
         mV1SigningEnabled = v1SigningEnabled;
         mV2SigningEnabled = v2SigningEnabled;
+        mV3SigningEnabled = v3SigningEnabled;
         mDebuggableApkPermitted = debuggableApkPermitted;
         mOtherSignersSignaturesPreserved = otherSignersSignaturesPreserved;
         mCreatedBy = createdBy;
@@ -215,7 +222,7 @@ public class ApkSigner {
         } catch (ApkSigningBlockNotFoundException e) {
             // Input APK does not contain an APK Signing Block. That's OK. APKs are not required to
             // contain this block. It's only needed if the APK is signed using APK Signature Scheme
-            // v2.
+            // v2 and/or v3.
         }
         DataSource inputApkLfhSection =
                 inputApk.slice(
@@ -254,12 +261,25 @@ public class ApkSigner {
                                 signerConfig.getCertificates())
                                 .build());
             }
+
             DefaultApkSignerEngine.Builder signerEngineBuilder =
                     new DefaultApkSignerEngine.Builder(engineSignerConfigs, minSdkVersion)
                             .setV1SigningEnabled(mV1SigningEnabled)
                             .setV2SigningEnabled(mV2SigningEnabled)
+                            .setV3SigningEnabled(mV3SigningEnabled)
                             .setDebuggableApkPermitted(mDebuggableApkPermitted)
                             .setOtherSignersSignaturesPreserved(mOtherSignersSignaturesPreserved);
+
+            // If we are signing with an old signer for compatibility, make sure it is added too.
+            if (mOldSignerConfig != null) {
+                signerEngineBuilder = signerEngineBuilder.setOldSignerConfig(
+                        new DefaultApkSignerEngine.SignerConfig.Builder(
+                                mOldSignerConfig.getName(),
+                                mOldSignerConfig.getPrivateKey(),
+                                mOldSignerConfig.getCertificates())
+                                .build());
+            }
+
             if (mCreatedBy != null) {
                 signerEngineBuilder.setCreatedBy(mCreatedBy);
             }
@@ -472,8 +492,8 @@ public class ApkSigner {
                         outputCentralDirDataSource.size(),
                         outputCentralDirStartOffset);
 
-        // Step 10. Generate and output APK Signature Scheme v2 signatures, if necessary. This may
-        // insert an APK Signing Block just before the output's ZIP Central Directory
+        // Step 10. Generate and output APK Signature Scheme v2 and/or v3 signatures, if necessary.
+        // This may insert an APK Signing Block just before the output's ZIP Central Directory
         ApkSignerEngine.OutputApkSigningBlockRequest2 outputApkSigningBlockRequest =
                 signerEngine.outputZipSections2(
                         outputApkIn,
@@ -747,14 +767,23 @@ public class ApkSigner {
         private final String mName;
         private final PrivateKey mPrivateKey;
         private final List<X509Certificate> mCertificates;
+        private final int mMinSdkVersion;
+        private final int mMaxSdkVersion;
+        private final SigningCertificateLineage mSigningCertificateLineage;
 
         private SignerConfig(
                 String name,
                 PrivateKey privateKey,
-                List<X509Certificate> certificates) {
+                List<X509Certificate> certificates,
+                int minSdkVersion,
+                int maxSdkVersion,
+                SigningCertificateLineage signingCertificateLineage) {
             mName = name;
             mPrivateKey = privateKey;
             mCertificates = Collections.unmodifiableList(new ArrayList<>(certificates));
+            mMinSdkVersion = minSdkVersion;
+            mMaxSdkVersion = maxSdkVersion;
+            mSigningCertificateLineage = signingCertificateLineage;
         }
 
         /**
@@ -780,12 +809,38 @@ public class ApkSigner {
         }
 
         /**
+         * Returns the minimum SDK version required by this signer for validity.  This is a field
+         * available for APK Signature Scheme v3 signatures to enable rotation to new signing
+         * algorithms that are not available across all v3 supported platforms.
+         */
+        public int getMinSdkVersion() {
+            return mMinSdkVersion;
+        }
+
+        /**
+         * Returns the highest SDK version required by this signer for validity.  This is a field
+         * available for APK Signature Scheme v3 signatures to enable rotation to new signing
+         * algorithms that are not available across all v3 supported platforms.
+         */
+        public int getMaxSdkVersion() {
+            return mMaxSdkVersion;
+        }
+
+        /**
+         * Returns the {@link SigningCertificateLineage} associated with this signer.
+         */
+        public SigningCertificateLineage getSigningCertificateLineage() { return mSigningCertificateLineage; }
+
+        /**
          * Builder of {@link SignerConfig} instances.
          */
         public static class Builder {
             private final String mName;
             private final PrivateKey mPrivateKey;
             private final List<X509Certificate> mCertificates;
+            private int mMinSdkVersion;
+            private int mMaxSdkVersion;
+            private SigningCertificateLineage mSigningCertificateLineage;
 
             /**
              * Constructs a new {@code Builder}.
@@ -806,6 +861,19 @@ public class ApkSigner {
                 mName = name;
                 mPrivateKey = privateKey;
                 mCertificates = new ArrayList<>(certificates);
+                mMinSdkVersion = 0;
+                mMaxSdkVersion = Integer.MAX_VALUE;
+                mSigningCertificateLineage = null;
+            }
+
+            /**
+             * Sets the {@link SigningCertificateLineage} to use with the v3 signature scheme.  This
+             * structure provides proof of signing certificate rotation linking the current {@link
+             * SignerConfig} to previous ones.
+             */
+            public SignerConfig.Builder setSigningCertificateLineage(SigningCertificateLineage signingCertificateLineage) {
+                // TODO support v3 key rotation.
+                throw new UnsupportedOperationException();
             }
 
             /**
@@ -816,7 +884,10 @@ public class ApkSigner {
                 return new SignerConfig(
                         mName,
                         mPrivateKey,
-                        mCertificates);
+                        mCertificates,
+                        mMinSdkVersion,
+                        mMaxSdkVersion,
+                        mSigningCertificateLineage);
             }
         }
     }
@@ -835,8 +906,10 @@ public class ApkSigner {
      */
     public static class Builder {
         private final List<SignerConfig> mSignerConfigs;
+        private SignerConfig mOldSignerConfig;
         private boolean mV1SigningEnabled = true;
         private boolean mV2SigningEnabled = true;
+        private boolean mV3SigningEnabled = true;
         private boolean mDebuggableApkPermitted = true;
         private boolean mOtherSignersSignaturesPreserved;
         private String mCreatedBy;
@@ -865,7 +938,12 @@ public class ApkSigner {
             if (signerConfigs.isEmpty()) {
                 throw new IllegalArgumentException("At least one signer config must be provided");
             }
+            if (signerConfigs.size() > 1) {
+                // APK Signature Scheme v3 only supports single signer.
+                mV3SigningEnabled = false;
+            }
             mSignerConfigs = new ArrayList<>(signerConfigs);
+            mOldSignerConfig = null;
             mSignerEngine = null;
         }
 
@@ -1043,6 +1121,45 @@ public class ApkSigner {
         }
 
         /**
+         * Sets whether the APK should be signed using APK Signature Scheme v3 (aka v3 signature
+         * scheme).
+         *
+         * <p>By default, whether APK is signed using APK Signature Scheme v3 is determined by
+         * {@code ApkSigner} based on the platform versions supported by the APK or specified using
+         * {@link #setMinSdkVersion(int)}.
+         *
+         * <p><em>Note:</em> This method may only be invoked when this builder is not initialized
+         * with an {@link ApkSignerEngine}.
+         * <p><em>Note:</em> APK Signature Scheme v3 only supports a single signing certificate.
+         *
+         * @param enabled {@code true} to require the APK to be signed using APK Signature Scheme
+         *        v3, {@code false} to require the APK to not be signed using APK Signature Scheme
+         *        v3.
+         *
+         * @throws IllegalStateException if this builder was initialized with an
+         *         {@link ApkSignerEngine}
+         */
+        public Builder setV3SigningEnabled(boolean enabled) {
+            checkInitializedWithoutEngine();
+            if (enabled && mSignerConfigs != null && mSignerConfigs.size() > 1) {
+                throw new IllegalArgumentException("APK Signature Scheme v3 cannot be used with "
+                        + "multiple signers.");
+            }
+            mV3SigningEnabled = enabled;
+            return this;
+        }
+
+        public Builder setOldSignerConfig(SignerConfig oldSigner) {
+            checkInitializedWithoutEngine();
+            if (!mV3SigningEnabled) {
+                throw new IllegalArgumentException("An old signer can only be specified when using "
+                        + "APK Signature Scheme v3.  Please enable that first");
+            }
+            mOldSignerConfig = oldSigner;
+            return this;
+        }
+
+        /**
          * Sets whether the APK should be signed even if it is marked as debuggable
          * ({@code android:debuggable="true"} in its {@code AndroidManifest.xml}). For backward
          * compatibility reasons, the default value of this setting is {@code true}.
@@ -1110,9 +1227,11 @@ public class ApkSigner {
         public ApkSigner build() {
             return new ApkSigner(
                     mSignerConfigs,
+                    mOldSignerConfig,
                     mMinSdkVersion,
                     mV1SigningEnabled,
                     mV2SigningEnabled,
+                    mV3SigningEnabled,
                     mDebuggableApkPermitted,
                     mOtherSignersSignaturesPreserved,
                     mCreatedBy,
