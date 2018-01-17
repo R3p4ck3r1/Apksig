@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "a5e1bc02_e04b0759",
+        "filename": "src/main/java/com/android/apksig/ApkSigner.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2018-01-17T01:36:57Z",
+      "side": 1,
+      "message": "I see. It would be great if all this complexity, including figuring out whether there is one or more signers, were hidden from the client of this library. Ideally, the client should only need to provide 1 x key lineage, and 3 x private keys. No min-maxSdkVersions, no multiple signers. Given that we had a concept of multiple signers exposed to clients already, ideally the client would still see this situation as a single signer, just with three keys + apksig doing some magic.\n\nIt\u0027s your call though. Perhaps there is a need to expose more controls for clients of apksig and exposing those additional controls breaks this idillic simple solution.",
+      "parentUuid": "61f09030_fdaca792",
+      "revId": "be3b87f143fe6382aa8f63fb04f274d9af2e706e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64637bbf_4ea2e9ab",
         "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
         "patchSetId": 2
