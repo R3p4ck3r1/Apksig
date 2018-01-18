@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b3af673_d9243daa",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2018-01-18T19:01:05Z",
+      "side": 1,
+      "message": "Why SecurityException instead of IOException? SecurityExceptions will cause the caller to blow up most likely.",
+      "range": {
+        "startLine": 149,
+        "startChar": 26,
+        "endLine": 149,
+        "endChar": 43
+      },
+      "revId": "2ff85c26be1e53eb00c4546a378b0d2d58ef7cb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
