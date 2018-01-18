@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a7dabfcb_0e5da7f9",
+        "filename": "src/main/java/com/android/apksig/SigningCertificateLineage.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2018-01-18T20:34:23Z",
+      "side": 1,
+      "message": "Add the format comment here as well",
+      "range": {
+        "startLine": 127,
+        "startChar": 22,
+        "endLine": 127,
+        "endChar": 27
+      },
+      "revId": "2ff85c26be1e53eb00c4546a378b0d2d58ef7cb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b3af673_d9243daa",
         "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
         "patchSetId": 3
