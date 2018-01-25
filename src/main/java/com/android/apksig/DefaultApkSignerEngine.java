@@ -1173,9 +1173,10 @@ public class DefaultApkSignerEngine implements ApkSignerEngine {
              * structure provides proof of signing certificate rotation linking the current {@link
              * SignerConfig} to previous ones.
              */
-            public SignerConfig.Builder setSigningCertificateLineage(SigningCertificateLineage signingCertificateLineage) {
-                // TODO support v3 key rotation.
-                throw new UnsupportedOperationException();
+            public SignerConfig.Builder setSigningCertificateLineage(
+                    SigningCertificateLineage signingCertificateLineage) {
+                mSigningCertificateLineage = signingCertificateLineage;
+                return this;
             }
 
             /**

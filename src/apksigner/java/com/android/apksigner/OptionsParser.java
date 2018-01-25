@@ -96,7 +96,7 @@ class OptionsParser {
      * Undoes the last call to nextOption(), if one was made.  This allows callers to unwind state
      * so as not to eat up an option that is meant to be processed elsewhere.
      */
-    public String putOption() {
+    public void putOption() {
         mIndex = mPutBackIndex;
         mLastOptionOriginalForm = mPutBackLastOptionOriginalForm;
         mLastOptionValue = mPutBackLastOptionValue;

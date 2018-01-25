@@ -63,6 +63,9 @@ import java.util.List;
  */
 public class V3SigningCertificateLineage {
 
+    private final static int FIRST_VERSION = 1;
+    private final static int CURRENT_VERSION = FIRST_VERSION;
+
     /**
      * Deserializes the binary representation of an {@link V3SigningCertificateLineage}.  This is
      * currently the same representation that is included within an APK Signature Scheme v3 signer
@@ -73,14 +76,13 @@ public class V3SigningCertificateLineage {
             throws IOException {
         List<SigningCertificateNode> result = new ArrayList<>();
         int nodeCount = 0;
-        if (inputBytes == null || inputBytes.hasRemaining()) {
+        if (inputBytes == null || !inputBytes.hasRemaining()) {
             return null;
         }
 
         ApkSigningBlockUtils.checkByteOrderLittleEndian(inputBytes);
 
         // FORMAT (little endian):
-        // * uint32: MAGIC
         // * sequence of length-prefixed (uint32): nodes
         //   * length-prefixed bytes: signed data
         //     * length-prefixed bytes: certificate
@@ -98,6 +100,13 @@ public class V3SigningCertificateLineage {
         X509Certificate lastCert = null;
         int lastSigAlgorithmId = 0;
 
+        try {
+            // get the version code, but don't do anything with it: creator knew about all our flags
+            inputBytes.getInt();
+        } catch (BufferUnderflowException e) {
+            throw new IOException("Failed to parse Proof-of-rotation record: remaining buffer too"
+                    + " short to contain proof-of-rotation version.", e);
+        }
         while (inputBytes.hasRemaining()) {
             nodeCount++;
             try {
@@ -105,7 +114,7 @@ public class V3SigningCertificateLineage {
                 ByteBuffer signedData = getLengthPrefixedSlice(nodeBytes);
                 int flags = nodeBytes.getInt();
                 int sigAlgorithmId = nodeBytes.getInt();
-                SignatureAlgorithm sigAlgorithm = SignatureAlgorithm.findById(sigAlgorithmId);
+                SignatureAlgorithm sigAlgorithm = SignatureAlgorithm.findById(lastSigAlgorithmId);
                 byte[] signature = readLengthPrefixedByteArray(nodeBytes);
 
                 if (lastCert != null) {
@@ -128,6 +137,7 @@ public class V3SigningCertificateLineage {
                     }
                 }
 
+                signedData.rewind();
                 byte[] encodedCert = readLengthPrefixedByteArray(signedData);
                 int signedSigAlgorithm = signedData.getInt();
                 if (lastCert != null && lastSigAlgorithmId != signedSigAlgorithm) {
@@ -163,6 +173,7 @@ public class V3SigningCertificateLineage {
     public static byte[] encodeSigningCertificateLineage(
             List<SigningCertificateNode> signingCertificateLineage) {
         // FORMAT (little endian):
+        // * version code
         // * sequence of length-prefixed (uint32): nodes
         //   * length-prefixed bytes: signed data
         //     * length-prefixed bytes: certificate
@@ -175,7 +186,14 @@ public class V3SigningCertificateLineage {
             nodes.add(encodeSigningCertificateNode(node));
         }
         byte [] encodedSigningCertificateLineage = encodeAsSequenceOfLengthPrefixedElements(nodes);
-        return encodeAsLengthPrefixedElement(encodedSigningCertificateLineage);
+
+        // add the version code (uint32) on top of the encoded nodes
+        int payloadSize = 4 + encodedSigningCertificateLineage.length;
+        ByteBuffer encodedWithVersion = ByteBuffer.allocate(payloadSize);
+        encodedWithVersion.order(ByteOrder.LITTLE_ENDIAN);
+        encodedWithVersion.putInt(CURRENT_VERSION);
+        encodedWithVersion.put(encodedSigningCertificateLineage);
+        return encodedWithVersion.array();
     }
 
     public static byte[] encodeSigningCertificateNode(SigningCertificateNode node) {
@@ -185,6 +203,7 @@ public class V3SigningCertificateLineage {
         //   * uint32: signature algorithm id
         // * uint32: flags
         // * uint32: signature algorithm id (used by previous signer)
+        // * length-prefixed bytes: signature over signed data
         int parentSigAlgorithmId = 0;
         if (node.parentSigAlgorithm != null) {
             parentSigAlgorithmId = node.parentSigAlgorithm.getId();
@@ -195,10 +214,11 @@ public class V3SigningCertificateLineage {
         }
         byte[] prefixedSignedData = encodeSignedData(node.signingCert, parentSigAlgorithmId);
         byte[] prefixedSignature = encodeAsLengthPrefixedElement(node.signature);
-        int payloadSize = prefixedSignedData.length + 4 + prefixedSignature.length;
+        int payloadSize = prefixedSignedData.length + 4 + 4 + prefixedSignature.length;
         ByteBuffer result = ByteBuffer.allocate(payloadSize);
         result.order(ByteOrder.LITTLE_ENDIAN);
         result.put(prefixedSignedData);
+        result.putInt(node.flags);
         result.putInt(sigAlgorithmId);
         result.put(prefixedSignature);
         return result.array();

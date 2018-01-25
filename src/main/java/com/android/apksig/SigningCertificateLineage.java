@@ -16,6 +16,9 @@
 
 package com.android.apksig;
 
+import static com.android.apksig.internal.apk.ApkSigningBlockUtils.getLengthPrefixedSlice;
+
+import com.android.apksig.apk.ApkFormatException;
 import com.android.apksig.internal.apk.ApkSigningBlockUtils;
 import com.android.apksig.internal.apk.SignatureAlgorithm;
 import com.android.apksig.internal.apk.v3.V3SchemeSigner;
@@ -129,7 +132,14 @@ public class SigningCertificateLineage {
         switch (version) {
             case FIRST_VERSION:
                 mVersion = FIRST_VERSION;
-                return V3SigningCertificateLineage.readSigningCertificateLineage(inputByteBuffer);
+                try {
+                    return V3SigningCertificateLineage.readSigningCertificateLineage(
+                            getLengthPrefixedSlice(inputByteBuffer));
+                } catch (ApkFormatException e) {
+                    // unable to get a proper length-prefixed lineage slice
+                    throw new IOException("Unable to read list of signing certificate nodes in "
+                            + "SigningCertificateLineage", e);
+                }
             default:
                 throw new IllegalArgumentException(
                         "Improper SigningCertificateLineage format: unrecognized version.");
@@ -139,11 +149,12 @@ public class SigningCertificateLineage {
     public ByteBuffer write() {
         byte[] encodedLineage =
                 V3SigningCertificateLineage.encodeSigningCertificateLineage(mSigningLineage);
-        int payloadSize = 4 + 4 + encodedLineage.length;
+        int payloadSize = 4 + 4 + 4 + encodedLineage.length;
         ByteBuffer result = ByteBuffer.allocate(payloadSize);
         result.order(ByteOrder.LITTLE_ENDIAN);
         result.putInt(MAGIC);
         result.putInt(mVersion);
+        result.putInt(encodedLineage.length);
         result.put(encodedLineage);
         return result;
     }
@@ -216,12 +227,15 @@ public class SigningCertificateLineage {
                     + " existing most recent record");
         }
 
-        // create data to be signed
+        // create data to be signed, including the algorithm we're going to use
+        SignatureAlgorithm signatureAlgorithm = getSignatureAlgorithm(parent);
         ByteBuffer prefixedSignedData = ByteBuffer.wrap(
                 V3SigningCertificateLineage.encodeSignedData(
-                        child.getCertificate(), childCapabilities.getFlags()));
+                        child.getCertificate(), signatureAlgorithm.getId()));
         prefixedSignedData.position(4);
-        byte[] signedData = prefixedSignedData.slice().array();
+        ByteBuffer signedDataBuffer = ByteBuffer.allocate(prefixedSignedData.remaining());
+        signedDataBuffer.put(prefixedSignedData);
+        byte[] signedData = signedDataBuffer.array();
 
         // create SignerConfig to do the signing
         List<X509Certificate> certificates = new ArrayList<>(1);

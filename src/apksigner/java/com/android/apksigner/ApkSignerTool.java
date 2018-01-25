@@ -18,7 +18,13 @@ package com.android.apksigner;
 
 import com.android.apksig.ApkSigner;
 import com.android.apksig.ApkVerifier;
+import com.android.apksig.SigningCertificateLineage;
 import com.android.apksig.apk.MinSdkVersionException;
+import com.android.apksig.internal.util.RandomAccessFileDataSink;
+import com.android.apksig.internal.util.RandomAccessFileDataSource;
+import com.android.apksig.util.DataSink;
+import com.android.apksig.util.DataSource;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -28,6 +34,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -94,6 +103,7 @@ public class ApkSignerTool {
                 return;
             } else if ("rotate".equals(cmd)) {
                 rotate(Arrays.copyOfRange(params, 1, params.length));
+                return;
             } else if ("help".equals(cmd)) {
                 printUsage(HELP_PAGE_GENERAL);
                 return;
@@ -197,6 +207,13 @@ public class ApkSignerTool {
                 signerParams.keyFile = optionsParser.getRequiredValue("Private key file");
             } else if ("cert".equals(optionName)) {
                 signerParams.certFile = optionsParser.getRequiredValue("Certificate file");
+            } else if ("lineage".equals(optionName)) {
+                RandomAccessFile lineageFile =
+                        new RandomAccessFile(optionsParser.getRequiredValue("Lineage File"), "r");
+                DataSource in = new RandomAccessFileDataSource(lineageFile);
+                ByteBuffer inBuff = in.getByteBuffer(0, (int) in.size());
+                inBuff.order(ByteOrder.LITTLE_ENDIAN);
+                signerParams.lineage = new SigningCertificateLineage(0 /* minSdk */, inBuff);
             } else if (("v".equals(optionName)) || ("verbose".equals(optionName))) {
                 verbose = optionsParser.getOptionalBooleanValue(true);
             } else if ("next-provider".equals(optionName)) {
@@ -302,6 +319,7 @@ public class ApkSignerTool {
                 ApkSigner.SignerConfig signerConfig =
                         new ApkSigner.SignerConfig.Builder(
                                 v1SigBasename, signer.privateKey, signer.certs)
+                        .setSigningCertificateLineage(signer.lineage)
                         .build();
                 signerConfigs.add(signerConfig);
             }
@@ -566,8 +584,8 @@ public class ApkSignerTool {
             return;
         }
 
-        File outputKeyLineage = null;
-        File inputKeyLineage = null;
+        RandomAccessFile outputKeyLineage = null;
+        RandomAccessFile inputKeyLineage = null;
         boolean verbose = false;
         SignerParams oldSignerParams = null;
         SignerParams newSignerParams = null;
@@ -582,11 +600,11 @@ public class ApkSignerTool {
                 printUsage(HELP_PAGE_SIGN);
                 return;
             } else if ("out".equals(optionName)) {
-                outputKeyLineage = new File(
-                        optionsParser.getRequiredValue("Output file name"));
+                outputKeyLineage = new RandomAccessFile(
+                        optionsParser.getRequiredValue("Output file name"), "rw");
             } else if ("in".equals(optionName)) {
-                inputKeyLineage = new File(
-                        optionsParser.getRequiredValue("Input file name"));
+                inputKeyLineage = new RandomAccessFile(
+                        optionsParser.getRequiredValue("Input file name"), "r");
             } else if ("old-signer".equals(optionName)) {
                 oldSignerParams = processSignerParams(optionsParser);
             } else if ("new-signer".equals(optionName)) {
@@ -640,22 +658,22 @@ public class ApkSignerTool {
 
         try (PasswordRetriever passwordRetriever = new PasswordRetriever()) {
             // populate SignerConfig for old signer
-            if (oldSignerParams.keystoreKeyAlias != null) {
-                oldSignerParams.name = oldSignerParams.keystoreKeyAlias;
-            } else if (oldSignerParams.keyFile != null) {
-                String keyFileName = new File(oldSignerParams.keyFile).getName();
-                int delimiterIndex = keyFileName.indexOf('.');
-                if (delimiterIndex == -1) {
-                    oldSignerParams.name = keyFileName;
-                } else {
-                    oldSignerParams.name = keyFileName.substring(0, delimiterIndex);
-                }
-            } else {
-                throw new RuntimeException(
-                        "Neither KeyStore key alias nor private key file available for old signer!");
-            }
             try {
                 oldSignerParams.loadPrivateKeyAndCerts(passwordRetriever);
+                if (oldSignerParams.keystoreKeyAlias != null) {
+                    oldSignerParams.name = oldSignerParams.keystoreKeyAlias;
+                } else if (oldSignerParams.keyFile != null) {
+                    String keyFileName = new File(oldSignerParams.keyFile).getName();
+                    int delimiterIndex = keyFileName.indexOf('.');
+                    if (delimiterIndex == -1) {
+                        oldSignerParams.name = keyFileName;
+                    } else {
+                        oldSignerParams.name = keyFileName.substring(0, delimiterIndex);
+                    }
+                } else {
+                    throw new RuntimeException(
+                            "Neither KeyStore key alias nor private key file available for old signer!");
+                }
             } catch (ParameterException e) {
                 System.err.println(
                         "Failed to load signer \"" + oldSignerParams.name + "\": "
@@ -669,29 +687,28 @@ public class ApkSignerTool {
                 return;
             }
 
-            ApkSigner.SignerConfig oldSignerConfig =
-                    new ApkSigner.SignerConfig.Builder(
-                            oldSignerParams.name, oldSignerParams.privateKey, oldSignerParams.certs)
+            SigningCertificateLineage.SignerConfig oldSignerConfig =
+                    new SigningCertificateLineage.SignerConfig.Builder(
+                            oldSignerParams.privateKey, oldSignerParams.certs.get(0))
                             .build();
-
-            // populate SignerConfig for new signer
-            if (newSignerParams.keystoreKeyAlias != null) {
-                newSignerParams.name = newSignerParams.keystoreKeyAlias;
-            } else if (newSignerParams.keyFile != null) {
-                String keyFileName = new File(newSignerParams.keyFile).getName();
-                int delimiterIndex = keyFileName.indexOf('.');
-                if (delimiterIndex == -1) {
-                    newSignerParams.name = keyFileName;
-                } else {
-                    newSignerParams.name = keyFileName.substring(0, delimiterIndex);
-                }
-            } else {
-                throw new RuntimeException(
-                        "Neither KeyStore key alias nor private key file available for new signer!");
-            }
             try {
                 // TOOD: don't require private key
                 newSignerParams.loadPrivateKeyAndCerts(passwordRetriever);
+                // populate SignerConfig for new signer
+                if (newSignerParams.keystoreKeyAlias != null) {
+                    newSignerParams.name = newSignerParams.keystoreKeyAlias;
+                } else if (newSignerParams.keyFile != null) {
+                    String keyFileName = new File(newSignerParams.keyFile).getName();
+                    int delimiterIndex = keyFileName.indexOf('.');
+                    if (delimiterIndex == -1) {
+                        newSignerParams.name = keyFileName;
+                    } else {
+                        newSignerParams.name = keyFileName.substring(0, delimiterIndex);
+                    }
+                } else {
+                    throw new RuntimeException(
+                            "Neither KeyStore key alias nor private key file available for new signer!");
+                }
             } catch (ParameterException e) {
                 System.err.println(
                         "Failed to load signer \"" + newSignerParams.name + "\": "
@@ -705,11 +722,30 @@ public class ApkSignerTool {
                 return;
             }
 
-            ApkSigner.SignerConfig newSignerConfig =
-                    new ApkSigner.SignerConfig.Builder(
-                            newSignerParams.name, newSignerParams.privateKey, newSignerParams.certs)
+            SigningCertificateLineage.SignerConfig newSignerConfig =
+                    new SigningCertificateLineage.SignerConfig.Builder(
+                            newSignerParams.privateKey, newSignerParams.certs.get(0))
                             .build();
+
+            // ok we're all set up, let's rotate!
+            SigningCertificateLineage lineage;
+            if (inputKeyLineage != null) {
+                DataSource in = new RandomAccessFileDataSource(inputKeyLineage);
+                ByteBuffer inBuff = in.getByteBuffer(0, (int) in.size());
+                inBuff.order(ByteOrder.LITTLE_ENDIAN);
+                lineage = new SigningCertificateLineage(0 /* minSdk */, inBuff);
+            } else {
+                lineage = new SigningCertificateLineage(0);
+            }
+            lineage.spawnDescendant(oldSignerConfig, newSignerConfig);
+
+            // and write out the result
+            DataSink out = new RandomAccessFileDataSink(outputKeyLineage);
+            ByteBuffer outBuff = lineage.write();
+            outBuff.flip();
+            out.consume(outBuff);
         }
+
         if (verbose) {
             System.out.println("Rotation entry generated.");
         }
@@ -759,6 +795,7 @@ public class ApkSignerTool {
             } else {
                 // not a signer option, reset optionsParser and let caller deal with it
                 optionsParser.putOption();
+                break;
             }
         }
 
@@ -843,6 +880,7 @@ public class ApkSignerTool {
 
         PrivateKey privateKey;
         List<X509Certificate> certs;
+        SigningCertificateLineage lineage;
 
         private boolean isEmpty() {
             return (name == null)

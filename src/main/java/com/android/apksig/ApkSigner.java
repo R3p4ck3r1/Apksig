@@ -259,6 +259,8 @@ public class ApkSigner {
                                 signerConfig.getName(),
                                 signerConfig.getPrivateKey(),
                                 signerConfig.getCertificates())
+                                .setSigningCertificateLineage(
+                                        signerConfig.getSigningCertificateLineage())
                                 .build());
             }
 
@@ -872,8 +874,8 @@ public class ApkSigner {
              * SignerConfig} to previous ones.
              */
             public SignerConfig.Builder setSigningCertificateLineage(SigningCertificateLineage signingCertificateLineage) {
-                // TODO support v3 key rotation.
-                throw new UnsupportedOperationException();
+                mSigningCertificateLineage = signingCertificateLineage;
+                return this;
             }
 
             /**
