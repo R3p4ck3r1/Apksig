@@ -67,6 +67,9 @@ public class ApkSigningBlockUtils {
           };
     private static final int VERITY_PADDING_BLOCK_ID = 0x42726577;
 
+    public static final int DIGEST_SALT_ATTR_ID = 0x4e61436c;
+    private static final int DIGEST_SALT_SIZE = 8;
+
     /**
      * Returns positive number if {@code alg1} is preferred over {@code alg2}, {@code -1} if
      * {@code alg2} is preferred over {@code alg1}, and {@code 0} if there is no preference.
@@ -157,27 +160,42 @@ public class ApkSigningBlockUtils {
         modifiedEocd.put(eocd);
         modifiedEocd.flip();
         ZipUtils.setZipEocdCentralDirectoryOffset(modifiedEocd, beforeApkSigningBlock.size());
-        Map<ContentDigestAlgorithm, byte[]> actualContentDigests;
-        try {
-            actualContentDigests =
-                    computeContentDigests(
-                            contentDigestAlgorithms,
-                            beforeApkSigningBlock,
-                            centralDir,
-                            new ByteBufferDataSource(modifiedEocd));
-        } catch (DigestException e) {
-            throw new RuntimeException("Failed to compute content digests", e);
-        }
-        if (!contentDigestAlgorithms.equals(actualContentDigests.keySet())) {
-            throw new RuntimeException(
-                    "Mismatch between sets of requested and computed content digests"
-                            + " . Requested: " + contentDigestAlgorithms
-                            + ", computed: " + actualContentDigests.keySet());
-        }
 
         // Compare digests computed over the rest of APK against the corresponding expected digests
         // in signer blocks.
         for (Result.SignerInfo signerInfo : result.signers) {
+            Map<ContentDigestAlgorithm, byte[]> actualContentDigests;
+            try {
+                byte[] salt = null;
+                Result.SignerInfo.AdditionalAttribute attr =
+                        signerInfo.additionalAttributes.getOrDefault(DIGEST_SALT_ATTR_ID, null);
+                if (attr != null) {
+                    salt = attr.getValue();
+                    if (salt.length != 8) {
+                        throw new IllegalArgumentException(
+                                "Salt is not 8 bytes long: " + salt.length);
+                    }
+                } else {
+                    salt = new byte[DIGEST_SALT_SIZE];
+                }
+
+                actualContentDigests =
+                        computeContentDigests(
+                                contentDigestAlgorithms,
+                                beforeApkSigningBlock,
+                                centralDir,
+                                new ByteBufferDataSource(modifiedEocd),
+                                salt);
+            } catch (DigestException e) {
+                throw new RuntimeException("Failed to compute content digests", e);
+            }
+            if (!contentDigestAlgorithms.equals(actualContentDigests.keySet())) {
+                throw new RuntimeException(
+                        "Mismatch between sets of requested and computed content digests"
+                                + " . Requested: " + contentDigestAlgorithms
+                                + ", computed: " + actualContentDigests.keySet());
+            }
+
             for (Result.SignerInfo.ContentDigest expected : signerInfo.contentDigests) {
                 SignatureAlgorithm signatureAlgorithm =
                         SignatureAlgorithm.findById(expected.getSignatureAlgorithmId());
@@ -362,7 +380,8 @@ public class ApkSigningBlockUtils {
             Set<ContentDigestAlgorithm> digestAlgorithms,
             DataSource beforeCentralDir,
             DataSource centralDir,
-            DataSource eocd) throws IOException, NoSuchAlgorithmException, DigestException {
+            DataSource eocd,
+            byte[] salt) throws IOException, NoSuchAlgorithmException, DigestException {
         Map<ContentDigestAlgorithm, byte[]> contentDigests = new HashMap<>();
         Set<ContentDigestAlgorithm> oneMbChunkBasedAlgorithm = digestAlgorithms.stream()
                 .filter(a -> a == ContentDigestAlgorithm.CHUNKED_SHA256 ||
@@ -373,7 +392,7 @@ public class ApkSigningBlockUtils {
                 contentDigests);
 
         if (digestAlgorithms.contains(ContentDigestAlgorithm.VERITY_CHUNKED_SHA256)) {
-            computeApkVerityDigest(beforeCentralDir, centralDir, eocd, contentDigests);
+            computeApkVerityDigest(beforeCentralDir, centralDir, eocd, contentDigests, salt);
         }
         return contentDigests;
     }
@@ -482,11 +501,12 @@ public class ApkSigningBlockUtils {
     }
 
     private static void computeApkVerityDigest(DataSource beforeCentralDir, DataSource centralDir,
-            DataSource eocd, Map<ContentDigestAlgorithm, byte[]> outputContentDigests)
+            DataSource eocd, Map<ContentDigestAlgorithm, byte[]> outputContentDigests, byte[] salt)
             throws IOException, NoSuchAlgorithmException {
-        // Use 0s as salt for now.  This also needs to be consistent in the fsverify header for
-        // kernel to use.
-        VerityTreeBuilder builder = new VerityTreeBuilder(new byte[8]);
+        if (salt == null) {
+            salt = new byte[DIGEST_SALT_SIZE];
+        }
+        VerityTreeBuilder builder = new VerityTreeBuilder(salt);
         outputContentDigests.put(ContentDigestAlgorithm.VERITY_CHUNKED_SHA256,
                 builder.generateVerityTreeRootHash(beforeCentralDir, centralDir, eocd));
     }
@@ -570,6 +590,23 @@ public class ApkSigningBlockUtils {
               result.putInt(8 + second.length);
               result.putInt(element.getFirst());
               result.putInt(second.length);
+              result.put(second);
+          }
+          return result.array();
+      }
+
+    public static byte[] encodeAsSequenceOfLengthPrefixedPairsOfIntAndVariableLengthBytes(
+            List<Pair<Integer, byte[]>> sequence) {
+          int resultSize = 0;
+          for (Pair<Integer, byte[]> element : sequence) {
+              resultSize += 8 + element.getSecond().length;
+          }
+          ByteBuffer result = ByteBuffer.allocate(resultSize);
+          result.order(ByteOrder.LITTLE_ENDIAN);
+          for (Pair<Integer, byte[]> element : sequence) {
+              byte[] second = element.getSecond();
+              result.putInt(4 + second.length);
+              result.putInt(element.getFirst());
               result.put(second);
           }
           return result.array();
@@ -712,6 +749,27 @@ public class ApkSigningBlockUtils {
         return result.array();
     }
 
+    private static byte[] generateDefaultSalt(SignerConfig signerConfig, long beforeCentralDirSize,
+            long centralDirSize, long eocdSize) {
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("SHA-1");
+        } catch (NoSuchAlgorithmException e) {
+            return null;
+        }
+
+        for (X509Certificate certificate : signerConfig.certificates) {
+            md.update(certificate.getSignature());
+        }
+        ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES * 3);
+        buffer.putLong(beforeCentralDirSize);
+        buffer.putLong(centralDirSize);
+        buffer.putLong(eocdSize);
+        buffer.rewind();
+        md.update(buffer);
+        return Arrays.copyOfRange(md.digest(), 0, DIGEST_SALT_SIZE);
+    }
+
     /**
      * Computes the digests of the given APK components according to the algorithms specified in the
      * given SignerConfigs.
@@ -725,7 +783,7 @@ public class ApkSigningBlockUtils {
      * @throws SignatureException if an error occurs when computing digests of generating
      *         signatures
      */
-    public static Pair<List<SignerConfig>, Map<ContentDigestAlgorithm, byte[]>>
+    public static List<Pair<SignerConfig, Map<ContentDigestAlgorithm, byte[]>>>
             computeContentDigests(
                     DataSource beforeCentralDir,
                     DataSource centralDir,
@@ -738,30 +796,45 @@ public class ApkSigningBlockUtils {
         }
 
         // Figure out which digest(s) to use for APK contents.
+        int signerNumber = 0;
         Set<ContentDigestAlgorithm> contentDigestAlgorithms = new HashSet<>(1);
         for (SignerConfig signerConfig : signerConfigs) {
             for (SignatureAlgorithm signatureAlgorithm : signerConfig.signatureAlgorithms) {
                 contentDigestAlgorithms.add(signatureAlgorithm.getContentDigestAlgorithm());
             }
+            signerNumber++;
         }
 
-        // Compute digests of APK contents.
-        Map<ContentDigestAlgorithm, byte[]> contentDigests; // digest algorithm ID -> digest
-        try {
-            contentDigests =
-                    computeContentDigests(
-                            contentDigestAlgorithms,
-                            beforeCentralDir,
-                            centralDir,
-                            eocd);
-        } catch (IOException e) {
-            throw new IOException("Failed to read APK being signed", e);
-        } catch (DigestException e) {
-            throw new SignatureException("Failed to compute digests of APK", e);
+        List<Pair<SignerConfig, Map<ContentDigestAlgorithm, byte[]>>> results =
+                new ArrayList<>(signerNumber);
+        for (SignerConfig signerConfig : signerConfigs) {
+            // If salt is not provided, generate one deterministically for the sake of
+            // reproducibility.
+            if (signerConfig.salt == null) {
+                signerConfig.salt = generateDefaultSalt(signerConfig, beforeCentralDir.size(),
+                        centralDir.size(), eocd.size());
+                signerConfig.salt = new byte[8];  // FIXME remove
+            }
+
+            // Compute digests of APK contents.
+            Map<ContentDigestAlgorithm, byte[]> contentDigests; // digest algorithm ID -> digest
+            try {
+                contentDigests =
+                        computeContentDigests(
+                                contentDigestAlgorithms,
+                                beforeCentralDir,
+                                centralDir,
+                                eocd,
+                                signerConfig.salt);
+            } catch (IOException e) {
+                throw new IOException("Failed to read APK being signed", e);
+            } catch (DigestException e) {
+                throw new SignatureException("Failed to compute digests of APK", e);
+            }
+            results.add(Pair.of(signerConfig, contentDigests));
         }
 
-        // Sign the digests and wrap the signatures and signer info into an APK Signing Block.
-        return Pair.of(signerConfigs, contentDigests);
+        return results;
     }
 
     public static class NoSupportedSignaturesException extends Exception {
@@ -801,6 +874,9 @@ public class ApkSigningBlockUtils {
          * List of signature algorithms with which to sign.
          */
         public List<SignatureAlgorithm> signatureAlgorithms;
+
+        /** Optional salt that can be used by some digest algorithms. */
+        public byte[] salt;
     }
 
     public static class Result {
@@ -849,7 +925,7 @@ public class ApkSigningBlockUtils {
             public Map<ContentDigestAlgorithm, byte[]> verifiedContentDigests = new HashMap<>();
             public List<Signature> signatures = new ArrayList<>();
             public Map<SignatureAlgorithm, byte[]> verifiedSignatures = new HashMap<>();
-            public List<AdditionalAttribute> additionalAttributes = new ArrayList<>();
+            public Map<Integer, AdditionalAttribute> additionalAttributes = new HashMap<>();
             public byte[] signedData;
 
             private final List<ApkVerifier.IssueWithParams> mWarnings = new ArrayList<>();

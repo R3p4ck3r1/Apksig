@@ -397,9 +397,12 @@ public abstract class V2SchemeVerifier {
                         ApkSigningBlockUtils.getLengthPrefixedSlice(additionalAttributes);
                 int id = attribute.getInt();
                 byte[] value = ByteBufferUtils.toByteArray(attribute);
-                result.additionalAttributes.add(
+                result.additionalAttributes.put(
+                        id,
                         new ApkSigningBlockUtils.Result.SignerInfo.AdditionalAttribute(id, value));
-                result.addWarning(Issue.V2_SIG_UNKNOWN_ADDITIONAL_ATTRIBUTE, id);
+                if (id != ApkSigningBlockUtils.DIGEST_SALT_ATTR_ID) {
+                    result.addWarning(Issue.V2_SIG_UNKNOWN_ADDITIONAL_ATTRIBUTE, id);
+                }
             } catch (ApkFormatException | BufferUnderflowException e) {
                 result.addError(
                         Issue.V2_SIG_MALFORMED_ADDITIONAL_ATTRIBUTE, additionalAttributeCount);
