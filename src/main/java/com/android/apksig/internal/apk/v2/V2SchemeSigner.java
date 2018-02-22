@@ -18,6 +18,7 @@ package com.android.apksig.internal.apk.v2;
 
 import static com.android.apksig.internal.apk.ApkSigningBlockUtils.encodeAsSequenceOfLengthPrefixedElements;
 import static com.android.apksig.internal.apk.ApkSigningBlockUtils.encodeAsSequenceOfLengthPrefixedPairsOfIntAndLengthPrefixedBytes;
+import static com.android.apksig.internal.apk.ApkSigningBlockUtils.encodeAsSequenceOfLengthPrefixedPairsOfIntAndVariableLengthBytes;
 import static com.android.apksig.internal.apk.ApkSigningBlockUtils.encodeCertificates;
 import static com.android.apksig.internal.apk.ApkSigningBlockUtils.encodePublicKey;
 
@@ -41,6 +42,7 @@ import java.security.interfaces.RSAKey;
 import java.security.spec.AlgorithmParameterSpec;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -146,23 +148,24 @@ public abstract class V2SchemeSigner {
             List<SignerConfig> signerConfigs)
                     throws IOException, InvalidKeyException, NoSuchAlgorithmException,
                             SignatureException {
-        Pair<List<SignerConfig>,
-                Map<ContentDigestAlgorithm, byte[]>> digestInfo =
+        List<Pair<SignerConfig, Map<ContentDigestAlgorithm, byte[]>>> digestInfo =
                 ApkSigningBlockUtils.computeContentDigests(beforeCentralDir, centralDir, eocd,
                         signerConfigs);
-        return generateApkSignatureSchemeV2Block(digestInfo.getFirst(), digestInfo.getSecond());
+        return generateApkSignatureSchemeV2Block(digestInfo);
     }
 
     private static Pair<byte[], Integer> generateApkSignatureSchemeV2Block(
-            List<SignerConfig> signerConfigs,
-            Map<ContentDigestAlgorithm, byte[]> contentDigests)
+            List<Pair<SignerConfig, Map<ContentDigestAlgorithm, byte[]>>> digestInfo)
                     throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
         // FORMAT:
         // * length-prefixed sequence of length-prefixed signer blocks.
 
-        List<byte[]> signerBlocks = new ArrayList<>(signerConfigs.size());
+        List<byte[]> signerBlocks = new LinkedList<>();
         int signerNumber = 0;
-        for (SignerConfig signerConfig : signerConfigs) {
+        for (Pair<SignerConfig, Map<ContentDigestAlgorithm, byte[]>> d : digestInfo) {
+            SignerConfig signerConfig = d.getFirst();
+            Map<ContentDigestAlgorithm, byte[]> contentDigests = d.getSecond();
+
             signerNumber++;
             byte[] signerBlock;
             try {
@@ -214,6 +217,16 @@ public abstract class V2SchemeSigner {
         }
         signedData.digests = digests;
 
+        byte[] encodedAdditionalAttributes = new byte[0];
+        if (signerConfig.salt != null) {
+            List<Pair<Integer, byte[]>> additionalAttributes = new ArrayList<>(1);
+            additionalAttributes.add(
+                    Pair.of(ApkSigningBlockUtils.DIGEST_SALT_ATTR_ID, signerConfig.salt));
+            encodedAdditionalAttributes =
+                    encodeAsSequenceOfLengthPrefixedPairsOfIntAndVariableLengthBytes(
+                            additionalAttributes);
+        }
+
         V2SignatureSchemeBlock.Signer signer = new V2SignatureSchemeBlock.Signer();
         // FORMAT:
         // * length-prefixed sequence of length-prefixed digests:
@@ -227,8 +240,7 @@ public abstract class V2SchemeSigner {
         signer.signedData = encodeAsSequenceOfLengthPrefixedElements(new byte[][] {
             encodeAsSequenceOfLengthPrefixedPairsOfIntAndLengthPrefixedBytes(signedData.digests),
             encodeAsSequenceOfLengthPrefixedElements(signedData.certificates),
-            // additional attributes
-            new byte[0],
+            encodedAdditionalAttributes,
         });
         signer.publicKey = encodedPublicKey;
         signer.signatures = new ArrayList<>(signerConfig.signatureAlgorithms.size());
