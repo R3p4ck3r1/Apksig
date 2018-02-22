@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c0836b78_65f2ede0",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-02-22T22:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17c114c2_1be0f0cf",
+      "range": {
+        "startLine": 683,
+        "startChar": 20,
+        "endLine": 684,
+        "endChar": 73
+      },
+      "revId": "3489efdc619707d93b69eb61cc88b5545117c77c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ca97701_f837bc19",
         "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "3489efdc619707d93b69eb61cc88b5545117c77c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a9feb86_67108590",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-02-22T22:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ca97701_f837bc19",
+      "range": {
+        "startLine": 695,
+        "startChar": 41,
+        "endLine": 695,
+        "endChar": 43
+      },
+      "revId": "3489efdc619707d93b69eb61cc88b5545117c77c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e144236e_3aa54f40",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-02-22T22:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2ae7c32_ee91948b",
+      "range": {
+        "startLine": 792,
+        "startChar": 33,
+        "endLine": 792,
+        "endChar": 35
+      },
+      "revId": "3489efdc619707d93b69eb61cc88b5545117c77c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2809f81_b96cb2bf",
         "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
         "patchSetId": 9
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a31ce807_86abd2bb",
+        "filename": "src/main/java/com/android/apksig/DefaultApkSignerEngine.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-02-22T22:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2809f81_b96cb2bf",
+      "range": {
+        "startLine": 1273,
+        "startChar": 12,
+        "endLine": 1276,
+        "endChar": 13
+      },
+      "revId": "3489efdc619707d93b69eb61cc88b5545117c77c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0cbbacf3_2c540280",
         "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SchemeSigner.java",
         "patchSetId": 9
@@ -114,6 +210,30 @@
       "revId": "3489efdc619707d93b69eb61cc88b5545117c77c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d35b8208_d869ed3c",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SchemeSigner.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-02-22T22:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cbbacf3_2c540280",
+      "range": {
+        "startLine": 154,
+        "startChar": 7,
+        "endLine": 158,
+        "endChar": 9
+      },
+      "revId": "3489efdc619707d93b69eb61cc88b5545117c77c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
