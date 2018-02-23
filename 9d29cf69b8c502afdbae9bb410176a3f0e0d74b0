@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb30cdbd_4770cdd7",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-02-23T00:42:21Z",
+      "side": 1,
+      "message": "This only means to cancel the actual change, to prove that other code structure change does not break golden tests",
+      "range": {
+        "startLine": 816,
+        "startChar": 16,
+        "endLine": 816,
+        "endChar": 65
+      },
+      "revId": "9d29cf69b8c502afdbae9bb410176a3f0e0d74b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f89ef24_27fca8ee",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v2/V2SchemeSigner.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-02-23T00:42:21Z",
+      "side": 1,
+      "message": "This only means to cancel the actual change, to prove that other code structure change does not break golden tests",
+      "range": {
+        "startLine": 229,
+        "startChar": 8,
+        "endLine": 229,
+        "endChar": 67
+      },
+      "revId": "9d29cf69b8c502afdbae9bb410176a3f0e0d74b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
