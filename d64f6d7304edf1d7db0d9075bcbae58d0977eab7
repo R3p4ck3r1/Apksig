@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "48d54e10_3096ac14",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SchemeSigner.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-02-27T00:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f425c42_6620a3b2",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 50
+      },
+      "revId": "d64f6d7304edf1d7db0d9075bcbae58d0977eab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d167209_aebb2a1e",
         "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "d64f6d7304edf1d7db0d9075bcbae58d0977eab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3ddfff9_34375f6a",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-02-27T00:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d167209_aebb2a1e",
+      "range": {
+        "startLine": 85,
+        "startChar": 11,
+        "endLine": 85,
+        "endChar": 18
+      },
+      "revId": "d64f6d7304edf1d7db0d9075bcbae58d0977eab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "700c89ca_34ad85e8",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-02-27T00:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8a1ec1_08b89422",
+      "range": {
+        "startLine": 91,
+        "startChar": 23,
+        "endLine": 91,
+        "endChar": 71
+      },
+      "revId": "d64f6d7304edf1d7db0d9075bcbae58d0977eab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fc5d43b_ee04353c",
         "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "d64f6d7304edf1d7db0d9075bcbae58d0977eab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de33c925_4f00b3ca",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-02-27T00:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fc5d43b_ee04353c",
+      "range": {
+        "startLine": 104,
+        "startChar": 15,
+        "endLine": 104,
+        "endChar": 100
+      },
+      "revId": "d64f6d7304edf1d7db0d9075bcbae58d0977eab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "de3f6d30_b3ea5aa8",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-02-27T00:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8284326b_a2a55e40",
+      "range": {
+        "startLine": 106,
+        "startChar": 8,
+        "endLine": 109,
+        "endChar": 9
+      },
+      "revId": "d64f6d7304edf1d7db0d9075bcbae58d0977eab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8332f79f_66e317bf",
         "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
         "patchSetId": 6
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "dc7fcd51_37786a1c",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-02-27T00:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8332f79f_66e317bf",
+      "range": {
+        "startLine": 182,
+        "startChar": 13,
+        "endLine": 182,
+        "endChar": 71
+      },
+      "revId": "d64f6d7304edf1d7db0d9075bcbae58d0977eab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1f3b42e_ad11069a",
         "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
         "patchSetId": 6
@@ -160,6 +304,30 @@
       "revId": "d64f6d7304edf1d7db0d9075bcbae58d0977eab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07d1ba08_ff88f2ce",
+        "filename": "src/main/java/com/android/apksig/internal/apk/v3/V3SigningCertificateLineage.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-02-27T00:57:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1f3b42e_ad11069a",
+      "range": {
+        "startLine": 205,
+        "startChar": 11,
+        "endLine": 205,
+        "endChar": 69
+      },
+      "revId": "d64f6d7304edf1d7db0d9075bcbae58d0977eab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
