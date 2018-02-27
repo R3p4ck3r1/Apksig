@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e18e3b0_7f0e4132",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-02-27T17:47:04Z",
+      "side": 1,
+      "message": "we need to establish some namespaces for attributes and signing block IDs (not for this CL, though)",
+      "range": {
+        "startLine": 70,
+        "startChar": 50,
+        "endLine": 70,
+        "endChar": 60
+      },
+      "revId": "1b8ac523791bb32f39326bd8002ccaf281e95c29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
