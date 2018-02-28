@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54fb1174_3e390404",
+        "filename": "src/apksigner/java/com/android/apksigner/help_rotate.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2018-02-28T23:14:24Z",
+      "side": 1,
+      "message": "Can we add some examples?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 33
+      },
+      "revId": "f5bf19fadb96d3e01b385046b32b91d0656c3406",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
