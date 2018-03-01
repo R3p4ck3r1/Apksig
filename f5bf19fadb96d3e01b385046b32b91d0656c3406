@@ -22,6 +22,30 @@
       "revId": "f5bf19fadb96d3e01b385046b32b91d0656c3406",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16191949_3d82c702",
+        "filename": "src/apksigner/java/com/android/apksigner/help_rotate.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-03-01T18:08:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54fb1174_3e390404",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 33
+      },
+      "revId": "f5bf19fadb96d3e01b385046b32b91d0656c3406",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
