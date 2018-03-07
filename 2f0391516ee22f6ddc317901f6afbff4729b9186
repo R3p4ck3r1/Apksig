@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fb244d5_26c7278a",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-03-07T00:48:41Z",
+      "side": 1,
+      "message": "nit: if we\u0027re going to do this based on Long.SIZE it should be Long.SIZE/Byte.SIZE",
+      "range": {
+        "startLine": 502,
+        "startChar": 28,
+        "endLine": 502,
+        "endChar": 29
+      },
+      "revId": "2f0391516ee22f6ddc317901f6afbff4729b9186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21271523_56b3519f",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-03-07T00:48:41Z",
+      "side": 1,
+      "message": "nit: prefer this computation in a local variable before use in array allocattion",
+      "range": {
+        "startLine": 501,
+        "startChar": 16,
+        "endLine": 502,
+        "endChar": 29
+      },
+      "revId": "2f0391516ee22f6ddc317901f6afbff4729b9186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90e3ecff_b5247296",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1026058
+      },
+      "writtenOn": "2018-03-07T00:48:41Z",
+      "side": 1,
+      "message": "nit: apksig generally uses ByteBuffer.allocate(SIZE) rather than allocating an array only to wrap it (wrap() is used when handling byte arrays that are given to us)",
+      "range": {
+        "startLine": 503,
+        "startChar": 40,
+        "endLine": 503,
+        "endChar": 56
+      },
+      "revId": "2f0391516ee22f6ddc317901f6afbff4729b9186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
