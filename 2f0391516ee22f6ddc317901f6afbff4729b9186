@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "605ffaa2_18c5905a",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-03-07T17:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fb244d5_26c7278a",
+      "range": {
+        "startLine": 502,
+        "startChar": 28,
+        "endLine": 502,
+        "endChar": 29
+      },
+      "revId": "2f0391516ee22f6ddc317901f6afbff4729b9186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3f092f4_26dfbca9",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-03-07T17:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21271523_56b3519f",
+      "range": {
+        "startLine": 501,
+        "startChar": 16,
+        "endLine": 502,
+        "endChar": 29
+      },
+      "revId": "2f0391516ee22f6ddc317901f6afbff4729b9186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90e3ecff_b5247296",
         "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "2f0391516ee22f6ddc317901f6afbff4729b9186",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aaefa4d_8f00fde0",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-03-07T17:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90e3ecff_b5247296",
+      "range": {
+        "startLine": 503,
+        "startChar": 40,
+        "endLine": 503,
+        "endChar": 56
+      },
+      "revId": "2f0391516ee22f6ddc317901f6afbff4729b9186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
