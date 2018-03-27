@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b90d85f2_9b02f955",
+        "filename": "src/main/java/com/android/apksig/SigningCertificateLineage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-03-27T23:12:24Z",
+      "side": 1,
+      "message": "This call itself may be O(N) as it\u0027s a List.  Maybe use iterator, if it has to be a List?",
+      "range": {
+        "startLine": 335,
+        "startChar": 34,
+        "endLine": 335,
+        "endChar": 46
+      },
+      "revId": "42418c18f326a1e5b69adc7ff0db7623f250fe1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
