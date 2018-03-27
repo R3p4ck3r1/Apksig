@@ -315,8 +315,9 @@ public class SigningCertificateLineage {
                             V3SigningCertificateLineage.readSigningCertificateLineage(
                                     getLengthPrefixedSlice(inputByteBuffer));
                     int minSdkVersion = calculateMinSdkVersion(nodes);
+                    checkUniqueSigningCertificates(nodes);
                     return new SigningCertificateLineage(minSdkVersion, nodes);
-                } catch (ApkFormatException e) {
+                } catch (ApkFormatException | CertificateEncodingException e) {
                     // unable to get a proper length-prefixed lineage slice
                     throw new IOException("Unable to read list of signing certificate nodes in "
                             + "SigningCertificateLineage", e);
@@ -324,6 +325,21 @@ public class SigningCertificateLineage {
             default:
                 throw new IllegalArgumentException(
                         "Improper SigningCertificateLineage format: unrecognized version.");
+        }
+    }
+
+    private static void checkUniqueSigningCertificates(List<SigningCertificateNode> nodes)
+            throws CertificateEncodingException {
+        for (int i = 0; i < nodes.size(); i++) {
+            for (int j = i + 1; j < nodes.size(); j++) {
+                if (Arrays.equals(nodes.get(i).signingCert.getEncoded(),
+                        nodes.get(j).signingCert.getEncoded())) {
+                    throw new IllegalArgumentException("Encountered duplicate entries in "
+                            + "Proof-of-rotation record between certificate at index: " + i
+                            + " and certificate at index: " + j + ".  All signing certificates "
+                            + "should be unique");
+                }
+            }
         }
     }
 
@@ -393,9 +409,12 @@ public class SigningCertificateLineage {
                 }
             }
         }
-        if (sortedSignerConfigs.size() != signerConfigs.size()) {
+        if (sortedSignerConfigs.size() < signerConfigs.size()) {
             throw new IllegalArgumentException("SignerConfigs supplied which are not present in the"
                     + " SigningCertificateLineage");
+        } else if (sortedSignerConfigs.size() > signerConfigs.size()) {
+            throw new IllegalArgumentException("At least one SignerConfig is repeated in the "
+                    + "provided SigningCertificateLineage.  Every entry must be unique.");
         }
         return sortedSignerConfigs;
     }
