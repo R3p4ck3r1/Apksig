@@ -134,6 +134,27 @@ public class ApkSignerTest {
                 new ApkSigner.Builder(rsa2048SignerConfig)
                         .setV1SigningEnabled(true)
                         .setV2SigningEnabled(true));
+        signGolden(
+                "golden-overlapping-in.apk",
+                new File(outDir, "golden-overlapping-v1-out.apk"),
+                new ApkSigner.Builder(rsa2048SignerConfig)
+                        .setMinSdkVersion(1)
+                        .setV1SigningEnabled(true)
+                        .setV2SigningEnabled(false));
+        signGolden(
+                "golden-overlapping-in.apk",
+                new File(outDir, "golden-overlapping-v2-out.apk"),
+                new ApkSigner.Builder(rsa2048SignerConfig)
+                        .setMinSdkVersion(1)
+                        .setV1SigningEnabled(false)
+                        .setV2SigningEnabled(true));
+        signGolden(
+                "golden-overlapping-in.apk",
+                new File(outDir, "golden-overlapping-v1v2-out.apk"),
+                new ApkSigner.Builder(rsa2048SignerConfig)
+                        .setMinSdkVersion(1)
+                        .setV1SigningEnabled(true)
+                        .setV2SigningEnabled(true));
 
 
         signGolden(
@@ -358,6 +379,27 @@ public class ApkSignerTest {
         List<ApkSigner.SignerConfig> signers =
                 Collections.singletonList(getDefaultSignerConfigFromResources("rsa-2048"));
         sign("mismatched-compression-method.apk", new ApkSigner.Builder(signers));
+    }
+
+    @Test
+    public void testOverlappingFileEntries_Golden() throws Exception {
+        List<ApkSigner.SignerConfig> rsaSignerConfig =
+                Collections.singletonList(getDefaultSignerConfigFromResources("rsa-2048"));
+        assertGolden("golden-overlapping-in.apk", "golden-overlapping-v1-out.apk",
+            new ApkSigner.Builder(rsaSignerConfig)
+                .setMinSdkVersion(1)
+                .setV1SigningEnabled(true)
+                .setV2SigningEnabled(false));
+        assertGolden("golden-overlapping-in.apk", "golden-overlapping-v2-out.apk",
+            new ApkSigner.Builder(rsaSignerConfig)
+                .setMinSdkVersion(1)
+                .setV1SigningEnabled(false)
+                .setV2SigningEnabled(true));
+        assertGolden("golden-overlapping-in.apk", "golden-overlapping-v1v2-out.apk",
+            new ApkSigner.Builder(rsaSignerConfig)
+                .setMinSdkVersion(1)
+                .setV1SigningEnabled(true)
+                .setV2SigningEnabled(true));
     }
 
     @Test

@@ -294,6 +294,7 @@ public class ApkSigner {
         int lastModifiedTimeForNewEntries = -1;
         long inputOffset = 0;
         long outputOffset = 0;
+        boolean unmodifiedSoFar = true;
         Map<String, CentralDirectoryRecord> outputCdRecordsByName =
                 new HashMap<>(inputCdRecords.size());
         for (final CentralDirectoryRecord inputCdRecord : inputCdRecordsSortedByLfhOffset) {
@@ -314,16 +315,6 @@ public class ApkSigner {
                             "Unknown output policy: " + entryInstructions.getOutputPolicy());
             }
 
-            long inputLocalFileHeaderStartOffset = inputCdRecord.getLocalFileHeaderOffset();
-            if (inputLocalFileHeaderStartOffset > inputOffset) {
-                // Unprocessed data in input starting at inputOffset and ending and the start of
-                // this record's LFH. We output this data verbatim because this signer is supposed
-                // to preserve as much of input as possible.
-                long chunkSize = inputLocalFileHeaderStartOffset - inputOffset;
-                inputApkLfhSection.feed(inputOffset, chunkSize, outputApkOut);
-                outputOffset += chunkSize;
-                inputOffset = inputLocalFileHeaderStartOffset;
-            }
             LocalFileRecord inputLocalFileRecord;
             try {
                 inputLocalFileRecord =
@@ -332,7 +323,6 @@ public class ApkSigner {
             } catch (ZipFormatException e) {
                 throw new ApkFormatException("Malformed ZIP entry: " + inputCdRecord.getName(), e);
             }
-            inputOffset += inputLocalFileRecord.getSize();
 
             ApkSignerEngine.InspectJarEntryRequest inspectEntryRequest =
                     entryInstructions.getInspectJarEntryRequest();
@@ -360,6 +350,26 @@ public class ApkSigner {
                             inputApkLfhSection, inputLocalFileRecord, inspectEntryRequest);
                 }
 
+                if (unmodifiedSoFar) {
+                    outputCdRecordsByName.put(entryName, inputCdRecord);
+                    continue;
+                }
+            } else {
+                unmodifiedSoFar = false;
+            }
+
+            long inputLocalFileHeaderStartOffset = inputCdRecord.getLocalFileHeaderOffset();
+            if (inputLocalFileHeaderStartOffset > inputOffset) {
+                // Unprocessed data in input starting at inputOffset and ending and the start of
+                // this record's LFH. We output this data verbatim because this signer is supposed
+                // to preserve as much of input as possible.
+                long chunkSize = inputLocalFileHeaderStartOffset - inputOffset;
+                inputApkLfhSection.feed(inputOffset, chunkSize, outputApkOut);
+                outputOffset += chunkSize;
+            }
+            inputOffset = inputLocalFileHeaderStartOffset + inputLocalFileRecord.getSize();
+
+            if (shouldOutput) {
                 // Output entry's Local File Header + data
                 long outputLocalFileHeaderOffset = outputOffset;
                 long outputLocalFileRecordSize =
