@@ -77,6 +77,7 @@ public class ApkSignerTool {
     private static final String HELP_PAGE_SIGN = "help_sign.txt";
     private static final String HELP_PAGE_VERIFY = "help_verify.txt";
     private static final String HELP_PAGE_ROTATE = "help_rotate.txt";
+    private static final String HELP_PAGE_DUMP_HINTS = "help_dump_hints.txt";
 
     public static void main(String[] params) throws Exception {
         if ((params.length == 0) || ("--help".equals(params[0])) || ("-h".equals(params[0]))) {
@@ -104,6 +105,8 @@ public class ApkSignerTool {
             } else if ("version".equals(cmd)) {
                 System.out.println(VERSION);
                 return;
+            } else if ("dump-hints".equals(cmd)) {
+                dumpHints(Arrays.copyOfRange(params, 1, params.length));
             } else {
                 throw new ParameterException(
                         "Unsupported command: " + cmd + ". See --help for supported commands");
@@ -809,6 +812,14 @@ public class ApkSignerTool {
         } catch (IOException e) {
             throw new RuntimeException("Failed to read " + page + " resource");
         }
+    }
+
+    private static void dumpHints(String[] params) {
+        if (params.length != 1) {
+            printUsage(HELP_PAGE_DUMP_HINTS);
+            return;
+        }
+        throw new AssertionError("XXX implement me");
     }
 
     private static class ProviderInstallSpec {
