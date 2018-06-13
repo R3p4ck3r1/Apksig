@@ -25,6 +25,7 @@ import com.android.apksig.internal.apk.v3.V3SchemeSigner;
 import com.android.apksig.internal.apk.v3.V3SigningCertificateLineage;
 import com.android.apksig.internal.apk.v3.V3SigningCertificateLineage.SigningCertificateNode;
 import com.android.apksig.internal.util.AndroidSdkVersion;
+import com.android.apksig.internal.util.GuaranteedEncodedFormX509Certificate;
 import com.android.apksig.internal.util.Pair;
 import com.android.apksig.internal.util.RandomAccessFileDataSink;
 import com.android.apksig.util.DataSink;
@@ -400,9 +401,15 @@ public class SigningCertificateLineage {
         for (int i = 0; i < mSigningLineage.size(); i++) {
             for (int j = 0; j < signerConfigs.size(); j++) {
                 DefaultApkSignerEngine.SignerConfig config = signerConfigs.get(j);
-                if (mSigningLineage.get(i).signingCert.equals(config.getCertificates().get(0))) {
-                    sortedSignerConfigs.add(config);
-                    break;
+                try {
+                    if (Arrays.equals(mSigningLineage.get(i).signingCert.getEncoded(),
+                            config.getCertificates().get(0).getEncoded())) {
+                        sortedSignerConfigs.add(config);
+                        break;
+                    }
+                } catch (CertificateEncodingException e) {
+                    throw new RuntimeException("Failed to encode the provided signing certificates",
+                            e);
                 }
             }
         }
@@ -438,11 +445,16 @@ public class SigningCertificateLineage {
         if (x509Certificate == null) {
             throw new NullPointerException("x509Certificate == null");
         }
-        for (int i = 0; i < mSigningLineage.size(); i++) {
-            if (mSigningLineage.get(i).signingCert.equals(x509Certificate)) {
-                return new SigningCertificateLineage(
-                        mMinSdkVersion, new ArrayList<>(mSigningLineage.subList(0, i + 1)));
+        try {
+            byte[] encodedCert = x509Certificate.getEncoded();
+            for (int i = 0; i < mSigningLineage.size(); i++) {
+                if (Arrays.equals(mSigningLineage.get(i).signingCert.getEncoded(), encodedCert)) {
+                    return new SigningCertificateLineage(
+                            mMinSdkVersion, new ArrayList<>(mSigningLineage.subList(0, i + 1)));
+                }
             }
+        } catch (CertificateEncodingException e) {
+            throw new RuntimeException("Failed to encode the provided signing certificate", e);
         }
 
         // looks like we didn't find the cert,
