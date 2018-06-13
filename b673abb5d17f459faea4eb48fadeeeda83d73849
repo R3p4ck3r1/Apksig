@@ -1,0 +1,9 @@
+Code-Review+2: Chad Brubaker <cbrubaker@google.com>
+Verified+1: Chad Brubaker <cbrubaker@google.com>
+Autosubmit+1: Chad Brubaker <cbrubaker@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 13 Jun 2018 23:46:24 +0000
+Reviewed-on: https://android-review.googlesource.com/704926
+Project: platform/tools/apksig
+Branch: refs/heads/master
