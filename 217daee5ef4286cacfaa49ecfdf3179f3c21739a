@@ -22,6 +22,30 @@
       "revId": "217daee5ef4286cacfaa49ecfdf3179f3c21739a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84ba3831_1c064a32",
+        "filename": "src/apksigner/java/com/android/apksigner/ApkSignerTool.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1294681
+      },
+      "writtenOn": "2018-06-14T18:18:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c02581c_b0e6185d",
+      "range": {
+        "startLine": 723,
+        "startChar": 48,
+        "endLine": 723,
+        "endChar": 88
+      },
+      "revId": "217daee5ef4286cacfaa49ecfdf3179f3c21739a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
