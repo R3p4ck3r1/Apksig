@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e59bd6ea_1667297e",
+        "filename": "src/apksigner/java/com/android/apksigner/help_lineage.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2018-06-19T18:06:19Z",
+      "side": 1,
+      "message": "Trailing whitespaces",
+      "range": {
+        "startLine": 34,
+        "startChar": 74,
+        "endLine": 34,
+        "endChar": 75
+      },
+      "revId": "ebe60c81b677ddea59cd00df61a0d0dd4f0d2389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
