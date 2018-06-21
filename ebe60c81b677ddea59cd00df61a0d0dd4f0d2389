@@ -22,6 +22,30 @@
       "revId": "ebe60c81b677ddea59cd00df61a0d0dd4f0d2389",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b3a102c_38bec525",
+        "filename": "src/apksigner/java/com/android/apksigner/help_lineage.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1294681
+      },
+      "writtenOn": "2018-06-21T00:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e59bd6ea_1667297e",
+      "range": {
+        "startLine": 34,
+        "startChar": 74,
+        "endLine": 34,
+        "endChar": 75
+      },
+      "revId": "ebe60c81b677ddea59cd00df61a0d0dd4f0d2389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
