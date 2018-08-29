@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31464022_ed84e1c1",
+        "filename": "src/main/java/com/android/apksig/internal/asn1/Asn1BerParser.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2018-08-29T21:46:28Z",
+      "side": 1,
+      "message": "This might be clearer instead as boolean ommitTag, but I\u0027m not sure if that fits wider, WDYT?",
+      "range": {
+        "startLine": 201,
+        "startChar": 12,
+        "endLine": 201,
+        "endChar": 40
+      },
+      "revId": "5e6c81f04bfbd8fe672a150e4b68874e9a02ec02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
