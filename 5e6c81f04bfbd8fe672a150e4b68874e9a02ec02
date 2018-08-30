@@ -22,6 +22,30 @@
       "revId": "5e6c81f04bfbd8fe672a150e4b68874e9a02ec02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e207b56_8b39f302",
+        "filename": "src/main/java/com/android/apksig/internal/asn1/Asn1BerParser.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1294681
+      },
+      "writtenOn": "2018-08-30T00:44:43Z",
+      "side": 1,
+      "message": "I agree this makes more sense for the encoder; I have made the change in Asn1DerEncoder.",
+      "parentUuid": "31464022_ed84e1c1",
+      "range": {
+        "startLine": 201,
+        "startChar": 12,
+        "endLine": 201,
+        "endChar": 40
+      },
+      "revId": "5e6c81f04bfbd8fe672a150e4b68874e9a02ec02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
