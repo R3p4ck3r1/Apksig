@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "844a939b_cdaf18bb",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1294681
+      },
+      "writtenOn": "2019-01-25T23:36:08Z",
+      "side": 1,
+      "message": "Nit: Can we remove the V2 prefix from these classes? Both the V2 and V3 signature schemes use computeContentDigests, and most likely any future signature scheme would use it as well.",
+      "range": {
+        "startLine": 624,
+        "startChar": 25,
+        "endLine": 624,
+        "endChar": 27
+      },
+      "revId": "0c7a5fd36549294023f0ab884d2c9afbd369cc0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
