@@ -22,6 +22,30 @@
       "revId": "0c7a5fd36549294023f0ab884d2c9afbd369cc0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fdded8b_f209512c",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1337251
+      },
+      "writtenOn": "2019-01-28T10:32:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "844a939b_cdaf18bb",
+      "range": {
+        "startLine": 624,
+        "startChar": 25,
+        "endLine": 624,
+        "endChar": 27
+      },
+      "revId": "0c7a5fd36549294023f0ab884d2c9afbd369cc0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
