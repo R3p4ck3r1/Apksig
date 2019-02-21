@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "220d9ab9_340182ec",
+        "filename": "src/main/java/com/android/apksig/internal/util/RandomAccessFileDataSource.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2019-02-21T17:01:48Z",
+      "side": 1,
+      "message": "nit: fix the comment and perhaps the class name (e.g. just FileDataSource?).",
+      "range": {
+        "startLine": 28,
+        "startChar": 41,
+        "endLine": 28,
+        "endChar": 57
+      },
+      "revId": "75ef229e4428a38714f1ff8ec14ecf53b4db6923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "723e43b7_90274669",
+        "filename": "src/main/java/com/android/apksig/internal/util/RandomAccessFileDataSource.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2019-02-21T17:01:48Z",
+      "side": 1,
+      "message": "Is this correct? It looks like buf is not consumed in the loop.  Maybe you don\u0027t need the inner loop at all?",
+      "range": {
+        "startLine": 114,
+        "startChar": 16,
+        "endLine": 115,
+        "endChar": 50
+      },
+      "revId": "75ef229e4428a38714f1ff8ec14ecf53b4db6923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d718637_4225e1d7",
+        "filename": "src/test/java/com/android/apksig/internal/util/RandomAccessFileDataSourceTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2019-02-21T17:01:48Z",
+      "side": 1,
+      "message": "Thanks for adding the test!  How about adding more cases, e.g. reading from middle of file, larger size (to actual loop twice)?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 53
+      },
+      "revId": "75ef229e4428a38714f1ff8ec14ecf53b4db6923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
