@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9be40469_10b65c0d",
+        "filename": "src/main/java/com/android/apksig/internal/util/RandomAccessFileDataSource.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2019-02-21T18:51:19Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right :)",
+      "parentUuid": "fe48f2e4_71d870c7",
+      "range": {
+        "startLine": 28,
+        "startChar": 41,
+        "endLine": 28,
+        "endChar": 57
+      },
+      "revId": "75ef229e4428a38714f1ff8ec14ecf53b4db6923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "723e43b7_90274669",
         "filename": "src/main/java/com/android/apksig/internal/util/RandomAccessFileDataSource.java",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "In the majority of cases this will be executed only once. However, in case for some reason we read less than we expected (chunkRemaining \u003e read) we should keep reading. buf does not have to be consumed in the loop as subsequent mChannel.read calls should append data to buf (till the pointer reaches chunkSize).",
       "parentUuid": "723e43b7_90274669",
+      "range": {
+        "startLine": 114,
+        "startChar": 16,
+        "endLine": 115,
+        "endChar": 50
+      },
+      "revId": "75ef229e4428a38714f1ff8ec14ecf53b4db6923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5dd9b26_89ab5654",
+        "filename": "src/main/java/com/android/apksig/internal/util/RandomAccessFileDataSource.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2019-02-21T18:51:19Z",
+      "side": 1,
+      "message": "Right, I missed the part that the pointer doesn\u0027t reset.",
+      "parentUuid": "16fb21f6_b6bcc039",
       "range": {
         "startLine": 114,
         "startChar": 16,
