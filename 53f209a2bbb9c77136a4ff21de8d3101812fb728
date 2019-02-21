@@ -22,6 +22,30 @@
       "revId": "53f209a2bbb9c77136a4ff21de8d3101812fb728",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbe07121_0d398c04",
+        "filename": "src/main/java/com/android/apksig/internal/util/ChainedDataSource.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1337251
+      },
+      "writtenOn": "2019-02-21T10:15:50Z",
+      "side": 1,
+      "message": "You\u0027re right, there is no need for that.",
+      "parentUuid": "8b88c6e4_e0d801f4",
+      "range": {
+        "startLine": 109,
+        "startChar": 57,
+        "endLine": 109,
+        "endChar": 70
+      },
+      "revId": "53f209a2bbb9c77136a4ff21de8d3101812fb728",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
