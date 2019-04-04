@@ -16,6 +16,24 @@
       "revId": "ad82f37021a0b66d57f52746fc1ac34c809ba534",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8399efa_0aa33463",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2019-04-04T20:13:16Z",
+      "side": 1,
+      "message": "*will always be zero for the keys you\u0027re trying to fix, i.e. you can reject/ignore those with non-zero in there. Someone determined to put a random number in there can, of course.\n\n(We were requiring that value be zero in BoringSSL long before we tightened up the RSA key parser.)",
+      "parentUuid": "306ac4ef_4a8d7c78",
+      "revId": "ad82f37021a0b66d57f52746fc1ac34c809ba534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
