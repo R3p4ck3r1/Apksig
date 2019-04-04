@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "306ac4ef_4a8d7c78",
+        "filename": "src/main/java/com/android/apksig/internal/apk/ApkSigningBlockUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1031048
+      },
+      "writtenOn": "2019-04-04T20:10:46Z",
+      "side": 1,
+      "message": "This will always be zero (i.e. we have a whole number of bytes), FWIW. SPKI using BIT STRINGs is just a goofy quirk of the format. RSA keys never encode non-whole bytes, and I\u0027ve never seen any other key type do it either.",
+      "revId": "ad82f37021a0b66d57f52746fc1ac34c809ba534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
