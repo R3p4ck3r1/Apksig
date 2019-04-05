@@ -1,0 +1,7 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Michael Groover <mpgroover@google.com>
+Submitted-by: Fedor Kudasov <kudasov@google.com>
+Submitted-at: Fri, 05 Apr 2019 09:53:38 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/tools/apksig/+/937221
+Project: platform/tools/apksig
+Branch: refs/heads/master
