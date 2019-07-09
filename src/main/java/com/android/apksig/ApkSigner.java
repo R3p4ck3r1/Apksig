@@ -240,7 +240,8 @@ public class ApkSigner {
         List<CentralDirectoryRecord> inputCdRecords =
                 parseZipCentralDirectory(inputCd, inputZipSections);
 
-        List<Pattern> pinPatterns = extractPinPatterns(inputCdRecords, inputApkLfhSection);
+        List<Hints.PatternWithRange> pinPatterns = extractPinPatterns(
+                inputCdRecords, inputApkLfhSection);
         List<Hints.ByteRange> pinByteRanges = pinPatterns == null ? null : new ArrayList<>();
 
         // Step 3. Obtain a signer engine instance
@@ -371,28 +372,33 @@ public class ApkSigner {
 
                 // Output entry's Local File Header + data
                 long outputLocalFileHeaderOffset = outputOffset;
-                long outputLocalFileRecordSize =
+                OutputSizeAndDataOffset outputLfrResult =
                         outputInputJarEntryLfhRecordPreservingDataAlignment(
                                 inputApkLfhSection,
                                 inputLocalFileRecord,
                                 outputApkOut,
                                 outputLocalFileHeaderOffset);
-                outputOffset += outputLocalFileRecordSize;
+                outputOffset += outputLfrResult.output_bytes;
+                long outputDataOffset =
+                        outputLocalFileHeaderOffset + outputLfrResult.data_offset_bytes;
 
                 if (pinPatterns != null) {
-                    boolean pinThisFile = false;
-                    for (Pattern pinPattern : pinPatterns) {
-                        if (pinPattern.matcher(inputCdRecord.getName()).matches()) {
-                            pinThisFile = true;
-                            break;
+                    boolean pinFileHeader = false;
+                    for (Hints.PatternWithRange pinPattern : pinPatterns) {
+                        if (pinPattern.pattern.matcher(inputCdRecord.getName()).matches()) {
+                            Hints.ByteRange data_range =
+                                    new Hints.ByteRange(outputDataOffset, outputOffset);
+                            Hints.ByteRange pin_range =
+                                    pinPattern.ClampToAbsoluteByteRange(data_range);
+                            if (pin_range != null) {
+                                pinFileHeader = true;
+                                pinByteRanges.add(pin_range);
+                            }
                         }
                     }
-
-                    if (pinThisFile) {
-                        pinByteRanges.add(
-                            new Hints.ByteRange(
-                                outputLocalFileHeaderOffset,
-                                outputOffset));
+                    if (pinFileHeader) {
+                        pinByteRanges.add(new Hints.ByteRange(outputLocalFileHeaderOffset,
+                                                              outputDataOffset));
                     }
                 }
 
@@ -574,7 +580,17 @@ public class ApkSigner {
         inspectEntryRequest.done();
     }
 
-    private static long outputInputJarEntryLfhRecordPreservingDataAlignment(
+    private static class OutputSizeAndDataOffset {
+        public long output_bytes;
+        public long data_offset_bytes;
+
+        public OutputSizeAndDataOffset(long output_bytes, long data_offset_bytes) {
+            this.output_bytes = output_bytes;
+            this.data_offset_bytes = data_offset_bytes;
+        }
+    }
+
+    private static OutputSizeAndDataOffset outputInputJarEntryLfhRecordPreservingDataAlignment(
             DataSource inputLfhSection,
             LocalFileRecord inputRecord,
             DataSink outputLfhSection,
@@ -582,21 +598,27 @@ public class ApkSigner {
         long inputOffset = inputRecord.getStartOffsetInArchive();
         if (inputOffset == outputOffset) {
             // This record's data will be aligned same as in the input APK.
-            return inputRecord.outputRecord(inputLfhSection, outputLfhSection);
+            return new OutputSizeAndDataOffset(
+                    inputRecord.outputRecord(inputLfhSection, outputLfhSection),
+                    inputRecord.getDataStartOffsetInRecord());
         }
         int dataAlignmentMultiple = getInputJarEntryDataAlignmentMultiple(inputRecord);
         if ((dataAlignmentMultiple <= 1)
                 || ((inputOffset % dataAlignmentMultiple)
                         == (outputOffset % dataAlignmentMultiple))) {
             // This record's data will be aligned same as in the input APK.
-            return inputRecord.outputRecord(inputLfhSection, outputLfhSection);
+            return new OutputSizeAndDataOffset(
+                    inputRecord.outputRecord(inputLfhSection, outputLfhSection),
+                    inputRecord.getDataStartOffsetInRecord());
         }
 
         long inputDataStartOffset = inputOffset + inputRecord.getDataStartOffsetInRecord();
         if ((inputDataStartOffset % dataAlignmentMultiple) != 0) {
             // This record's data is not aligned in the input APK. No need to align it in the
             // output.
-            return inputRecord.outputRecord(inputLfhSection, outputLfhSection);
+            return new OutputSizeAndDataOffset(
+                    inputRecord.outputRecord(inputLfhSection, outputLfhSection),
+                    inputRecord.getDataStartOffsetInRecord());
         }
 
         // This record's data needs to be re-aligned in the output. This is achieved using the
@@ -606,8 +628,11 @@ public class ApkSigner {
                         inputRecord.getExtra(),
                         outputOffset + inputRecord.getExtraFieldStartOffsetInsideRecord(),
                         dataAlignmentMultiple);
-        return inputRecord.outputRecordWithModifiedExtra(
-                inputLfhSection, aligningExtra, outputLfhSection);
+        long dataOffset = inputRecord.getDataStartOffsetInRecord() +
+                          aligningExtra.remaining() -
+                          inputRecord.getExtra().remaining();
+        return new OutputSizeAndDataOffset(inputRecord.outputRecordWithModifiedExtra(
+                inputLfhSection, aligningExtra, outputLfhSection), dataOffset);
     }
 
     private static int getInputJarEntryDataAlignmentMultiple(LocalFileRecord entry) {
@@ -794,12 +819,12 @@ public class ApkSigner {
      * Return list of pin patterns embedded in the pin pattern asset
      * file.  If no such file, return {@code null}.
      */
-    private static List<Pattern> extractPinPatterns(
+    private static List<Hints.PatternWithRange> extractPinPatterns(
             List<CentralDirectoryRecord> cdRecords, DataSource lhfSection)
                     throws IOException, ApkFormatException {
         CentralDirectoryRecord pinListCdRecord =
                 findCdRecord(cdRecords, Hints.PIN_HINT_ASSET_ZIP_ENTRY_NAME);
-        List<Pattern> pinPatterns = null;
+        List<Hints.PatternWithRange> pinPatterns = null;
         if (pinListCdRecord != null) {
             pinPatterns = new ArrayList<>();
             byte[] patternBlob;

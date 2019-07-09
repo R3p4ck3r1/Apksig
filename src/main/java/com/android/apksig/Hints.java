@@ -47,6 +47,35 @@ public final class Hints {
         }
     }
 
+    public static final class PatternWithRange {
+        final Pattern pattern;
+        final long offset;
+        final long size;
+
+        public PatternWithRange(String pattern) {
+            this.pattern = Pattern.compile(pattern);
+            this.offset= 0;
+            this.size = Long.MAX_VALUE;
+        }
+
+        public PatternWithRange(String pattern, long offset, long size) {
+            this.pattern = Pattern.compile(pattern);
+            this.offset = offset;
+            this.size = size;
+        }
+
+        public ByteRange ClampToAbsoluteByteRange(ByteRange range_in) {
+            if (range_in.end - range_in.start < this.offset) {
+                return null;
+            }
+            long range_out_start = range_in.start + this.offset;
+            long range_out_size = Math.min(range_in.end - range_out_start,
+                                           this.size);
+            return new ByteRange(range_out_start,
+                                 range_out_start + range_out_size);
+        }
+    }
+
     /**
      * Create a blob of bytes that PinnerService understands as a
      * sequence of byte ranges to pin.
@@ -65,13 +94,20 @@ public final class Hints {
         return bos.toByteArray();
     }
 
-    public static ArrayList<Pattern> parsePinPatterns(byte[] patternBlob) {
-        ArrayList<Pattern> pinPatterns = new ArrayList<>();
+    public static ArrayList<PatternWithRange> parsePinPatterns(byte[] patternBlob) {
+        ArrayList<PatternWithRange> pinPatterns = new ArrayList<>();
         try {
             for (String rawLine : new String(patternBlob, "UTF-8").split("\n")) {
                 String line = rawLine.replaceFirst("#.*", "");  // # starts a comment
-                if (!("".equals(line))) {
-                    pinPatterns.add(Pattern.compile(line));
+                String[] fields = line.split(" ");
+                if (fields.length == 1) {
+                    pinPatterns.add(new PatternWithRange(fields[0]));
+                } else if (fields.length == 3) {
+                    long start = Long.parseLong(fields[1]);
+                    long end = Long.parseLong(fields[2]);
+                    pinPatterns.add(new PatternWithRange(fields[0], start, end - start));
+                } else {
+                    throw new AssertionError("bad pin pattern line " + line);
                 }
             }
         } catch (UnsupportedEncodingException ex) {
