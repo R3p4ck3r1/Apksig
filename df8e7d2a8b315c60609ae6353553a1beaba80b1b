@@ -1,0 +1,7 @@
+Autosubmit+1: John Cater <jcater@google.com>
+Code-Review+2: Chad Brubaker <cbrubaker@google.com>
+Submitted-by: John Cater <jcater@google.com>
+Submitted-at: Wed, 25 Sep 2019 13:30:10 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/tools/apksig/+/1126267
+Project: platform/tools/apksig
+Branch: refs/heads/master
