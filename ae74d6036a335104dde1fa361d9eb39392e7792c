@@ -1,0 +1,7 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Chad Brubaker <cbrubaker@google.com>
+Submitted-by: Jake Wharton <jakew@google.com>
+Submitted-at: Tue, 29 Oct 2019 23:36:26 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/tools/apksig/+/1151427
+Project: platform/tools/apksig
+Branch: refs/heads/master
