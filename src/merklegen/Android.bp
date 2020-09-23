@@ -1,0 +1,12 @@
+java_library_host {
+    name: "merklegen",
+    srcs: [
+        "src/**/*.java",
+    ],
+    static_libs: [
+        "apksig",
+    ],
+    manifest: "merklegen.mf",
+    java_version: "1.8",
+}
+
