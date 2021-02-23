@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+2: Michael Groover <mpgroover@google.com>
+Presubmit-Verified+2: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Ivan Gavrilovic <gavra@google.com>
+Submitted-at: Tue, 23 Feb 2021 20:01:51 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/tools/apksig/+/1602193
+Project: platform/tools/apksig
+Branch: refs/heads/master
