@@ -274,6 +274,13 @@ public class V3SigningCertificateLineage {
             return true;
         }
 
+        @Override
+        public int hashCode() {
+            int result = Objects.hash(signingCert, parentSigAlgorithm, sigAlgorithm, flags);
+            result = 31 * result + Arrays.hashCode(signature);
+            return result;
+        }
+
         /**
          * the signing cert for this node.  This is part of the data signed by the parent node.
          */
