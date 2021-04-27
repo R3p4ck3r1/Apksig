@@ -29,6 +29,17 @@ public class V4Signature {
     public static final int HASHING_ALGORITHM_SHA256 = 1;
     public static final byte LOG2_BLOCK_SIZE_4096_BYTES = 12;
 
+    private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
+    private static String bytesToHex(byte[] bytes) {
+        char[] hexChars = new char[bytes.length * 2];
+        for (int j = 0; j < bytes.length; j++) {
+            int v = bytes[j] & 0xFF;
+            hexChars[j * 2] = HEX_ARRAY[v >>> 4];
+            hexChars[j * 2 + 1] = HEX_ARRAY[v & 0x0F];
+        }
+        return new String(hexChars);
+    }
+
     public static class HashingInfo {
         public final int hashAlgorithm; // only 1 == SHA256 supported
         public final byte log2BlockSize; // only 12 (block size 4096) supported now
@@ -48,6 +59,7 @@ public class V4Signature {
             final byte log2BlockSize = buffer.get();
             byte[] salt = readBytes(buffer);
             byte[] rawRootHash = readBytes(buffer);
+            System.out.println("roothash: " + bytesToHex(rawRootHash));
             return new HashingInfo(hashAlgorithm, log2BlockSize, salt, rawRootHash);
         }
 
@@ -125,6 +137,11 @@ public class V4Signature {
         }
         final byte[] hashingInfo = readBytes(stream);
         final byte[] signingInfo = readBytes(stream);
+
+        final byte[] hashtree = readBytes(stream);
+        java.io.FileOutputStream treeFile = new java.io.FileOutputStream("hashtree");
+        treeFile.write(hashtree);
+        treeFile.close();
         return new V4Signature(version, hashingInfo, signingInfo);
     }
 
