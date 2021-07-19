@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd265b48_02b90b86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-07-19T23:45:09Z",
+      "side": 1,
+      "message": "I ran with the sample you shared, but couldn\u0027t see the error. I don\u0027t know why it doesn\u0027t fail with this obvious bug. Michael, can you check with the new patchset? Thank you!.",
+      "parentUuid": "9f124378_5aeb5288",
+      "revId": "5d78a34a46bcaa54180b63daefb40ef7ba5f0682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "179ae532_87bc10cd",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-19T20:15:27Z",
       "side": 1,
       "message": "According to the zip file spec I believe this should be an Int16 (see https://pkware.cachefly.net/webdocs/APPNOTE/APPNOTE-6.3.9.TXT section 4.3.16).",
+      "range": {
+        "startLine": 80,
+        "startChar": 8,
+        "endLine": 80,
+        "endChar": 24
+      },
+      "revId": "5d78a34a46bcaa54180b63daefb40ef7ba5f0682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f83fffb6_affe95b8",
+        "filename": "src/main/java/com/android/apksig/internal/zip/ZipUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-07-19T23:45:09Z",
+      "side": 1,
+      "message": "Thank you very much, Michael.\nThis was a huge mistake.\n\nDone.",
+      "parentUuid": "179ae532_87bc10cd",
       "range": {
         "startLine": 80,
         "startChar": 8,
