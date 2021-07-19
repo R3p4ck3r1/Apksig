@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f124378_5aeb5288",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294681
+      },
+      "writtenOn": "2021-07-19T20:15:27Z",
+      "side": 1,
+      "message": "Hi Jooyung, I cherry-picked this and aosp/1762580 into my tree and attempted a couple signings, but on occasion it would fail with the following Exception:\n\n$ signapk --align-file-size ~/rsa-2048.x509.pem ~/rsa-2048.pk8 original.apk test.apk\njava.lang.IndexOutOfBoundsException\n\tat java.base/java.nio.Buffer.checkIndex(Buffer.java:688)\n\tat java.base/java.nio.HeapByteBuffer.putInt(HeapByteBuffer.java:408)\n\tat com.android.apksig.internal.zip.ZipUtils.setUnsignedInt32(ZipUtils.java:321)\n\tat com.android.apksig.internal.zip.ZipUtils.updateZipEocdCommentLen(ZipUtils.java:80)\n\tat com.android.apksig.apk.ApkUtils.updateZipEocdCommentLen(ApkUtils.java:107)\n\tat com.android.signapk.SignApk.main(SignApk.java:1275)\n\n\nThis appears to happen when the file is already aligned or only needs one byte. I believe the issue is due to the comment I left in ZipUtils since the spec indicates the comment length should only be specified as two bytes.\n\nI\u0027ve shared the signing key, certificate, and APK via Drive that I used to recreate this issue.",
+      "revId": "5d78a34a46bcaa54180b63daefb40ef7ba5f0682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "179ae532_87bc10cd",
+        "filename": "src/main/java/com/android/apksig/internal/zip/ZipUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1294681
+      },
+      "writtenOn": "2021-07-19T20:15:27Z",
+      "side": 1,
+      "message": "According to the zip file spec I believe this should be an Int16 (see https://pkware.cachefly.net/webdocs/APPNOTE/APPNOTE-6.3.9.TXT section 4.3.16).",
+      "range": {
+        "startLine": 80,
+        "startChar": 8,
+        "endLine": 80,
+        "endChar": 24
+      },
+      "revId": "5d78a34a46bcaa54180b63daefb40ef7ba5f0682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
