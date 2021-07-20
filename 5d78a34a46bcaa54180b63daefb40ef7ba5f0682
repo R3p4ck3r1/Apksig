@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19a70050_cf67b68c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294681
+      },
+      "writtenOn": "2021-07-20T00:21:18Z",
+      "side": 1,
+      "message": "After retrying with the latest patchset I\u0027m not seeing any errors. I also retried against a collection of APKs that had also caused some failures before, and I\u0027m not seeing those now.",
+      "parentUuid": "bd265b48_02b90b86",
+      "revId": "5d78a34a46bcaa54180b63daefb40ef7ba5f0682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "179ae532_87bc10cd",
