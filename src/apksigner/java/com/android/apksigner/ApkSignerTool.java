@@ -161,6 +161,7 @@ public class ApkSignerTool {
         boolean sourceStampFlagFound = false;
         boolean deterministicDsaSigning = false;
         boolean otherSignersSignaturesPreserved = false;
+        boolean alignFileSize = false;
         while ((optionName = optionsParser.nextOption()) != null) {
             optionOriginalForm = optionsParser.getOptionOriginalForm();
             if (("help".equals(optionName)) || ("h".equals(optionName))) {
@@ -265,6 +266,8 @@ public class ApkSignerTool {
                 deterministicDsaSigning = optionsParser.getOptionalBooleanValue(false);
             } else if ("append-signature".equals(optionName)) {
                 otherSignersSignaturesPreserved = optionsParser.getOptionalBooleanValue(true);
+            } else if ("align-file-size".equals(optionName)) {
+                alignFileSize = true;
             } else {
                 throw new ParameterException(
                         "Unsupported option: " + optionOriginalForm + ". See --help for supported"
@@ -362,7 +365,8 @@ public class ApkSignerTool {
                         .setVerityEnabled(verityEnabled)
                         .setV4ErrorReportingEnabled(v4SigningEnabled && v4SigningFlagFound)
                         .setDebuggableApkPermitted(debuggableApkPermitted)
-                        .setSigningCertificateLineage(lineage);
+                        .setSigningCertificateLineage(lineage)
+                        .setAlignFileSize(alignFileSize);
         if (minSdkVersionSpecified) {
             apkSignerBuilder.setMinSdkVersion(minSdkVersion);
         }

@@ -102,6 +102,8 @@ certificate.
                       preserve existing key / value blocks that exist within the
                       APK signing block.
 
+--align-file-size     Produces APK file sized as multiples of 4K bytes.
+
 -h, --help            Show help about this command and exit
 
 
