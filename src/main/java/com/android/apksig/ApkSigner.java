@@ -81,6 +81,8 @@ public class ApkSigner {
 
     private static final short ANDROID_COMMON_PAGE_ALIGNMENT_BYTES = 4096;
 
+    private static final short ANDROID_FILE_ALIGNMENT_BYTES = 4096;
+
     /** Name of the Android manifest ZIP entry in APKs. */
     private static final String ANDROID_MANIFEST_ZIP_ENTRY_NAME = "AndroidManifest.xml";
 
@@ -97,6 +99,7 @@ public class ApkSigner {
     private final boolean mV4ErrorReportingEnabled;
     private final boolean mDebuggableApkPermitted;
     private final boolean mOtherSignersSignaturesPreserved;
+    private final boolean mAlignFileSize;
     private final String mCreatedBy;
 
     private final ApkSignerEngine mSignerEngine;
@@ -126,6 +129,7 @@ public class ApkSigner {
             boolean v4ErrorReportingEnabled,
             boolean debuggableApkPermitted,
             boolean otherSignersSignaturesPreserved,
+            boolean alignFileSize,
             String createdBy,
             ApkSignerEngine signerEngine,
             File inputApkFile,
@@ -149,6 +153,7 @@ public class ApkSigner {
         mV4ErrorReportingEnabled = v4ErrorReportingEnabled;
         mDebuggableApkPermitted = debuggableApkPermitted;
         mOtherSignersSignaturesPreserved = otherSignersSignaturesPreserved;
+        mAlignFileSize = alignFileSize;
         mCreatedBy = createdBy;
 
         mSignerEngine = signerEngine;
@@ -579,6 +584,9 @@ public class ApkSigner {
         int outputCentralDirRecordCount = outputCdRecords.size();
 
         // Step 10. Construct output ZIP End of Central Directory record in an in-memory buffer
+        // because it can be adjusted in Step 11 due to signing block.
+        //   - CD offset (it's shifted by signing block)
+        //   - Comments (when the output file needs to be sized 4k-aligned)
         ByteBuffer outputEocd =
                 EocdRecord.createWithModifiedCentralDirectoryInfo(
                         inputZipSections.getZipEndOfCentralDirectory(),
@@ -597,13 +605,39 @@ public class ApkSigner {
 
         if (outputApkSigningBlockRequest != null) {
             int padding = outputApkSigningBlockRequest.getPaddingSizeBeforeApkSigningBlock();
-            outputApkOut.consume(ByteBuffer.allocate(padding));
             byte[] outputApkSigningBlock = outputApkSigningBlockRequest.getApkSigningBlock();
+            outputApkSigningBlockRequest.done();
+
+            long fileSize =
+                    outputCentralDirStartOffset
+                            + outputCentralDirDataSource.size()
+                            + padding
+                            + outputApkSigningBlock.length
+                            + outputEocd.remaining();
+            if (mAlignFileSize && (fileSize % ANDROID_FILE_ALIGNMENT_BYTES != 0)) {
+                int eocdPadding =
+                        (int)
+                                (ANDROID_FILE_ALIGNMENT_BYTES
+                                        - fileSize % ANDROID_FILE_ALIGNMENT_BYTES);
+                // Replace EOCD with padding one so that output file size can be the multiples of
+                // alignment.
+                outputEocd = EocdRecord.createWithPaddedComment(outputEocd, eocdPadding);
+
+                // Since EoCD has changed, we need to regenerate signing block as well.
+                outputApkSigningBlockRequest =
+                        signerEngine.outputZipSections2(
+                                outputApkIn,
+                                new ByteBufferDataSource(outputCentralDir),
+                                DataSources.asDataSource(outputEocd));
+                outputApkSigningBlock = outputApkSigningBlockRequest.getApkSigningBlock();
+                outputApkSigningBlockRequest.done();
+            }
+
+            outputApkOut.consume(ByteBuffer.allocate(padding));
             outputApkOut.consume(outputApkSigningBlock, 0, outputApkSigningBlock.length);
             ZipUtils.setZipEocdCentralDirectoryOffset(
                     outputEocd,
                     outputCentralDirStartOffset + padding + outputApkSigningBlock.length);
-            outputApkSigningBlockRequest.done();
         }
 
         // Step 12. Output ZIP Central Directory and ZIP End of Central Directory
@@ -1091,6 +1125,7 @@ public class ApkSigner {
         private boolean mV4ErrorReportingEnabled = false;
         private boolean mDebuggableApkPermitted = true;
         private boolean mOtherSignersSignaturesPreserved;
+        private boolean mAlignFileSize = false;
         private String mCreatedBy;
         private Integer mMinSdkVersion;
 
@@ -1461,6 +1496,21 @@ public class ApkSigner {
         }
 
         /**
+         * Sets whether the output APK files should be sized as multiples of 4K.
+         *
+         * <p><em>Note:</em> This method may only be invoked when this builder is not initialized
+         * with an {@link ApkSignerEngine}.
+         *
+         * @throws IllegalStateException if this builder was initialized with an {@link
+         *     ApkSignerEngine}
+         */
+        public Builder setAlignFileSize(boolean alignFileSize) {
+            checkInitializedWithoutEngine();
+            mAlignFileSize = alignFileSize;
+            return this;
+        }
+
+        /**
          * Sets the value of the {@code Created-By} field in JAR signature files.
          *
          * <p><em>Note:</em> This method may only be invoked when this builder is not initialized
@@ -1546,6 +1596,7 @@ public class ApkSigner {
                     mV4ErrorReportingEnabled,
                     mDebuggableApkPermitted,
                     mOtherSignersSignaturesPreserved,
+                    mAlignFileSize,
                     mCreatedBy,
                     mSignerEngine,
                     mInputApkFile,
