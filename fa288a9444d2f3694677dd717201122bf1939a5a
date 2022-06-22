@@ -16,6 +16,24 @@
       "message": "Change looks good to me, but could you add a test to ApkSignerTest to verify an APK signed with this option does produce a 4K aligned signed result? With the new test, can you run all the tests with `./gradlew build` from the apksig/ directory? Thanks!",
       "revId": "fa288a9444d2f3694677dd717201122bf1939a5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71d50f0c_1586938e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-06-22T05:41:58Z",
+      "side": 1,
+      "message": "Thank you Michael.\nAdded a golden test with size check.\nBtw, I\u0027m curious how to run main() of ApkSignerTest class. (I just hacked to call generateGolden() with @BeforeClass annotation) It would be nice if we have a task or a script to update golden by calling it.\n\nThe new patchset lost your +2.",
+      "parentUuid": "195074a7_a832f757",
+      "revId": "fa288a9444d2f3694677dd717201122bf1939a5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
