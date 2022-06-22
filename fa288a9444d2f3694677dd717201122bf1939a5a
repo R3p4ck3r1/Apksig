@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "195074a7_a832f757",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294681
+      },
+      "writtenOn": "2022-06-22T02:55:25Z",
+      "side": 1,
+      "message": "Change looks good to me, but could you add a test to ApkSignerTest to verify an APK signed with this option does produce a 4K aligned signed result? With the new test, can you run all the tests with `./gradlew build` from the apksig/ directory? Thanks!",
+      "revId": "fa288a9444d2f3694677dd717201122bf1939a5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
