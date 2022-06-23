@@ -34,6 +34,24 @@
       "parentUuid": "195074a7_a832f757",
       "revId": "fa288a9444d2f3694677dd717201122bf1939a5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d11c07a5_a538067e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294681
+      },
+      "writtenOn": "2022-06-23T03:47:14Z",
+      "side": 1,
+      "message": "Thanks for adding the test! And thanks for the task / script suggestion; I agree it is a pain needing to set up the classpath to run main, I will look into improving this.",
+      "parentUuid": "71d50f0c_1586938e",
+      "revId": "fa288a9444d2f3694677dd717201122bf1939a5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
