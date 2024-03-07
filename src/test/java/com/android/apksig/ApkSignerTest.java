@@ -55,7 +55,6 @@ import com.android.apksig.util.DataSource;
 import com.android.apksig.util.DataSources;
 import com.android.apksig.zip.ZipFormatException;
 
-import java.security.InvalidKeyException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
@@ -102,6 +101,8 @@ public class ApkSignerTest {
     static final String SECOND_RSA_2048_SIGNER_RESOURCE_NAME = "rsa-2048_2";
     static final String THIRD_RSA_2048_SIGNER_RESOURCE_NAME = "rsa-2048_3";
 
+    static final String FIRST_RSA_4096_SIGNER_RESOURCE_NAME = "rsa-4096";
+
     private static final String EC_P256_SIGNER_RESOURCE_NAME = "ec-p256";
     private static final String EC_P256_2_SIGNER_RESOURCE_NAME = "ec-p256_2";
 
@@ -117,6 +118,8 @@ public class ApkSignerTest {
             "rsa-2048-lineage-3-signers-1-no-caps";
     private static final String LINEAGE_RSA_2048_2_SIGNERS_2_3_RESOURCE_NAME =
             "rsa-2048-lineage-2-signers-2-3";
+    private static final String LINEAGE_RSA_2048_TO_RSA_4096_RESOURCE_NAME =
+            "rsa-2048-to-4096-lineage-2-signers";
 
     private static final String LINEAGE_EC_P256_2_SIGNERS_RESOURCE_NAME =
             "ec-p256-lineage-2-signers";
@@ -3047,6 +3050,37 @@ public class ApkSignerTest {
 
         assertResultContainsV4Signers(result, FIRST_RSA_2048_SIGNER_RESOURCE_NAME,
                 SECOND_RSA_2048_SIGNER_RESOURCE_NAME);
+    }
+
+    @Test
+    public void testV41_rotationWithDifferentDigestAlgos_v41UsesCorrectDigest() throws Exception {
+        // When signing an APK, the digest algorithm is determined by the number of bits in the
+        // signing key to ensure the digest is not weaker than the key. If an original signing key
+        // meets the requirements for the CHUNKED_SHA256 digest and the rotated signing key
+        // meets the requirements for CHUNKED_SHA512, then the v3.0 and v3.1 signing blocks will
+        // use different digests. The v4.1 signature must use the content digest from the v3.1
+        // block since that's the digest that will be used to verify the v4.1 signature on all
+        // platform versions that support the v3.1 signer.
+        List<ApkSigner.SignerConfig> rsa2048SignerConfigWithLineage =
+                Arrays.asList(
+                        getDefaultSignerConfigFromResources(FIRST_RSA_2048_SIGNER_RESOURCE_NAME),
+                        getDefaultSignerConfigFromResources(FIRST_RSA_4096_SIGNER_RESOURCE_NAME));
+        SigningCertificateLineage lineage =
+                Resources.toSigningCertificateLineage(
+                        ApkSignerTest.class, LINEAGE_RSA_2048_TO_RSA_4096_RESOURCE_NAME);
+
+        File signedApk = sign("original.apk",
+                new ApkSigner.Builder(rsa2048SignerConfigWithLineage)
+                        .setV1SigningEnabled(true)
+                        .setV2SigningEnabled(true)
+                        .setV3SigningEnabled(true)
+                        .setV4SigningEnabled(true)
+                        .setMinSdkVersionForRotation(AndroidSdkVersion.T)
+                        .setSigningCertificateLineage(lineage));
+        ApkVerifier.Result result = verify(signedApk, null);
+
+        assertResultContainsV4Signers(result, FIRST_RSA_2048_SIGNER_RESOURCE_NAME,
+                FIRST_RSA_4096_SIGNER_RESOURCE_NAME);
     }
 
     @Test
