@@ -17,11 +17,17 @@
 package com.android.apksig.internal.util;
 
 import com.android.apksig.ApkSignerTest;
+import com.android.apksig.KeyConfig;
 import com.android.apksig.SigningCertificateLineage;
 import com.android.apksig.util.DataSource;
 
+import org.junit.rules.TemporaryFolder;
+
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
@@ -41,6 +47,37 @@ import java.util.Locale;
  */
 public final class Resources {
     private Resources() {}
+
+    // All signers with the same prefix and an _X suffix were signed with the private key of the
+    // (X-1) signer.
+    public static final String FIRST_RSA_2048_SIGNER_RESOURCE_NAME = "rsa-2048";
+    public static final String SECOND_RSA_2048_SIGNER_RESOURCE_NAME = "rsa-2048_2";
+    public static final String THIRD_RSA_2048_SIGNER_RESOURCE_NAME = "rsa-2048_3";
+    public static final String FIRST_RSA_1024_SIGNER_RESOURCE_NAME = "rsa-1024";
+    public static final String SECOND_RSA_1024_SIGNER_RESOURCE_NAME = "rsa-1024_2";
+
+    public static final String FIRST_RSA_4096_SIGNER_RESOURCE_NAME = "rsa-4096";
+
+    public static final String EC_P256_SIGNER_RESOURCE_NAME = "ec-p256";
+    public static final String EC_P256_2_SIGNER_RESOURCE_NAME = "ec-p256_2";
+
+    // This is the same cert as above with the modulus reencoded to remove the leading 0 sign bit.
+    public static final String FIRST_RSA_2048_SIGNER_CERT_WITH_NEGATIVE_MODULUS =
+            "rsa-2048_negmod.x509.der";
+
+    public static final String LINEAGE_RSA_2048_2_SIGNERS_RESOURCE_NAME =
+            "rsa-2048-lineage-2-signers";
+    public static final String LINEAGE_RSA_2048_3_SIGNERS_RESOURCE_NAME =
+            "rsa-2048-lineage-3-signers";
+    public static final String LINEAGE_RSA_2048_3_SIGNERS_1_NO_CAPS_RESOURCE_NAME =
+            "rsa-2048-lineage-3-signers-1-no-caps";
+    public static final String LINEAGE_RSA_2048_2_SIGNERS_2_3_RESOURCE_NAME =
+            "rsa-2048-lineage-2-signers-2-3";
+    public static final String LINEAGE_RSA_2048_TO_RSA_4096_RESOURCE_NAME =
+            "rsa-2048-to-4096-lineage-2-signers";
+
+    public static final String LINEAGE_EC_P256_2_SIGNERS_RESOURCE_NAME =
+            "ec-p256-lineage-2-signers";
 
     public static byte[] toByteArray(Class<?> cls, String resourceName) throws IOException {
         try (InputStream in = cls.getResourceAsStream(resourceName)) {
@@ -126,7 +163,9 @@ public final class Resources {
         PrivateKey privateKey = toPrivateKey(cls, resourcePrefix + ".pk8");
         X509Certificate cert = Resources.toCertificate(cls,
                 resourcePrefix + ".x509.pem");
-        return new SigningCertificateLineage.SignerConfig.Builder(privateKey, cert).build();
+        return new SigningCertificateLineage.SignerConfig.Builder(
+                        new KeyConfig.Jca(privateKey), cert)
+                .build();
     }
 
     public static DataSource toDataSource(Class<?> cls, String dataSourceResourceName)
@@ -139,5 +178,18 @@ public final class Resources {
             String fileResourceName) throws IOException {
         DataSource lineageDataSource = toDataSource(cls, fileResourceName);
         return SigningCertificateLineage.readFromDataSource(lineageDataSource);
+    }
+
+    public static File toFile(Class<?> cls, String fileResourceName,
+            TemporaryFolder temporaryFolder) throws IOException {
+        File outFile = temporaryFolder.newFile();
+        try (InputStream in = cls.getResourceAsStream(fileResourceName);
+             OutputStream out = new FileOutputStream(outFile)) {
+            if (in == null) {
+                throw new IllegalArgumentException("Resource not found: " + fileResourceName);
+            }
+            in.transferTo(out);
+            return outFile;
+        }
     }
 }
