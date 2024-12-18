@@ -21,6 +21,10 @@ import com.android.apksig.KeyConfig;
 import com.android.apksig.SigningCertificateLineage;
 import com.android.apksig.util.DataSource;
 
+// BEGIN-AOSP
+import com.google.cloud.kms.v1.KeyRingName;
+// END-AOSP
+
 import org.junit.rules.TemporaryFolder;
 
 import java.io.File;
@@ -56,10 +60,20 @@ public final class Resources {
     public static final String FIRST_RSA_1024_SIGNER_RESOURCE_NAME = "rsa-1024";
     public static final String SECOND_RSA_1024_SIGNER_RESOURCE_NAME = "rsa-1024_2";
 
+    // This resource uses a PEM certificate file containing the certificate chain with both the
+    // first and second RSA-2048 signers. This resource should be used for any tests that require
+    // a certificate chain in the SignerConfig.
+    public static final String FIRST_AND_SECOND_RSA_2048_SIGNER_RESOURCE_NAME = "rsa-2048-2-1";
+
     public static final String FIRST_RSA_4096_SIGNER_RESOURCE_NAME = "rsa-4096";
 
     public static final String EC_P256_SIGNER_RESOURCE_NAME = "ec-p256";
     public static final String EC_P256_2_SIGNER_RESOURCE_NAME = "ec-p256_2";
+
+    // BEGIN-AOSP
+    public static final KeyRingName TEST_GCP_KEY_RING =
+            KeyRingName.of("apksigner-cloud-kms", "us-central1", "testV3");
+    // END-AOSP
 
     // This is the same cert as above with the modulus reencoded to remove the leading 0 sign bit.
     public static final String FIRST_RSA_2048_SIGNER_CERT_WITH_NEGATIVE_MODULUS =
